@@ -1,43 +1,83 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>PowerLifting Competition Coordinator - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>PowerLifting Competition Coordinator - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T11-3</code>      Since: <code>Sep 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic component</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#what-is-powerlifting-competition-coordinator">1.1. What is Powerlifting Competition Coordinator?</a></li>
+<li><a href="#core-team">1.2. Core team</a></li>
+<li><a href="#contributing">1.3. Contributing</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#setting-up">2. Setting up</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></li>
+<li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#design-not-finished">3. Design (Not finished)</a>
+<ul class="sectlevel2">
+<li><a href="#Design-Architecture">3.1. Architecture</a></li>
+<li><a href="#Design-Ui">3.2. UI component</a></li>
+<li><a href="#Design-Logic">3.3. Logic component</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
+<li><a href="#Design-Storage">3.5. Storage component</a></li>
+<li><a href="#Design-Commons">3.6. Common classes</a></li>
+</ul>
+</li>
+<li><a href="#implementation">4. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.3. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">5. Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></li>
+</ul>
+</li>
+<li><a href="#Testing">6. Testing (Check this section at end of project!)</a>
+<ul class="sectlevel2">
+<li><a href="#running-tests">6.1. Running Tests</a></li>
+<li><a href="#types-of-tests">6.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
+</ul>
+</li>
+<li><a href="#dev-ops">7. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">7.1. Build Automation</a></li>
+<li><a href="#continuous-integration">7.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">7.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">7.4. Documentation Previews</a></li>
+<li><a href="#making-a-release">7.5. Making a Release</a></li>
+<li><a href="#managing-dependencies-check-this">7.6. Managing Dependencies (Check this!!!)</a></li>
+</ul>
+</li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases-to-do">Appendix C: Use Cases (To Do)</a>
+<ul class="sectlevel2">
+<li><a href="#out-of-competition-mode">C.1. Out of competition mode</a></li>
+<li><a href="#in-competition-mode">C.2. In competition mode</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing-to-do">Appendix G: Instructions for Manual Testing (To Do)</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
@@ -48,18 +88,217 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="what-is-powerlifting-competition-coordinator"><a class="link" href="#what-is-powerlifting-competition-coordinator">1.1. What is Powerlifting Competition Coordinator?</a></h3>
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>Powerlifting Competition Coordinator is a free application for powerlifting competition event organizers
+that is simple, fast, and easy to use. It is targeted at organizers of small to medium sized powerlifting
+competitions who require a hassle-free way of managing and tracking the lifts of participants in and out
+of the powerlifting competitions. During competition mode, the system has real time maintenance of athlete
+rankings within their respective weight classes allowing the organizer track the participants'
+standings at all times throughout the duration of the competition.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="core-team"><a class="link" href="#core-team">1.2. Core team</a></h3>
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator  was developed and is maintained by
+<a href="https://github.com/AY1920S1-CS2103-T11-3">Team T11-3</a>.
+Feel free to <a href="https://github.com/AY1920S1-CS2103-T11-3/main/issues">contact us</a> for any enquries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributing"><a class="link" href="#contributing">1.3. Contributing</a></h3>
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator is an open source project and we would love to involve any contributor
+who has a passion for powerlifting.
+To get involved, start by reading <a href="SettingUp.html">Section 2, “Setting up”</a>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section includes the instructions to set up your development environment.</p>
+</div>
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
+<div class="paragraph">
+<p>Prior to setting up the project proper, make sure you have the following.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>11</code></strong> or above</p>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<div class="paragraph">
+<p>To setup the project in IntelliJ, follow the steps below.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer.</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close
+the existing project dialog first).</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code>.</p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
+</li>
+<li>
+<p>Click <code>Open as Project</code>.</p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings.</p>
+</li>
+<li>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>).
+It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This will generate all resources required by the application and tests.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<div class="paragraph">
+<p>To verify that the setup is completed successfully, you should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>seedu.address.MainApp</code> and try a few commands.</p>
+</li>
+<li>
+<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
+<div class="paragraph">
+<p>This subsection includes configurations that you may find necessary or useful as you work on this project.
+We recommend that you make these configuration changes and additions before you start writing code.</p>
+</div>
+<div class="sect3">
+<h4 id="configurations-to-do-before-writing-code-2"><a class="link" href="#configurations-to-do-before-writing-code-2">2.4.1. Configurations to do before writing code</a></h4>
+<div class="paragraph">
+<p>This subsection includes configurations that you may find necessary or useful as you work on this project.
+We recommend that you make these configuration changes and additions before you start writing code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.2. Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows
+<a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>.
+IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours.
+Follow the instructions below to rectify this.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>:
+Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>,
+<code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure
+Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.3. Updating documentation to match your fork</a></h4>
+<div class="paragraph">
+<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level3</code> repo.
+If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level3</code>) ,
+you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the
+URL of your fork.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">2.4.4. Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to l
+earn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design-not-finished"><a class="link" href="#design-not-finished">3. Design (Not finished)</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section documents the design and interaction of components in Powerlifting Competition Coordinator.
+Please take a moment to understand the different components before making any code changes.</p>
+</div>
+<div class="sect2">
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ArchitectureDiagram.png" alt="ArchitectureDiagram">
@@ -67,7 +306,8 @@
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
 <div class="paragraph">
-<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a
+quick overview of each component.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -76,14 +316,14 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-T11-3/main/docs/diagrams/">diagrams</a> folder.
 Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -162,7 +402,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">3.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram">
@@ -170,13 +410,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -193,7 +433,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">3.3. Logic component</a></h3>
 <div id="fig-LogicClassDiagram" class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram">
@@ -202,7 +442,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -246,7 +486,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -254,7 +494,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -291,7 +531,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.5. Storage component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
@@ -299,7 +539,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -316,7 +556,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">3.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -324,15 +564,15 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">4.1. [Proposed] Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">4.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -474,7 +714,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -544,20 +784,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.3. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.4, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -588,7 +828,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.4. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -596,26 +836,289 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="Documentation.html">here</a>.</p>
+<p>We use asciidoc for writing documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
+Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps to convert the project documentation files to PDF format.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
+</li>
+<li>
+<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
+</li>
+<li>
+<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu. You should see a pop-up similar to Figure 12 below.</p>
+</li>
+<li>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, follow the settings as indicated in Figure 12.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+</div>
+<div class="title">Figure 9. Saving documentation as PDF files in Chrome</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="Testing"><a class="link" href="#Testing">6. Testing (Check this section at end of project!)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="Testing.html">here</a>.</p>
+<p>This section includes some information that may be useful for testing the project.</p>
+</div>
+<div class="sect2">
+<h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
+<div class="paragraph">
+<p>There are three ways to run tests.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests
+due to platform/resolution-specific idiosyncrasies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code>.</p>
+</li>
+<li>
+<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose
+<code>Run 'ABC'</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Method 2: Using Gradle</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 3: Using Gradle (headless)</strong></p>
+</div>
+<div class="paragraph">
+<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX, window="<em>blank"</em></a> library we use, our
+GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen.
+That means the developer can do other things on the Computer while the tests are running.</p>
+</div>
+<div class="paragraph">
+<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code>
+(Mac/Linux: <code>./gradlew clean headless allTests</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of tests</a></h3>
+<div class="paragraph">
+<p>We have two types of tests:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the
+<code>systemtests</code> package.</p>
+</li>
+<li>
+<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
+e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+</li>
+<li>
+<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
+e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+</li>
+<li>
+<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
+e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
+<div class="paragraph">
+<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reason: One of its dependencies, <code>UserGuide.html</code> in <code>src/main/resources/docs</code> is missing.</p>
+</li>
+<li>
+<p>Solution: Execute Gradle task <code>processResources</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Problem: <code>AddCommandSystemTest</code> or <code>SearchCommandSystemTest</code> fails with a <code>GuiRobot$EventTimeoutException</code>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reason: The required data could not be fetched from the online service within 10s. The service could be down at the moment.</p>
+</li>
+<li>
+<p>Solution: Check that you are connected to the Internet, or if you are, try again later.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="DevOps.html">here</a>.</p>
+<p>This section contains some information or tools that may be useful for managing the project.</p>
+</div>
+<div class="sect2">
+<h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://circleci.com/">CircleCI, window="<em>blank"</a>, <a href="https://travis-ci.org/">Travis CI, window="_blank"</a>, and <a href="https://www.appveyor.com/">AppVeyor, window="_blank"</em></a> to perform <em>Continuous Integration</em> on our projects.
+See <a href="UsingCircleCI.html">UsingCircleCI.adoc</a>, <a href="UsingTravis.html">UsingTravis.adoc</a>, and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">7.3. Coverage Reporting</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://coveralls.io/">Coveralls, window="_blank"</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">7.4. Documentation Previews</a></h3>
+<div class="paragraph">
+<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify, window="_blank"</a> to see a preview of how the
+HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-a-release"><a class="link" href="#making-a-release">7.5. Making a Release</a></h3>
+<div class="paragraph">
+<p>Here are the steps to create a new release.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the version number in <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code>, window="_blank"</a>.</p>
+</li>
+<li>
+<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
+</li>
+<li>
+<p>Tag the repo with the version number, e.g. <code>v0.1</code>.</p>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub, window="_blank"</a> and upload the JAR file you created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-dependencies-check-this"><a class="link" href="#managing-dependencies-check-this">7.6. Managing Dependencies (Check this!!!)</a></h3>
+<div class="paragraph">
+<p>A project often depends on third-party libraries. For example, PowerLifting Competition Coordinator depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library, window="<em>blank"</em></a> for XML parsing.
+We make use of Gradle to manage the project dependencies. Gradle can automate the downloading of these dependencies, saving us time and effort.</p>
+</div>
+<div class="paragraph">
+<p>While strongly discouraged by us, you can nevertheless opt for one of the following alternatives.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Include those libraries in the repo (though this bloats the repo size).</p>
+</li>
+<li>
+<p>Download those libraries manually (though this creates extra work for you).</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -628,10 +1131,16 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
+<p>organizes small to medium sized powerlifting competitions</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>has a need to manage a significant number athletes during the competition</p>
+</li>
+<li>
+<p>has a need to see the ranking of the participants of each competition</p>
+</li>
+<li>
+<p>prefer desktop applicationss over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -645,7 +1154,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: manage powerlifting competitions faster than a typical mouse/GUI driven app</p>
 </div>
 </div>
 </div>
@@ -679,27 +1188,89 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create a new competition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">start and organize a new competition</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find athletes according to their weight class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see which athletes are in the same competition</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort athletes according to their attempted weights for different lifting events</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adjust the weight on stage call for the next athlete to come and attempt their lift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find which athletes are currently in the lead (individual lifts and aggregate score)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can let the competitors know who is in the lead for their resepective weight classes and  let them calculate
+what they need to do to win the competition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the relative position of an athlete as compared to other athletes in their weight class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see which athletes are in the same competition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit the weight of a lifting attempt for an athlete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that the lifting order of athletes can be updated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update an athlete’s score after a successful lift</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that the ranking of the athletes can be updated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit an athlete&#8217;s name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the athlete&#8217;s name in case the athletes have change their names or they were inputted incorrectly previously</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input/edit an athlete&#8217;s body weight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the athlete&#8217;s weight so the athelete is taking part in the correct weight class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record when a lifter fails/succeed in his/her lift</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update the athlete&#8217;s score and ranking accordingly and to keep a record for how each athlete&#8217;s
+score was derived</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">input/edit an athlete&#8217;s country/club</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">which country/club the athlete is representing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know the rack height for bench press/squat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the racks can be prepared before the athletes make their lifting attempt and save time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">event organizer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find which club/country an athlete is affiliated with</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I know which countries/clubs can be ranked across the various weight classess</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -715,28 +1286,24 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<h2 id="use-cases-to-do"><a class="link" href="#use-cases-to-do">Appendix C: Use Cases (To Do)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>Powerlifting Competition Competitor</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<div class="sect2">
+<h3 id="out-of-competition-mode"><a class="link" href="#out-of-competition-mode">C.1. Out of competition mode</a></h3>
+<h5 id="use-case-uc1-view-my-competition-list" class="discrete">Use case: UC1 - View my competition list</h5>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list all competitions in the system.</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to delete a specific person in the list</p>
-</li>
-<li>
-<p>AddressBook deletes the person</p>
+<p>System shows a list of competitions held based on the files in the folder.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -754,12 +1321,249 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Use case ends.</p>
 </div>
 </li>
+</ul>
+</div>
+<h4 id="use-case-uc2-add-a-new-competition" class="discrete">Use case: UC2 - Add a new competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>3a. The given index is invalid.</p>
+<p>User requests for a new powerlifting competition to be started.</p>
+</li>
+<li>
+<p>User inputs the initial competition data (e.g. name, particpants) to be inputted.</p>
+</li>
+<li>
+<p>System adds the new competition to the user&#8217;s competition list.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>2a. Competition data is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The competition name has already been used in user&#8217;s competition list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System tells user that the competition is already in his competition list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc3-delete-a-competition" class="discrete">Use case: UC3 - Delete a competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of competitions by listing (<a href="#use-case-uc1-view-my-competition-list"><strong>UC1</strong></a>)</p>
+</li>
+<li>
+<p>User requests for a new powerlifting competition to be deleted.</p>
+</li>
+<li>
+<p>System adds the new competition to the user&#8217;s competition list.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc4-enter-competition-mode-for-a-particular-competition" class="discrete">Use case: UC4 - Enter competition mode for a particular competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of competitions by listing (<a href="#use-case-uc1-view-my-competition-list"><strong>UC1</strong></a>)</p>
+</li>
+<li>
+<p>User requests to enter competition mode for a particular competition.</p>
+</li>
+<li>
+<p>System enters competition mode for a particular competition.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc5-view-my-athlete-list" class="discrete">Use case: UC5 - View my athlete list</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all athletes in the system.</p>
+</li>
+<li>
+<p>Powerlifting Competition Coordinator shows a list of all athletes in the system.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc6-search-for-athletes" class="discrete">Use case: UC6 - Search for athletes</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User performs a search with some constraints (e.g. id, country, age, etc.).</p>
+</li>
+<li>
+<p>System lists athletes satisfying all the constraints.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any athletes satisfying all the constraints.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an empty list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc7-view-a-specific-athlete" class="discrete">Use case: UC7 - View a specific athlete</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of athletes by listing (<a href="#use-case-uc5-view-my-athlete-list"><strong>UC5</strong></a>).
+or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></a>).</p>
+</li>
+<li>
+<p>User requests to view more information on a specific athlete in the list.</p>
+</li>
+<li>
+<p>System shows detailed information of the book.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find the athlete in the list.</p>
+<div class="paragraph">
+<p>Use case restarts from step 1.</p>
+</div>
+</li>
+<li>
+<p>2b. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -770,7 +1574,385 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h4 id="use-case-uc8-add-an-athlete" class="discrete">Use case: UC8 - Add an athlete</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for an athlete to be added.</p>
+</li>
+<li>
+<p>User inputs athlete data.</p>
+</li>
+<li>
+<p>User confirms that the addition of the athlete cannot be reversed.</p>
+</li>
+<li>
+<p>System adds the new athlete to the user&#8217;s athlete list.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Athlete data is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The athlete is already in user&#8217;s athlete list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System tells user that the athlete is already in his athlete list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc9-edit-a-specific-athlete" class="discrete">Use case: UC9 - Edit a specific athlete</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a specific athlete (<a href="#use-case-uc7-view-a-specific-athlete"><strong>UC7</strong></a>)</p>
+</li>
+<li>
+<p>User requests certain data about the athlete to be updated.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User gives invalid data.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc10-delete-a-specific-athlete" class="discrete">Use case: UC10 - Delete a specific athlete</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a specific athlete (<a href="#use-case-uc7-view-a-specific-athlete"><strong>UC7</strong></a>)</p>
+</li>
+<li>
+<p>User requests for an athlete to be deleted from the athlete list.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="in-competition-mode"><a class="link" href="#in-competition-mode">C.2. In competition mode</a></h3>
+<h4 id="use-case-uc11-view-my-participant-list" class="discrete">Use case: UC11 - View my participant list</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all participants in the competition.</p>
+</li>
+<li>
+<p>System shows a list of all participants in the competition.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc12-search-rank-for-participants" class="discrete">Use case: UC12 - Search/rank for participants</h4>
+<div class="paragraph">
+<p><strong>MSS</strong>
+1.  User performs a search with some constraints (e.g. id, country, age, ranking criteria etc.).
+2.  System lists participants satisfying all the constraints.</p>
+</div>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any athletes satisfying all the constraints.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an empty list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc13-view-a-specific-participant" class="discrete">Use case: UC13 - View a specific participant</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of athletes by listing (<a href="#use-case-uc11-view-my-participant-list"><strong>UC11</strong></a>).
+or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</strong></a>).</p>
+</li>
+<li>
+<p>User requests to view more information on a specific athlete in the list.</p>
+</li>
+<li>
+<p>System shows detailed information of the book.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find the athlete in the list.</p>
+<div class="paragraph">
+<p>Use case restarts from step 1.</p>
+</div>
+</li>
+<li>
+<p>2b. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h4 id="use-case-uc14-edit-a-specific-participant" class="discrete">Use case: UC14 - Edit a specific participant</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a specific athlete (<a href="#use-case-uc13-view-a-specific-participant"><strong>UC13</strong></a>)</p>
+</li>
+<li>
+<p>User requests certain data about the athlete to be updated.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User gives invalid data.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc15-disqualify-a-specific-participant" class="discrete">Use case: UC15 - Disqualify a specific participant</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a specific participant (<a href="#use-case-uc13-view-a-specific-participant"><strong>UC13</strong></a>)</p>
+</li>
+<li>
+<p>User requests for a particular athlete to be disqualified from the competition.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h4 id="use-case-uc16-call-for-next-participant-in-lifting-order" class="discrete">Use case: UC16 - Call for next participant in lifting order</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for next athlete to attempt lift.</p>
+</li>
+<li>
+<p>System shows athlete that is lifting next.</p>
+</li>
+<li>
+<p>User updates system after athlete attempts lift.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. No more participants in lifting order.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc16-exit-competition" class="discrete">Use case: UC16 - Exit competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to exit competition mode.</p>
+</li>
+<li>
+<p>System exits competition mode.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="use-case-uc16-finalize-competition"><a class="link" href="#use-case-uc16-finalize-competition">C.2.1. Use case: UC16 - Finalize competition</a></h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to finalize competition data.</p>
+</li>
+<li>
+<p>System finalizes competition and prevents any further updating of the competition data.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. There are still participants that have not finished their lifts</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -780,18 +1962,28 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should work on both 32-bit and 64-bit environments.</p>
 </li>
 <li>
-<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+<p>Should come with automated unit tests and open source code.</p>
+</li>
+<li>
+<p>Should come with a user guide and a developer guide.</p>
+</li>
+<li>
+<p>Should favor <a href="#dos-style-commands">DOS style commands</a> over Unix-style commands.</p>
+</li>
+<li>
+<p>Should be intuitive such that a new user can learn to search and organize a powerlifting competition within 10 minutes.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+<em>{More to be added}</em></p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -850,7 +2042,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing-to-do"><a class="link" href="#instructions-for-manual-testing-to-do">Appendix G: Instructions for Manual Testing (To Do)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -958,4 +2150,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 03:24:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 04:02:15 UTC</div></div></div></body></html>
