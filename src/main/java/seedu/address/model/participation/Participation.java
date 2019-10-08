@@ -1,7 +1,6 @@
 package seedu.address.model.participation;
 
 import seedu.address.model.UniqueElement;
-
 import seedu.address.model.competition.Competition;
 import seedu.address.model.person.Person;
 
@@ -27,6 +26,7 @@ public class Participation extends UniqueElement {
     }
 
     /**
+<<<<<<< HEAD
      * Returns true if both exercises have the same identity and data fields.
      */
     public boolean isSameElement(UniqueElement otherElement) {
@@ -36,7 +36,6 @@ public class Participation extends UniqueElement {
         }
 
         return this.equals((Participation) otherElement);
-
     }
 
     /**

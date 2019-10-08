@@ -1,8 +1,10 @@
 package seedu.address.model.attempt;
 
+import seedu.address.model.attempt.exceptions.AttemptHasBeenAttemptedException;
 import seedu.address.model.exercise.Exercise;
 import seedu.address.model.exercise.Type;
 import seedu.address.model.participation.Participation;
+import seedu.address.model.person.Person;
 
 /**
  * Represents a {@link seedu.address.model.person.Person}'s attempt in an {@link Exercise}.
@@ -30,8 +32,20 @@ public class Attempt {
      * This method records the success of an athlete's attempt after his lift.
      * @param isSuccess true if the athlete succeeds his lift, false otherwise
      */
-    public void lifted(boolean isSuccess) {
-        this.hasAttempted = true;
-        this.isSuccess = isSuccess;
+    public void lifted(boolean isSuccess) throws AttemptHasBeenAttemptedException {
+        if (!hasAttempted) {
+            this.isSuccess = isSuccess;
+            this.hasAttempted = true;
+        } else {
+            throw new AttemptHasBeenAttemptedException();
+        }
+    }
+
+    public Person showPerson() {
+        return participation.getPerson();
+    }
+
+    public int showWeight() {
+        return weight;
     }
 }
