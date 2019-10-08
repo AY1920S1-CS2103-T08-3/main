@@ -1,6 +1,7 @@
 package seedu.address.model.participation;
 
 import seedu.address.model.UniqueElement;
+
 import seedu.address.model.competition.Competition;
 import seedu.address.model.person.Person;
 
@@ -35,6 +36,7 @@ public class Participation extends UniqueElement {
         }
 
         return this.equals((Participation) otherElement);
+
     }
 
     /**

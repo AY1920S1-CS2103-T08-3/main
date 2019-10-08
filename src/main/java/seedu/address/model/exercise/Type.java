@@ -5,7 +5,7 @@ package seedu.address.model.exercise;
  * Guarantees: immutable
  */
 public enum Type {
-    BenchPress,
+    Bench,
     Deadlift,
     Squat
 }
