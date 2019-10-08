@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>PowerLifting Competition Coordinator- User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>PowerLifting Competition Coordinator- User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team CS2103-T11</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,20 +13,11 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#competitions">3.1. Competitions</a></li>
+<li><a href="#getting-competitors-data">3.2. Getting Competitors’ Data</a></li>
+<li><a href="#participation">3.3. Participation</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -34,59 +25,19 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 3 (AB3) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>A powerlifting competition/meet consists of 3 lifts, the Squat, Bench and Deadlift. With 3 attempts, athletes will try to outdo and challenge themselves and lift as heavy as they can.</p>
+</div>
+<div class="paragraph">
+<p>This software is for organisers who organise powerlifting competitions. To facilitate the ease of data-entry, we have provided a command line interface that is augmented with a Graphical User Interface to help them better administer powerlifting competitions.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
-</li>
-<li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/AY1920S1-CS2103-T11-3/main/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
-</li>
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Download the software from our git repo.
+Ensure Java 11 is downloaded into your machine.</p>
 </div>
 </div>
 </div>
@@ -117,28 +68,175 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="competitions"><a class="link" href="#competitions">3.1. Competitions</a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>The commands listed below in 3.2, 3.3, … are based on the context of a competition.</p>
+</div>
+<div class="sect3">
+<h4 id="context-no-competition"><a class="link" href="#context-no-competition">3.1.1. Context: No Competition</a></h4>
+<div class="paragraph">
+<p><strong>Commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Save: this changes the context to <code>Creating a competition</code></p>
+</li>
+<li>
+<p>Select: changes the context of a <code>Competition</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="context-creating-a-competition"><a class="link" href="#context-creating-a-competition">3.1.2. Context: Creating a Competition</a></h4>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>date</p>
+</li>
+<li>
+<p>Type</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Save</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="context-on-a-competition"><a class="link" href="#context-on-a-competition">3.1.3. Context: On a Competition</a></h4>
+<div class="paragraph">
+<p><strong>Commands</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Athletes</p>
+</li>
+<li>
+<p>List</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Prints a list of competitions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Finalise</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Id</p>
+</li>
+<li>
+<p>name</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Marks the competition as completed and prevents further edits</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>id</p>
+</li>
+<li>
+<p>name</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Switch context to a different competition</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Id</p>
+</li>
+<li>
+<p>name</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="getting-competitors-data"><a class="link" href="#getting-competitors-data">3.2. Getting Competitors’ Data</a></h3>
+<div class="sect3">
+<h4 id="sorting-athletes-code-sort-code"><a class="link" href="#sorting-athletes-code-sort-code">3.2.1. Sorting Athletes: <code>sort</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Groups and sorts all athletes into their respective weight classes or attempted weights for an event.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Format: <code>sort wc/WEIGHTCLASS</code></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort aw/EVENT</code></p>
+</div>
+<div class="paragraph">
+<p>Example(s):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sort wc/90kg</code></p>
+</li>
+<li>
+<p><code>sort aw/Squat</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-top-scorers-code-score-code"><a class="link" href="#getting-top-scorers-code-score-code">3.2.2. Getting top scorers: <code>score</code></a></h4>
+<div class="paragraph">
+<p>Gets and displays leading athletes and their scores for individual events or for their total scores.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>score e/EVENT t</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -146,49 +244,23 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p>to get scores for individual events only:
+<code>score e/Squat</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p>to get total scores only
+<code>score t</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="getting-rank-of-an-athlete-code-rank-code"><a class="link" href="#getting-rank-of-an-athlete-code-rank-code">3.2.3. Getting rank of an athlete: <code>rank</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Gets current position of an athlete relative to other relatives for the entire competition.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
+<p>Format: <code>rank n/NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -196,44 +268,18 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>rank n/John</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="affiliation-of-an-athlete-code-aff-code"><a class="link" href="#affiliation-of-an-athlete-code-aff-code">3.2.4. Affiliation of an athlete: <code>aff</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Gets the name of an organisation and a country, an athlete is associated with.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<div class="paragraph">
+<p>Format: <code>aff n/NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -241,38 +287,18 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>aff n/John</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="edit-data-of-an-athlete-code-edit-code"><a class="link" href="#edit-data-of-an-athlete-code-edit-code">3.2.5. Edit data of an athlete: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Edits field(s) of information belonging to an athlete</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="paragraph">
+<p>Format: <code>edit n/CURRENTNAME newN/NEWNAME bw/BODYWEIGHT wc/WEIGHTCLASS aff/AFFILIATION s/SCORE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -280,87 +306,204 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p>To edit name only:
+<code>edit n/John newN/Johnny</code></p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p>To edit bodyweight only:
+<code>edit n/John bw/100kg</code></p>
+</li>
+<li>
+<p>To edit subset of fields:
+<code>edit n/John newN/Johnny wc/100kg aff/Singapore</code></p>
+</li>
+<li>
+<p>To edit all fields:
+<code>edit n/John newN/Johnny bw/90 wc/90 aff/Singapore s/1000</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<div class="sect3">
+<h4 id="get-top-3-athletes-code-top3-code"><a class="link" href="#get-top-3-athletes-code-top3-code">3.2.6. Get top 3 athletes: <code>top3</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Gets top 3 athletes (currently in 1st, 2nd and 3rd) for each weight class.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>top3 wc/WEIGHTCLASS</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p><code>top3 wc/100kg</code></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="participation"><a class="link" href="#participation">3.3. Participation</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>This feature handles the entire flow of each session during Meet Day. It allows event organisers to submit Athlete’s Squat, Bench, Deadlift attempts, as well as the success of their lifts. It will show the relevant information to prepare for the athletes lift (displaying name, weight, rack height, etc).</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="prepare-for-a-new-session-code-new-code"><a class="link" href="#prepare-for-a-new-session-code-new-code">3.3.1. Prepare for a new session: <code>new</code></a></h4>
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p>Starts a new session of SBD lifts for the given weight classes (WC), separated by a space. This will load all the athletes information to prepare for the 3 lifts.</p>
 </div>
+<div class="paragraph">
+<p>Format: <code>new wc/WEIGHTCLASS&amp;GENDER</code>
+GENDER is denoted by either M (male) or F (female)</p>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
 </div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><code>new u83M u93M</code> to create new sessions for male 83kg and male 93kg.</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><code>new u63F u66M u72F</code> to create new sessions for female 63kg, male 66kg and female 72kg.</p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 04:02:15 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="submit-next-attempt-code-attempt-code"><a class="link" href="#submit-next-attempt-code-attempt-code">3.3.2. Submit next attempt: <code>attempt</code></a></h4>
+<div class="paragraph">
+<p>Submits an athletes next attempt for either the squat, bench, or deadlift.</p>
+</div>
+<div class="paragraph">
+<p>Format: ` attempt LIFT ATTEMPT_NO/WEIGHT`
+S means squat, B means bench, D means deadlift
+ATTEMPT_NO ranges from 1 to 3 inclusively.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>attempt S 2 /170</code></p>
+</li>
+<li>
+<p><code>attempt D 3 /300</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-lift-or-no-lift-code-lift-code"><a class="link" href="#update-lift-or-no-lift-code-lift-code">3.3.3. Update lift or no lift: <code>lift</code></a></h4>
+<div class="paragraph">
+<p>Updates whether the athlete succeeds in his attempt, or fails it with the given “lights”, with ‘O’ representing a white light, and ‘X’ representing a red. 2 or more red lights implies a no lift, else it will be a successful lift.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>lift LIFT ATTEMPT_NO 3LIGHTS n/NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lift S 2 OOO n/christabelteo</code></p>
+</li>
+<li>
+<p><code>lift B 3 XXO n/shawnkoh</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="starts-the-next-lift-code-start-code"><a class="link" href="#starts-the-next-lift-code-start-code">3.3.4. Starts the next lift: <code>start</code></a></h4>
+<div class="paragraph">
+<p>This will line up athletes (sort) according to their attempt weight for that particular lift and attempt. Each lift will have 3 attempts.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>start LIFT</code>
+LIFT comprises: S means squat, B means bench, D means deadlift</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>start B</code></p>
+</li>
+<li>
+<p><code>start D</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.3.5. Get the next lifter in line: <code>next</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the next lifter (according to weight lifted for that attempt), the weights he/she is going for, rack height and lift-off if necessary.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>to put in later</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="submit-first-attempts-code-first-code"><a class="link" href="#submit-first-attempts-code-first-code">3.3.6. Submit first attempts: <code>first</code></a></h4>
+<div class="paragraph">
+<p>Submits the first attempt (usually before starting any lift) for all 3 lifts.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>first n/NAME SQUAT_WEIGHT/BENCH_WEIGHT/DL_WEIGHT</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>first n/farhannafahrid 125/55/170</code></p>
+</li>
+<li>
+<p><code>first n/marcustay 190/140/220</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="declare-pre-lift-settings-code-pre-code"><a class="link" href="#declare-pre-lift-settings-code-pre-code">3.3.7. Declare pre-lift settings: <code>pre</code></a></h4>
+<div class="paragraph">
+<p>Declares pre meet settings, such as squat and bench rack height, as well as opting for lift-off for bench. For the squat and bench, athletes need to indicate their rack heights so that it can be setup before their lift. Liftoff is optional for the bench, lifters can choose if they need a spotter to help them with the lift off.</p>
+</div>
+<div class="paragraph">
+<p>Format: ` pre n/NAME s/RACK_HEIGHT b/RACK_HEIGHT LIFTOFF`</p>
+</div>
+<div class="paragraph">
+<p>RACK_HEIGHT - range:
+LIFTOFF - Y for yes, N for no</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pre n/howeichin s/12 b/7 Y</code></p>
+</li>
+<li>
+<p><code>pre n/ooimingsheng s/10 b/5 N</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-08 03:49:58 UTC</div></div></div></body></html>
