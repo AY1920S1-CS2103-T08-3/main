@@ -5,20 +5,20 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.CompetitionData;
-import seedu.address.model.ReadOnlyCompetitionData;
 import seedu.address.model.ReadOnlyPersonData;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends PersonDataStorage, CompetitionDataStorage {
+public interface Storage extends PersonDataStorage, UserPrefsStorage {
 
     @Override
-    Optional<CompetitionData> readCompetitionData() throws DataConversionException, IOException;
+    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
 
     @Override
-    void saveCompetitionData(ReadOnlyCompetitionData readOnlyCompetitionData) throws IOException;
+    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
     Path getPersonDataFilePath();

@@ -20,60 +20,60 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final PersonData personData;
-    private final CompetitionData competitionData;
+    private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyPersonData personData, ReadOnlyCompetitionData competitionData) {
+    public ModelManager(ReadOnlyPersonData personData, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(personData, competitionData);
+        requireAllNonNull(personData, userPrefs);
 
-        logger.fine("Initializing with address book: " + personData + " and user prefs " + competitionData);
+        logger.fine("Initializing with address book: " + personData + " and user prefs " + userPrefs);
 
         this.personData = new PersonData(personData);
-        this.competitionData = new CompetitionData(competitionData);
+        this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.personData.getPersonList());
     }
 
     public ModelManager() {
-        this(new PersonData(), new CompetitionData());
+        this(new PersonData(), new UserPrefs());
     }
 
-    //=========== CompetitionData ==================================================================================
+    //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setCompetitionData(ReadOnlyCompetitionData competitionData) {
-        requireNonNull(competitionData);
-        this.competitionData.resetData(competitionData);
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
-    public ReadOnlyCompetitionData getCompetitionData() {
-        return competitionData;
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
     public GuiSettings getGuiSettings() {
-        return competitionData.getGuiSettings();
+        return userPrefs.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
-        competitionData.setGuiSettings(guiSettings);
+        userPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
     public Path getAddressBookFilePath() {
-        return competitionData.getAddressBookFilePath();
+        return userPrefs.getAddressBookFilePath();
     }
 
     @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        competitionData.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
     //=========== PersonData ================================================================================
@@ -144,7 +144,7 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return personData.equals(other.personData)
-                && competitionData.equals(other.competitionData)
+                && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
 

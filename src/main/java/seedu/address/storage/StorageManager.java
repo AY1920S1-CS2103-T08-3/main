@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.CompetitionData;
-import seedu.address.model.ReadOnlyCompetitionData;
 import seedu.address.model.ReadOnlyPersonData;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 
 /**
  * Manages storage of PersonData data in local storage.
@@ -18,30 +18,30 @@ public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private PersonDataStorage personDataStorage;
-    private CompetitionDataStorage competitionDataStorage;
+    private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(PersonDataStorage personDataStorage, CompetitionDataStorage competitionDataStorage) {
+    public StorageManager(PersonDataStorage personDataStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.personDataStorage = personDataStorage;
-        this.competitionDataStorage = competitionDataStorage;
+        this.userPrefsStorage = userPrefsStorage;
     }
 
-    // ================ CompetitionData methods ==============================
+    // ================ UserPrefs methods ==============================
 
     @Override
-    public Path getCompetitionDataFilePath() {
-        return competitionDataStorage.getCompetitionDataFilePath();
-    }
-
-    @Override
-    public Optional<CompetitionData> readCompetitionData() throws DataConversionException, IOException {
-        return competitionDataStorage.readCompetitionData();
+    public Path getUserPrefsFilePath() {
+        return userPrefsStorage.getUserPrefsFilePath();
     }
 
     @Override
-    public void saveCompetitionData(ReadOnlyCompetitionData readOnlyCompetitionData) throws IOException {
-        competitionDataStorage.saveCompetitionData(readOnlyCompetitionData);
+    public Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException {
+        return userPrefsStorage.readUserPrefs();
+    }
+
+    @Override
+    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
+        userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
 

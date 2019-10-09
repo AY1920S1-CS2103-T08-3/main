@@ -11,28 +11,28 @@ import seedu.address.commons.core.GuiSettings;
 /**
  * Represents User's preferences.
  */
-public class CompetitionData implements ReadOnlyCompetitionData {
+public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
 
     /**
-     * Creates a {@code CompetitionData} with default values.
+     * Creates a {@code UserPrefs} with default values.
      */
-    public CompetitionData() {}
+    public UserPrefs() {}
 
     /**
-     * Creates a {@code CompetitionData} with the prefs in {@code userPrefs}.
+     * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
      */
-    public CompetitionData(ReadOnlyCompetitionData readOnlyCompetitionData) {
+    public UserPrefs(ReadOnlyUserPrefs userPrefs) {
         this();
-        resetData(readOnlyCompetitionData);
+        resetData(userPrefs);
     }
 
     /**
-     * Resets the existing data of this {@code CompetitionData} with {@code newUserPrefs}.
+     * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
      */
-    public void resetData(ReadOnlyCompetitionData newUserPrefs) {
+    public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
@@ -61,11 +61,11 @@ public class CompetitionData implements ReadOnlyCompetitionData {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof CompetitionData)) { //this handles null as well.
+        if (!(other instanceof UserPrefs)) { //this handles null as well.
             return false;
         }
 
-        CompetitionData o = (CompetitionData) other;
+        UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
                 && addressBookFilePath.equals(o.addressBookFilePath);
