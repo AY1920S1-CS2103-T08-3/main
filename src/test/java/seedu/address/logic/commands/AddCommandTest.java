@@ -16,9 +16,9 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Data;
 import seedu.address.model.Model;
-import seedu.address.model.PersonData;
-import seedu.address.model.ReadOnlyPersonData;
+import seedu.address.model.ReadOnlyData;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
@@ -114,12 +114,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setPersonData(ReadOnlyPersonData newData) {
+        public void setData(ReadOnlyData newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyPersonData getPersonData() {
+        public ReadOnlyData getData() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -186,8 +186,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyPersonData getPersonData() {
-            return new PersonData();
+        public ReadOnlyData getData() {
+            return new Data();
         }
     }
 

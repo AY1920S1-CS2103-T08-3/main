@@ -9,12 +9,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.PersonData;
-import seedu.address.model.ReadOnlyPersonData;
+import seedu.address.model.Data;
+import seedu.address.model.ReadOnlyData;
 import seedu.address.model.person.Person;
 
 /**
- * An Immutable PersonData that is serializable to JSON format.
+ * An Immutable Data that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
@@ -32,21 +32,21 @@ class JsonSerializableAddressBook {
     }
 
     /**
-     * Converts a given {@code ReadOnlyPersonData} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyData} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyPersonData source) {
+    public JsonSerializableAddressBook(ReadOnlyData source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code PersonData} object.
+     * Converts this address book into the model's {@code Data} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public PersonData toModelType() throws IllegalValueException {
-        PersonData addressBook = new PersonData();
+    public Data toModelType() throws IllegalValueException {
+        Data addressBook = new Data();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
             if (addressBook.hasPerson(person)) {

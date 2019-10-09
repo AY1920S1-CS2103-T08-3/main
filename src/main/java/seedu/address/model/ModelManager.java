@@ -19,26 +19,26 @@ import seedu.address.model.person.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final PersonData personData;
+    private final Data data;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyPersonData personData, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyData personData, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(personData, userPrefs);
 
         logger.fine("Initializing with address book: " + personData + " and user prefs " + userPrefs);
 
-        this.personData = new PersonData(personData);
+        this.data = new Data(personData);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.personData.getPersonList());
+        filteredPersons = new FilteredList<>(this.data.getPersonList());
     }
 
     public ModelManager() {
-        this(new PersonData(), new UserPrefs());
+        this(new Data(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -76,32 +76,32 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== PersonData ================================================================================
+    //=========== Data ================================================================================
 
     @Override
-    public void setPersonData(ReadOnlyPersonData personData) {
-        this.personData.resetData(personData);
+    public void setData(ReadOnlyData data) {
+        this.data.resetData(data);
     }
 
     @Override
-    public ReadOnlyPersonData getPersonData() {
-        return personData;
+    public ReadOnlyData getData() {
+        return data;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return personData.hasPerson(person);
+        return data.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        personData.removePerson(target);
+        data.removePerson(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        personData.addPerson(person);
+        data.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -109,7 +109,7 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
-        personData.setPerson(target, editedPerson);
+        data.setPerson(target, editedPerson);
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -143,7 +143,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return personData.equals(other.personData)
+        return data.equals(other.data)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }

@@ -15,16 +15,16 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.model.Data;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.PersonData;
-import seedu.address.model.ReadOnlyPersonData;
+import seedu.address.model.ReadOnlyData;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.JsonPersonDataStorage;
+import seedu.address.storage.DataStorage;
+import seedu.address.storage.JsonDataStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
-import seedu.address.storage.PersonDataStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing PersonData ]===========================");
+        logger.info("=============================[ Initializing Data ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -56,8 +56,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        PersonDataStorage personDataStorage = new JsonPersonDataStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(personDataStorage, userPrefsStorage);
+        DataStorage dataStorage = new JsonDataStorage(userPrefs.getAddressBookFilePath());
+        storage = new StorageManager(dataStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -75,20 +75,20 @@ public class MainApp extends Application {
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyPersonData> addressBookOptional;
-        ReadOnlyPersonData initialData;
+        Optional<ReadOnlyData> addressBookOptional;
+        ReadOnlyData initialData;
         try {
             addressBookOptional = storage.readPersonData();
             if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample PersonData");
+                logger.info("Data file not found. Will be starting with a sample Data");
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty PersonData");
-            initialData = new PersonData();
+            logger.warning("Data file not in the correct format. Will be starting with an empty Data");
+            initialData = new Data();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty PersonData");
-            initialData = new PersonData();
+            logger.warning("Problem while reading from the file. Will be starting with an empty Data");
+            initialData = new Data();
         }
 
         return new ModelManager(initialData, userPrefs);
@@ -152,7 +152,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty PersonData");
+            logger.warning("Problem while reading from the file. Will be starting with an empty Data");
             initializedPrefs = new UserPrefs();
         }
 
@@ -168,7 +168,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting PersonData " + MainApp.VERSION);
+        logger.info("Starting Data " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
