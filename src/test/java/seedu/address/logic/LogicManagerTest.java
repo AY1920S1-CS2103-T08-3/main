@@ -22,13 +22,13 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.CompetitionData;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyPersonData;
-import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.storage.JsonCompetitionDataStorage;
 import seedu.address.storage.JsonPersonDataStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
 
@@ -45,8 +45,9 @@ public class LogicManagerTest {
     public void setUp() {
         JsonPersonDataStorage addressBookStorage =
                 new JsonPersonDataStorage(temporaryFolder.resolve("addressBook.json"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonCompetitionDataStorage jsonCompetitionDataStorage =
+                new JsonCompetitionDataStorage(temporaryFolder.resolve("userPrefs.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, jsonCompetitionDataStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -73,8 +74,8 @@ public class LogicManagerTest {
         // Setup LogicManager with JsonPersonDataIoExceptionThrowingStub
         JsonPersonDataStorage addressBookStorage =
                 new JsonPersonDataIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
-        JsonUserPrefsStorage userPrefsStorage =
-                new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
+        JsonCompetitionDataStorage userPrefsStorage =
+                new JsonCompetitionDataStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
@@ -129,7 +130,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getPersonData(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getPersonData(), new CompetitionData());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

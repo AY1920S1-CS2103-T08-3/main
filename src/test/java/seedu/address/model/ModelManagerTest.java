@@ -24,28 +24,28 @@ public class ModelManagerTest {
 
     @Test
     public void constructor() {
-        assertEquals(new UserPrefs(), modelManager.getUserPrefs());
+        assertEquals(new CompetitionData(), modelManager.getCompetitionData());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new PersonData(), new PersonData(modelManager.getPersonData()));
     }
 
     @Test
     public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setUserPrefs(null));
+        assertThrows(NullPointerException.class, () -> modelManager.setCompetitionData(null));
     }
 
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
-        UserPrefs userPrefs = new UserPrefs();
+        CompetitionData userPrefs = new CompetitionData();
         userPrefs.setAddressBookFilePath(Paths.get("address/book/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
-        modelManager.setUserPrefs(userPrefs);
-        assertEquals(userPrefs, modelManager.getUserPrefs());
+        modelManager.setCompetitionData(userPrefs);
+        assertEquals(userPrefs, modelManager.getCompetitionData());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
-        UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
+        CompetitionData oldUserPrefs = new CompetitionData(userPrefs);
         userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
-        assertEquals(oldUserPrefs, modelManager.getUserPrefs());
+        assertEquals(oldUserPrefs, modelManager.getCompetitionData());
     }
 
     @Test
@@ -97,7 +97,7 @@ public class ModelManagerTest {
     public void equals() {
         PersonData addressBook = new PersonDataBuilder().withPerson(ALICE).withPerson(BENSON).build();
         PersonData differentAddressBook = new PersonData();
-        UserPrefs userPrefs = new UserPrefs();
+        CompetitionData userPrefs = new CompetitionData();
 
         // same values -> returns true
         modelManager = new ModelManager(addressBook, userPrefs);
@@ -125,7 +125,7 @@ public class ModelManagerTest {
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         // different userPrefs -> returns false
-        UserPrefs differentUserPrefs = new UserPrefs();
+        CompetitionData differentUserPrefs = new CompetitionData();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
     }

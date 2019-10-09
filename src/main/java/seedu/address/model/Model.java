@@ -17,12 +17,12 @@ public interface Model {
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    void setCompetitionData(ReadOnlyCompetitionData competitionData);
 
     /**
      * Returns the user prefs.
      */
-    ReadOnlyUserPrefs getUserPrefs();
+    ReadOnlyCompetitionData getCompetitionData();
 
     /**
      * Returns the user prefs' GUI settings.

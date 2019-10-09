@@ -15,19 +15,19 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.model.CompetitionData;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.PersonData;
+import seedu.address.model.ReadOnlyCompetitionData;
 import seedu.address.model.ReadOnlyPersonData;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.CompetitionDataStorage;
+import seedu.address.storage.JsonCompetitionDataStorage;
 import seedu.address.storage.JsonPersonDataStorage;
-import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.PersonDataStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
-import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -54,10 +54,10 @@ public class MainApp extends Application {
         AppParameters appParameters = AppParameters.parse(getParameters());
         config = initConfig(appParameters.getConfigPath());
 
-        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
-        UserPrefs userPrefs = initPrefs(userPrefsStorage);
+        CompetitionDataStorage competitionDataStorage = new JsonCompetitionDataStorage(config.getUserPrefsFilePath());
+        CompetitionData userPrefs = initPrefs(competitionDataStorage);
         PersonDataStorage personDataStorage = new JsonPersonDataStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(personDataStorage, userPrefsStorage);
+        storage = new StorageManager(personDataStorage, competitionDataStorage);
 
         initLogging(config);
 
@@ -74,7 +74,7 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, ReadOnlyCompetitionData userPrefs) {
         Optional<ReadOnlyPersonData> addressBookOptional;
         ReadOnlyPersonData initialData;
         try {
@@ -135,30 +135,30 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code UserPrefs} using the file at {@code storage}'s user prefs file path,
-     * or a new {@code UserPrefs} with default configuration if errors occur when
+     * Returns a {@code CompetitionData} using the file at {@code storage}'s user prefs file path,
+     * or a new {@code CompetitionData} with default configuration if errors occur when
      * reading from the file.
      */
-    protected UserPrefs initPrefs(UserPrefsStorage storage) {
-        Path prefsFilePath = storage.getUserPrefsFilePath();
+    protected CompetitionData initPrefs(CompetitionDataStorage storage) {
+        Path prefsFilePath = storage.getCompetitionDataFilePath();
         logger.info("Using prefs file : " + prefsFilePath);
 
-        UserPrefs initializedPrefs;
+        CompetitionData initializedPrefs;
         try {
-            Optional<UserPrefs> prefsOptional = storage.readUserPrefs();
-            initializedPrefs = prefsOptional.orElse(new UserPrefs());
+            Optional<CompetitionData> prefsOptional = storage.readCompetitionData();
+            initializedPrefs = prefsOptional.orElse(new CompetitionData());
         } catch (DataConversionException e) {
-            logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
+            logger.warning("CompetitionData file at " + prefsFilePath + " is not in the correct format. "
                     + "Using default user prefs");
-            initializedPrefs = new UserPrefs();
+            initializedPrefs = new CompetitionData();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty PersonData");
-            initializedPrefs = new UserPrefs();
+            initializedPrefs = new CompetitionData();
         }
 
         //Update prefs file in case it was missing to begin with or there are new/unused fields
         try {
-            storage.saveUserPrefs(initializedPrefs);
+            storage.saveCompetitionData(initializedPrefs);
         } catch (IOException e) {
             logger.warning("Failed to save config file : " + StringUtil.getDetails(e));
         }
@@ -176,7 +176,7 @@ public class MainApp extends Application {
     public void stop() {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
-            storage.saveUserPrefs(model.getUserPrefs());
+            storage.saveCompetitionData(model.getCompetitionData());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

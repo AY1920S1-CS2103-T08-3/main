@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.CompetitionData;
 import seedu.address.model.PersonData;
 import seedu.address.model.ReadOnlyPersonData;
-import seedu.address.model.UserPrefs;
 
 public class StorageManagerTest {
 
@@ -25,7 +25,7 @@ public class StorageManagerTest {
     @BeforeEach
     public void setUp() {
         JsonPersonDataStorage personDataStorage = new JsonPersonDataStorage(getTempFilePath("ab"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
+        JsonCompetitionDataStorage userPrefsStorage = new JsonCompetitionDataStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(personDataStorage, userPrefsStorage);
     }
 
@@ -37,13 +37,13 @@ public class StorageManagerTest {
     public void prefsReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonUserPrefsStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonUserPrefsStorageTest} class.
+         * {@link JsonCompetitionDataStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonCompetitionDataStorageTest} class.
          */
-        UserPrefs original = new UserPrefs();
+        CompetitionData original = new CompetitionData();
         original.setGuiSettings(new GuiSettings(300, 600, 4, 6));
-        storageManager.saveUserPrefs(original);
-        UserPrefs retrieved = storageManager.readUserPrefs().get();
+        storageManager.saveCompetitionData(original);
+        CompetitionData retrieved = storageManager.readCompetitionData().get();
         assertEquals(original, retrieved);
     }
 

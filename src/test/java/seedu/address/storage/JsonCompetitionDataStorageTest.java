@@ -14,11 +14,11 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.CompetitionData;
 
-public class JsonUserPrefsStorageTest {
+public class JsonCompetitionDataStorageTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonUserPrefsStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonCompetitionDataStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -28,9 +28,10 @@ public class JsonUserPrefsStorageTest {
         assertThrows(NullPointerException.class, () -> readUserPrefs(null));
     }
 
-    private Optional<UserPrefs> readUserPrefs(String userPrefsFileInTestDataFolder) throws DataConversionException {
+    private Optional<CompetitionData> readUserPrefs(String userPrefsFileInTestDataFolder)
+            throws DataConversionException {
         Path prefsFilePath = addToTestDataPathIfNotNull(userPrefsFileInTestDataFolder);
-        return new JsonUserPrefsStorage(prefsFilePath).readUserPrefs(prefsFilePath);
+        return new JsonCompetitionDataStorage(prefsFilePath).readUserPrefs(prefsFilePath);
     }
 
     @Test
@@ -40,7 +41,7 @@ public class JsonUserPrefsStorageTest {
 
     @Test
     public void readUserPrefs_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readUserPrefs("NotJsonFormatUserPrefs.json"));
+        assertThrows(DataConversionException.class, () -> readUserPrefs("NotJsonFormatCompetitionData.json"));
     }
 
     private Path addToTestDataPathIfNotNull(String userPrefsFileInTestDataFolder) {
@@ -51,27 +52,27 @@ public class JsonUserPrefsStorageTest {
 
     @Test
     public void readUserPrefs_fileInOrder_successfullyRead() throws DataConversionException {
-        UserPrefs expected = getTypicalUserPrefs();
-        UserPrefs actual = readUserPrefs("TypicalUserPref.json").get();
+        CompetitionData expected = getTypicalUserPrefs();
+        CompetitionData actual = readUserPrefs("TypicalCompetitionData.json").get();
         assertEquals(expected, actual);
     }
 
     @Test
     public void readUserPrefs_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
-        UserPrefs actual = readUserPrefs("EmptyUserPrefs.json").get();
-        assertEquals(new UserPrefs(), actual);
+        CompetitionData actual = readUserPrefs("EmptyCompetitionData.json").get();
+        assertEquals(new CompetitionData(), actual);
     }
 
     @Test
     public void readUserPrefs_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
-        UserPrefs expected = getTypicalUserPrefs();
-        UserPrefs actual = readUserPrefs("ExtraValuesUserPref.json").get();
+        CompetitionData expected = getTypicalUserPrefs();
+        CompetitionData actual = readUserPrefs("ExtraValuesCompetitionData.json").get();
 
         assertEquals(expected, actual);
     }
 
-    private UserPrefs getTypicalUserPrefs() {
-        UserPrefs userPrefs = new UserPrefs();
+    private CompetitionData getTypicalUserPrefs() {
+        CompetitionData userPrefs = new CompetitionData();
         userPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));
         userPrefs.setAddressBookFilePath(Paths.get("addressbook.json"));
         return userPrefs;
@@ -84,16 +85,16 @@ public class JsonUserPrefsStorageTest {
 
     @Test
     public void saveUserPrefs_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveUserPrefs(new UserPrefs(), null));
+        assertThrows(NullPointerException.class, () -> saveUserPrefs(new CompetitionData(), null));
     }
 
     /**
      * Saves {@code userPrefs} at the specified {@code prefsFileInTestDataFolder} filepath.
      */
-    private void saveUserPrefs(UserPrefs userPrefs, String prefsFileInTestDataFolder) {
+    private void saveUserPrefs(CompetitionData userPrefs, String prefsFileInTestDataFolder) {
         try {
-            new JsonUserPrefsStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))
-                    .saveUserPrefs(userPrefs);
+            new JsonCompetitionDataStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))
+                    .saveCompetitionData(userPrefs);
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file", ioe);
         }
@@ -102,21 +103,21 @@ public class JsonUserPrefsStorageTest {
     @Test
     public void saveUserPrefs_allInOrder_success() throws DataConversionException, IOException {
 
-        UserPrefs original = new UserPrefs();
+        CompetitionData original = new CompetitionData();
         original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));
 
         Path pefsFilePath = testFolder.resolve("TempPrefs.json");
-        JsonUserPrefsStorage jsonUserPrefsStorage = new JsonUserPrefsStorage(pefsFilePath);
+        JsonCompetitionDataStorage jsonCompetitionDataStorage = new JsonCompetitionDataStorage(pefsFilePath);
 
         //Try writing when the file doesn't exist
-        jsonUserPrefsStorage.saveUserPrefs(original);
-        UserPrefs readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        jsonCompetitionDataStorage.saveCompetitionData(original);
+        CompetitionData readBack = jsonCompetitionDataStorage.readCompetitionData().get();
         assertEquals(original, readBack);
 
         //Try saving when the file exists
         original.setGuiSettings(new GuiSettings(5, 5, 5, 5));
-        jsonUserPrefsStorage.saveUserPrefs(original);
-        readBack = jsonUserPrefsStorage.readUserPrefs().get();
+        jsonCompetitionDataStorage.saveCompetitionData(original);
+        readBack = jsonCompetitionDataStorage.readCompetitionData().get();
         assertEquals(original, readBack);
     }
 
