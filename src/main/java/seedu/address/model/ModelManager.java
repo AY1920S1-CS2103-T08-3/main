@@ -32,7 +32,10 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyData<Person> persons, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyData<Person> persons,
+                        ReadOnlyData<Competition> competitions,
+                        ReadOnlyData<Participation> participations,
+                        ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(persons, userPrefs);
 
@@ -41,14 +44,14 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.persons = new Data<>(persons);
         filteredPersons = new FilteredList<>(this.persons.getListOfElements());
-        this.competitions = new Data<>();
+        this.competitions = new Data<>(competitions);
         filteredCompetitions = new FilteredList<>(this.competitions.getListOfElements());
-        this.participations = new Data<>();
+        this.participations = new Data<>(participations);
         filteredParticipations = new FilteredList<>(this.participations.getListOfElements());
     }
 
     public ModelManager() {
-        this(new Data(), new UserPrefs());
+        this(new Data(), new Data(), new Data(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -77,13 +80,13 @@ public class ModelManager implements Model {
 
     @Override
     public Path getUserPrefsFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return userPrefs.getPersonDataFilePath();
     }
 
     @Override
     public void setUserPrefsFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+        userPrefs.setPersonDataFilePath(addressBookFilePath);
     }
 
     //=========== Persons ================================================================================
@@ -262,8 +265,12 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return persons.equals(other.persons)
-                && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+        return userPrefs.equals(other.userPrefs)
+                && persons.equals(other.persons)
+                && filteredPersons.equals(other.filteredPersons)
+                && competitions.equals(other.competitions)
+                && filteredCompetitions.equals(other.filteredCompetitions)
+                && participations.equals(other.participations)
+                && filteredParticipations.equals(other.filteredParticipations);
     }
 }

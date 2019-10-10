@@ -14,37 +14,33 @@ import seedu.address.model.ReadOnlyData;
 import seedu.address.model.person.Person;
 
 /**
- * An Immutable Data that is serializable to JSON format.
+ * An Immutable Person Data that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+@JsonRootName(value = "system")
+class JsonSerializablePersonData implements JsonSerializableData {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializablePersonData} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializablePersonData(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
         this.persons.addAll(persons);
     }
 
     /**
      * Converts a given {@code ReadOnlyData} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializablePersonData}.
      */
-    public JsonSerializableAddressBook(ReadOnlyData<Person> source) {
+    public JsonSerializablePersonData(ReadOnlyData<Person> source) {
         persons.addAll(source.getListOfElements().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 
-    /**
-     * Converts this address book into the model's {@code Data} object.
-     *
-     * @throws IllegalValueException if there were any data constraints violated.
-     */
+    @Override
     public Data toModelType() throws IllegalValueException {
         Data<Person> persons = new Data();
         for (JsonAdaptedPerson jsonAdaptedPerson : this.persons) {
@@ -56,5 +52,4 @@ class JsonSerializableAddressBook {
         }
         return persons;
     }
-
 }

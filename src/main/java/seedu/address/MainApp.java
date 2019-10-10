@@ -21,12 +21,15 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyData;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.competition.Competition;
+import seedu.address.model.participation.Participation;
+import seedu.address.model.person.Person;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonSystemStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.SystemStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -56,8 +59,13 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        SystemStorage systemStorage =
+            new JsonSystemStorage(
+                userPrefs.getPersonDataFilePath(),
+                userPrefs.getCompetitionDataFilePath(),
+                userPrefs.getParticipationDataFilePath()
+            );
+        storage = new StorageManager(systemStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -74,23 +82,42 @@ public class MainApp extends Application {
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyData> addressBookOptional;
-        ReadOnlyData initialData;
+        Optional<ReadOnlyData<Person>> personDataOptional;
+        ReadOnlyData<Person> initialPersonData;
+        Optional<ReadOnlyData<Competition>> competitionDataOptional;
+        ReadOnlyData<Competition> initialCompetitionData;
+        Optional<ReadOnlyData<Participation>> participationDataOptional;
+        ReadOnlyData<Participation> initialParticipationData;
+
         try {
-            addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample Data");
+            personDataOptional = storage.readPersonData();
+            competitionDataOptional = storage.readCompetitionData();
+            participationDataOptional = storage.readParticipationData();
+
+            boolean allFilesPresent = personDataOptional.isPresent()
+                && competitionDataOptional.isPresent() && participationDataOptional.isPresent();
+            if (!allFilesPresent) {
+                logger.info("Not all data files were found. Will be starting with a sample Data");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialPersonData = personDataOptional.orElseGet(SampleDataUtil::getSamplePersonData);
+            initialCompetitionData = competitionDataOptional.orElseGet(SampleDataUtil::getSampleCompetitionData);
+            initialParticipationData =
+                participationDataOptional.orElse(
+                    SampleDataUtil.getSampleParticipationData(initialPersonData, initialCompetitionData)
+                );
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty Data");
-            initialData = new Data();
+            initialPersonData = new Data();
+            initialCompetitionData = new Data();
+            initialParticipationData = new Data();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty Data");
-            initialData = new Data();
+            initialPersonData = new Data();
+            initialCompetitionData = new Data();
+            initialParticipationData = new Data();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialPersonData, initialCompetitionData, initialParticipationData, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -120,7 +147,7 @@ public class MainApp extends Application {
             initializedConfig = configOptional.orElse(new Config());
         } catch (DataConversionException e) {
             logger.warning("Config file at " + configFilePathUsed + " is not in the correct format. "
-                    + "Using default config properties");
+                + "Using default config properties");
             initializedConfig = new Config();
         }
 
@@ -148,7 +175,7 @@ public class MainApp extends Application {
             initializedPrefs = prefsOptional.orElse(new UserPrefs());
         } catch (DataConversionException e) {
             logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
-                    + "Using default user prefs");
+                + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty Data");

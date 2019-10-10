@@ -62,7 +62,7 @@ public class TypicalPersons {
     /**
      * Returns an {@code Data} with all the typical persons.
      */
-    public static Data getTypicalAddressBook() {
+    public static Data<Person> getTypicalPersonData() {
         Data ab = new Data();
         for (Person person : getTypicalPersons()) {
             ab.addUniqueElement(person);
