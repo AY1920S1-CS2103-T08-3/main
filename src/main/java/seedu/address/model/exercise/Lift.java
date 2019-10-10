@@ -1,10 +1,10 @@
 package seedu.address.model.exercise;
 
 /**
- * Represents an Exercise's type.
+ * Represents an Exercise's type of lift.
  * Guarantees: immutable
  */
-public enum Type {
+public enum Lift {
     Bench,
     Deadlift,
     Squat

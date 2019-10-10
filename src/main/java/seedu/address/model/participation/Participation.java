@@ -2,6 +2,8 @@ package seedu.address.model.participation;
 
 import seedu.address.model.UniqueElement;
 import seedu.address.model.competition.Competition;
+import seedu.address.model.exercise.Exercise;
+import seedu.address.model.exercise.Lift;
 import seedu.address.model.person.Person;
 
 /**
@@ -11,6 +13,10 @@ import seedu.address.model.person.Person;
 public class Participation extends UniqueElement {
     private final Person person;
     private final Competition competition;
+
+    private Exercise squat = new Exercise(Lift.Squat);
+    private Exercise bench = new Exercise(Lift.Bench);
+    private Exercise deadlift = new Exercise(Lift.Deadlift);
 
     public Participation(Person person, Competition competition) {
         this.person = person;
@@ -26,7 +32,6 @@ public class Participation extends UniqueElement {
     }
 
     /**
-<<<<<<< HEAD
      * Returns true if both exercises have the same identity and data fields.
      */
     public boolean isSameElement(UniqueElement otherElement) {
@@ -36,6 +41,22 @@ public class Participation extends UniqueElement {
         }
 
         return this.equals((Participation) otherElement);
+    }
+
+    public Exercise getExercise(Lift typeofExercise) {
+        switch (typeofExercise) {
+        case Squat:
+            return this.squat;
+
+        case Bench:
+            return this.bench;
+
+        case Deadlift:
+            return this.deadlift;
+
+        default:
+            return null;
+        }
     }
 
     /**
