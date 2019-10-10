@@ -2,7 +2,6 @@ package seedu.address.model.attempt;
 
 import seedu.address.model.attempt.exceptions.AttemptHasBeenAttemptedException;
 import seedu.address.model.exercise.Exercise;
-import seedu.address.model.exercise.Lift;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
 
