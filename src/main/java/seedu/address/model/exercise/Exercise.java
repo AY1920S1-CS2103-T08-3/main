@@ -12,6 +12,8 @@ import seedu.address.model.participation.Participation;
  * Represents an Exercise category in a {@link seedu.address.model.competition.Competition}
  */
 public class Exercise extends UniqueElement {
+    private static final int MAXIMUM_ATTEMPTS = 3;
+
     private final Lift lift;
     private ObservableList<Attempt> threeAttempts = FXCollections.observableArrayList();
 
@@ -31,7 +33,7 @@ public class Exercise extends UniqueElement {
     public void newAttempt(Participation athlete, int weight) throws MaximumAttemptsReachedException {
         int newAttemptNo = threeAttempts.size() + 1;
 
-        if (newAttemptNo <= 3) {
+        if (newAttemptNo <= MAXIMUM_ATTEMPTS) {
             Attempt newAttempt = new Attempt(athlete, newAttemptNo, weight);
             threeAttempts.add(newAttempt);
         } else {

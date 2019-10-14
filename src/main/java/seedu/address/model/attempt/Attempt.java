@@ -12,7 +12,7 @@ import seedu.address.model.person.Person;
 public class Attempt {
     private final Participation participation;
     private final int attemptNo;
-    private final int weight; // weight of the athlete's attempt
+    private final int weight;
 
     private boolean hasAttempted;
     private boolean isSuccess;
