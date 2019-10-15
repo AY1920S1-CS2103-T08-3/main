@@ -43,8 +43,13 @@ public class Participation extends UniqueElement {
         return this.equals((Participation) otherElement);
     }
 
-    public Exercise getExercise(Lift typeofExercise) {
-        switch (typeofExercise) {
+    /**
+     * Returns the Exercise object for this Participation object's lifts.
+     * @param typeOfExercise the Lift for the Exercise object
+     * @return the Exercise object with respect to the typeOfExercise
+     */
+    public Exercise getExercise(Lift typeOfExercise) {
+        switch (typeOfExercise) {
         case Squat:
             return this.squat;
 
