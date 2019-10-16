@@ -26,6 +26,12 @@ public class Participation extends UniqueElement {
         this.attempts = createNewListOfAttempts(competition.getExerciseList());
     }
 
+    public Participation(Person person, Competition competition, List<Attempt> attempts) {
+        this.person = person;
+        this.competition = competition;
+        this.attempts = attempts;
+    }
+
     /**
      *
      * @param exerciseList a list of exercises for the competition
@@ -50,6 +56,10 @@ public class Participation extends UniqueElement {
 
     public Competition getCompetition() {
         return competition;
+    }
+
+    public List<Attempt> getAttempts() {
+        return attempts;
     }
 
     /**
