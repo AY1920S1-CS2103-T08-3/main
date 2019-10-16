@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class CustomDate {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should follow the following format DD/MM/YYYY (day-day/month-month/year-year-year-year)";
+            "Date should follow the following format DD/MM/YYYY.";
     public static final String DATE_FORMAT = "dd/MM/yyyy";
     public final String date;
 
