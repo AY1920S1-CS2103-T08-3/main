@@ -22,6 +22,7 @@ public class AddCompetitionCommand extends Command {
     public static final String COMMAND_WORD = "addCompetition";
     public static final CommandType COMMAND_TYPE = CommandType.COMPETITION;
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a competition to the address book. "
+
             + "Parameters: "
             + PREFIX_NAME + "COMPETITION NAME "
             + PREFIX_START_DATE + "START DATE OF COMPETITION "
