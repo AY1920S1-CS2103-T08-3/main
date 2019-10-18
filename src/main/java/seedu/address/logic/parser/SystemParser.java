@@ -79,14 +79,14 @@ public class SystemParser {
         case ListCompCommand.COMMAND_WORD:
             return new ListCompCommand();
 
+        case ListPartCommand.COMMAND_WORD:
+            return new ListPartCommandParser().parse(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
-
-        case ListPartCommand.COMMAND_WORD:
-            return new ListPartCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
