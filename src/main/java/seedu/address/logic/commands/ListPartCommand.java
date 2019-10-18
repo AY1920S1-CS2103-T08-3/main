@@ -18,7 +18,8 @@ public class ListPartCommand extends Command {
     public static final String COMMAND_WORD = "listPart";
 
     public static final String MESSAGE_SUCCESS = "Listed all participants for ";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "Competition Name";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " Competition Name";
+    public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist.";
 
     private final Name competitionName;
 
@@ -50,11 +51,14 @@ public class ListPartCommand extends Command {
                 break;
             }
         }
-        assert competition != null;
-        final Competition comp = competition;
 
-        Predicate<Participation> filterByCompetition = p -> p.getCompetition().isSameElement(comp);
+        if (competition.equals(null)) {
+            return new CommandResult(MESSAGE_COMPETITION_NOT_FOUND + " : " + competitionName);
+        }
+
+        Competition finalCompetition = competition;
+        Predicate<Participation> filterByCompetition = p -> p.getCompetition().isSameElement(finalCompetition);
         model.updateFilteredParticipationList(filterByCompetition);
-        return new CommandResult(MESSAGE_SUCCESS + comp.toString());
+        return new CommandResult(MESSAGE_SUCCESS + competition.toString());
     }
 }
