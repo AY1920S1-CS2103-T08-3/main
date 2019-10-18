@@ -17,13 +17,13 @@ import seedu.address.model.person.Person;
 public class Participation extends UniqueElement {
     private final Person person;
     private final Competition competition;
-    private final List<Attempt> attempts;
 
+    private List<Attempt> attempts;
 
     public Participation(Person person, Competition competition) {
         this.person = person;
         this.competition = competition;
-        this.attempts = createNewListOfAttempts(competition.getExerciseList());
+        this.attempts = new ArrayList<>(9);
     }
 
     public Participation(Person person, Competition competition, List<Attempt> attempts) {
@@ -33,21 +33,38 @@ public class Participation extends UniqueElement {
     }
 
     /**
+     * This method adds all the weight to be attempted for this participation.
      *
-     * @param exerciseList a list of exercises for the competition
+     * @param weightOfAttemptsList a list of the weight to be attempted for eaCh lift and attempt
      * @return list of attempts to track the athlete progress throughout the competition
      */
-    private List<Attempt> createNewListOfAttempts(List<Exercise> exerciseList) {
+    public List<Attempt> addAttempts(List<Integer> weightOfAttemptsList) {
+        List<Exercise> exerciseList = competition.getExerciseList();
         List<Attempt> attempts = new ArrayList<>();
-        int initialWeight = 0;
+        int index = 0;
         for (Exercise exercise : exerciseList) {
             Lift lift = exercise.getLift();
             int noOfAttempts = exercise.getNoOfAttempts();
-            for (int i = 0; i < noOfAttempts; i++) {
-                attempts.add(new Attempt(lift, initialWeight));
+            for (int i = 0; i < noOfAttempts && index < 9; i++) {
+                attempts.add(new Attempt(lift, weightOfAttemptsList.get(index)));
+                index++;
             }
         }
         return attempts;
+    }
+
+    /**
+     * Updates the success of the attempt after the lift.
+     *
+     * @param index attempt index which relates to the lift and attempt
+     * @param isSuccess a boolean indicating the success of the attempt
+     */
+    public void updateAttempt(int index, boolean isSuccess) {
+        final boolean hasAttempted = true;
+        Attempt attempt = attempts.get(index - 1);
+        Attempt updatedAttempt = new Attempt(attempt.getLift(), attempt.getWeightAttempted(),
+                hasAttempted, isSuccess);
+        attempts.set(index - 1, updatedAttempt);
     }
 
     public Person getPerson() {
