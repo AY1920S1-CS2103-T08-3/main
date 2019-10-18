@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.address.commons.core.index.Index;
+
 import seedu.address.logic.commands.EditCompCommand;
 import seedu.address.logic.commands.EditCompCommand.EditCompetitionDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -31,6 +32,7 @@ public class EditCompCommandParser implements Parser<EditCompCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
+
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCompCommand.MESSAGE_USAGE), pe);
         }
 
@@ -46,7 +48,9 @@ public class EditCompCommandParser implements Parser<EditCompCommand> {
         }
 
         if (!editCompetitionDescriptor.isAnyFieldEdited()) {
+
             throw new ParseException(EditCompCommand.MESSAGE_NOT_EDITED);
+
         }
 
         return new EditCompCommand(index, editCompetitionDescriptor);
