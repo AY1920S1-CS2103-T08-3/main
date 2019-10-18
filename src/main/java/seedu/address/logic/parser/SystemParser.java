@@ -19,6 +19,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListCompCommand;
+import seedu.address.logic.commands.ListPartCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -83,6 +84,9 @@ public class SystemParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case ListPartCommand.COMMAND_WORD:
+            return new ListPartCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
