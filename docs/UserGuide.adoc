@@ -234,3 +234,14 @@ Format: `next`
 Examples:
 
 * `next`
+
+==== Submit attempts: `attempts`
+Submits all 9 attempts for the 3 lifts, separating the lifts by a single space, and the attempts for each lift with a slash.
+
+Format: `attempts n/NAME SQUAT_1/SQUAT_2/SQUAT_3 BENCH_1/BENCH_2/BENCH_3 DEADLIFT_1/DEADLIFT_2/DEADLIFT_3`
+
+Examples:
+
+* `attempts n/farhannafahrid 115/120/125 40/47.5/55 155/165/170`
+
+* `attempts n/marcustay 190/200/205 135/140/145 210/220/230`
