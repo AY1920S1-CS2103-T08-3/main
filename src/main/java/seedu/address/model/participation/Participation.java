@@ -62,6 +62,7 @@ public class Participation extends UniqueElement {
     public void updateAttempt(int index, boolean isSuccess) {
         final boolean hasAttempted = true;
         Attempt attempt = attempts.get(index - 1);
+        assert attempt != null;
         Attempt updatedAttempt = new Attempt(attempt.getLift(), attempt.getWeightAttempted(),
                 hasAttempted, isSuccess);
         attempts.set(index - 1, updatedAttempt);
