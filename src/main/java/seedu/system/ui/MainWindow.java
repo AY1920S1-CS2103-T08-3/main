@@ -51,6 +51,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane competitionListPanelPlaceholder;
 
     @FXML
+
     private StackPane participationListPanelPlaceholder;
 
     @FXML
