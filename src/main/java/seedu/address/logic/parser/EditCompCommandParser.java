@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.address.commons.core.index.Index;
 
+
 import seedu.address.logic.commands.EditCompCommand;
 import seedu.address.logic.commands.EditCompCommand.EditCompetitionDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -50,7 +51,6 @@ public class EditCompCommandParser implements Parser<EditCompCommand> {
         if (!editCompetitionDescriptor.isAnyFieldEdited()) {
 
             throw new ParseException(EditCompCommand.MESSAGE_NOT_EDITED);
-
         }
 
         return new EditCompCommand(index, editCompetitionDescriptor);
