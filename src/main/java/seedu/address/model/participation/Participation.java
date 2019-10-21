@@ -47,6 +47,10 @@ public class Participation extends UniqueElement {
                 topAttempts.add(squat);
                 break;
             }
+            if (i == 0) {
+                topAttempts.add(new Attempt(squat.getLift(), squat.getHasAttempted(),
+                        squat.getIsSuccessful(), 0));
+            }
         }
 
         // getting the top attempt for the bench
@@ -56,6 +60,10 @@ public class Participation extends UniqueElement {
             if (bench.getHasAttempted() && bench.getIsSuccessful()) {
                 topAttempts.add(bench);
                 break;
+            }
+            if (i == 3) {
+                topAttempts.add(new Attempt(bench.getLift(), bench.getHasAttempted(),
+                        bench.getIsSuccessful(), 0));
             }
         }
 
@@ -67,9 +75,24 @@ public class Participation extends UniqueElement {
                 topAttempts.add(deadlift);
                 break;
             }
+            if (i == 6) {
+                topAttempts.add(new Attempt(deadlift.getLift(), deadlift.getHasAttempted(),
+                        deadlift.getIsSuccessful(), 0));
+            }
         }
 
         return topAttempts;
+    }
+
+    public String getTopAttemptString() {
+        List<Attempt> topAttempts = this.getTopAttempts();
+        StringBuilder topAttemptsString = new StringBuilder();
+        for (Attempt a : topAttempts) {
+            assert a != null;
+            topAttemptsString.append("/").append(a.getWeightAttempted());
+        }
+        String outputAttempts = topAttemptsString.toString();
+        return outputAttempts.substring(1);
     }
 
     /**
