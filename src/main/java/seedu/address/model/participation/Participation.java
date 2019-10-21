@@ -33,6 +33,46 @@ public class Participation extends UniqueElement {
     }
 
     /**
+     * Gets the top attempt of each of the 3 lifts.
+     * @return a list of three the top attempts for the squat, bench, deadlift respectively
+     */
+    public List<Attempt> getTopAttempts() {
+        List<Attempt> topAttempts = new ArrayList<>(3);
+
+        // getting the top attempt for the squat
+        for (int i = 2; i >= 0; i--) {
+            Attempt squat = attempts.get(i);
+            assert squat.getLift() != Lift.SQUAT;
+            if (squat.getHasAttempted() && squat.getIsSuccessful()) {
+                topAttempts.add(squat);
+                break;
+            }
+        }
+
+        // getting the top attempt for the bench
+        for (int i = 5; i >= 3; i--) {
+            Attempt bench = attempts.get(i);
+            assert bench.getLift() != Lift.BENCH;
+            if (bench.getHasAttempted() && bench.getIsSuccessful()) {
+                topAttempts.add(bench);
+                break;
+            }
+        }
+
+        // getting the top attempt for the deadlift
+        for (int i = 8; i >= 6; i--) {
+            Attempt deadlift = attempts.get(i);
+            assert deadlift.getLift() != Lift.DEADLIFT;
+            if (deadlift.getHasAttempted() && deadlift.getIsSuccessful()) {
+                topAttempts.add(deadlift);
+                break;
+            }
+        }
+
+        return topAttempts;
+    }
+
+    /**
      *
      * @param exerciseList a list of exercises for the competition
      * @return list of attempts to track the athlete progress throughout the competition
