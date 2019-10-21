@@ -348,12 +348,16 @@ Ensure Java 11 is downloaded into your machine.</p>
 <div class="sect2">
 <h3 id="participation"><a class="link" href="#participation">3.3. Participation</a></h3>
 <div class="paragraph">
-<p>This feature handles the entire flow of each session during Meet Day. It allows event organisers to submit Athlete’s Squat, Bench, Deadlift attempts, as well as the success of their lifts. It will show the relevant information to prepare for the athletes lift (displaying name, weight, etc).</p>
+<p>This feature handles the entire flow of each session during Meet Day. It allows event
+organisers to submit an Athlete’s Squat, Bench, Deadlift attempts, as well as the
+success of their lifts. It will show the relevant information to prepare for the
+athletes lift (displaying name, weight, etc). The flow of events, and the commands to
+facilitate the competition session will be presented in order below:</p>
 </div>
 <div class="sect3">
 <h4 id="prepare-for-a-new-session-code-new-code"><a class="link" href="#prepare-for-a-new-session-code-new-code">3.3.1. Prepare for a new session: <code>new</code></a></h4>
 <div class="paragraph">
-<p>Starts a new session of SBD lifts for the given ID of the competition, separated by a space. This will load all the athletes who are participating in this competition. *im giving a dummy competition id as i dont know the format for the real one yet.</p>
+<p>Creates a new session of SBD lifts for the given ID of the competition, separated by a space. This will load all the athletes who are participating in this competition. *im giving a dummy competition id as i dont know the format for the real one yet.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>new COMPETITION_ID</code></p>
@@ -370,26 +374,7 @@ Ensure Java 11 is downloaded into your machine.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.3.2. Get the next lifter in line: <code>next</code></a></h4>
-<div class="paragraph">
-<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular lift and attempt. This will also prompt the user to update whether the lift is successfu l or not. The user should update accordingly. (not sure if the second part should be a command by itself or not, since we can just referrence the current card&#8217;s object and update using a prompt.)</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>next</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>next</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="submit-attempts-code-attempts-code"><a class="link" href="#submit-attempts-code-attempts-code">3.3.3. Submit attempts: <code>attempts</code></a></h4>
+<h4 id="submit-attempts-code-attempts-code"><a class="link" href="#submit-attempts-code-attempts-code">3.3.2. Submit attempts: <code>attempts</code></a></h4>
 <div class="paragraph">
 <p>Submits all 9 attempts for the 3 lifts, seperating the lifts by a single space, and the attempts for each lift with a slash.</p>
 </div>
@@ -410,6 +395,44 @@ Ensure Java 11 is downloaded into your machine.</p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="starts-the-session"><a class="link" href="#starts-the-session">3.3.3. Starts the session</a></h4>
+<div class="paragraph">
+<p>The session can be started after all participating athletes have submitted their 9 attempts for their 3 lifts. This command will sort the athletes and the weight they are attempting in increasing order, after being sorted in this order: Squat Attempts 1,2,3 , Bench Attempts 1,2,3 , Deadlift Attempts 1,2,3.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>start</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>start</code></p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-17 07:27:22 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.3.4. Get the next lifter in line: <code>next</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular lift and attempt. This will also prompt the user to update whether the lift is successfu l or not. The user should update accordingly. (not sure if the second part should be a command by itself or not, since we can just referrence the current card&#8217;s object and update using a prompt.)</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>next</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-21 01:52:48 UTC</div></div></div></body></html>
