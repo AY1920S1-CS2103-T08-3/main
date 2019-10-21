@@ -1,7 +1,5 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import seedu.address.logic.commands.ListPartCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
@@ -19,8 +17,7 @@ public class ListPartCommandParser implements Parser<ListPartCommand> {
     public ListPartCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListPartCommand.MESSAGE_USAGE));
+            return new ListPartCommand();
         }
 
         Name compName = ParserUtil.parseName(trimmedArgs);

@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PARTICIPATIONS;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -17,7 +18,8 @@ public class ListPartCommand extends Command {
 
     public static final String COMMAND_WORD = "listPart";
 
-    public static final String MESSAGE_SUCCESS = "Listed all participants for ";
+    public static final String MESSAGE_SUCCESS_FOR_COMPETITION = "Listed participants for ";
+    public static final String MESSAGE_SUCCESS_FOR_ALL = "Listed all participants";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " Competition Name";
     public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist : ";
 
@@ -33,6 +35,10 @@ public class ListPartCommand extends Command {
         this.competitionName = competitionName;
     }
 
+    public ListPartCommand() {
+        competitionName = null;
+    }
+
     /**
      * Executes the command and returns the result message.
      *
@@ -42,6 +48,11 @@ public class ListPartCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+
+        if (competitionName == null) { // for the command without filtering competitions
+            model.updateFilteredParticipationList(PREDICATE_SHOW_ALL_PARTICIPATIONS);
+            return new CommandResult(MESSAGE_SUCCESS_FOR_ALL);
+        }
 
         List<Competition> competitionList = model.getFilteredCompetitionList();
         Competition competition = null;
@@ -60,6 +71,6 @@ public class ListPartCommand extends Command {
         Competition finalCompetition = competition;
         Predicate<Participation> filterByCompetition = p -> p.getCompetition().isSameElement(finalCompetition);
         model.updateFilteredParticipationList(filterByCompetition);
-        return new CommandResult(MESSAGE_SUCCESS + competition.toString());
+        return new CommandResult(MESSAGE_SUCCESS_FOR_COMPETITION + competition.toString());
     }
 }
