@@ -33,20 +33,6 @@ public class Participation extends UniqueElement {
     }
 
     /**
-     * Gets the highest score of each of the three lifts in this format: Squat/Bench/Deadlift.
-     * @return a string representation of the three lift score
-     */
-    public String getThreeLiftScore() {
-        StringBuilder topAttemptsString = new StringBuilder();
-        for (Exercise exercise : competition.getExerciseList()) {
-            Lift lift = exercise.getLift();
-            topAttemptsString.append("/").append(getLiftScore(lift));
-        }
-        String outputAttempts = topAttemptsString.toString();
-        return outputAttempts.substring(1);
-    }
-
-    /**
      *
      * @param exerciseList a list of exercises for the competition
      * @return list of attempts to track the athlete progress throughout the competition
@@ -110,6 +96,20 @@ public class Participation extends UniqueElement {
             }
         }
         return score;
+    }
+
+    /**
+     * Gets the highest score of each of the three lifts in this format: Squat/Bench/Deadlift.
+     * @return a string representation of the three lift score
+     */
+    public String getThreeLiftScore() {
+        StringBuilder topAttemptsString = new StringBuilder();
+        for (Exercise exercise : competition.getExerciseList()) {
+            Lift lift = exercise.getLift();
+            topAttemptsString.append("/").append(getLiftScore(lift));
+        }
+        String outputAttempts = topAttemptsString.toString();
+        return outputAttempts.substring(1);
     }
 
     /**
