@@ -33,63 +33,14 @@ public class Participation extends UniqueElement {
     }
 
     /**
-     * Gets the top attempt of each of the 3 lifts.
-     * @return a list of three the top attempts for the squat, bench, deadlift respectively
+     * Gets the highest score of each of the three lifts in this format: Squat/Bench/Deadlift.
+     * @return a string representation of the three lift score
      */
-    public List<Attempt> getTopAttempts() {
-        List<Attempt> topAttempts = new ArrayList<>(3);
-
-        // getting the top attempt for the squat
-        for (int i = 2; i >= 0; i--) {
-            Attempt squat = attempts.get(i);
-            assert squat.getLift() != Lift.SQUAT;
-            if (squat.getHasAttempted() && squat.getIsSuccessful()) {
-                topAttempts.add(squat);
-                break;
-            }
-            if (i == 0) {
-                topAttempts.add(new Attempt(squat.getLift(), squat.getHasAttempted(),
-                        squat.getIsSuccessful(), 0));
-            }
-        }
-
-        // getting the top attempt for the bench
-        for (int i = 5; i >= 3; i--) {
-            Attempt bench = attempts.get(i);
-            assert bench.getLift() != Lift.BENCH;
-            if (bench.getHasAttempted() && bench.getIsSuccessful()) {
-                topAttempts.add(bench);
-                break;
-            }
-            if (i == 3) {
-                topAttempts.add(new Attempt(bench.getLift(), bench.getHasAttempted(),
-                        bench.getIsSuccessful(), 0));
-            }
-        }
-
-        // getting the top attempt for the deadlift
-        for (int i = 8; i >= 6; i--) {
-            Attempt deadlift = attempts.get(i);
-            assert deadlift.getLift() != Lift.DEADLIFT;
-            if (deadlift.getHasAttempted() && deadlift.getIsSuccessful()) {
-                topAttempts.add(deadlift);
-                break;
-            }
-            if (i == 6) {
-                topAttempts.add(new Attempt(deadlift.getLift(), deadlift.getHasAttempted(),
-                        deadlift.getIsSuccessful(), 0));
-            }
-        }
-
-        return topAttempts;
-    }
-
-    public String getTopAttemptString() {
-        List<Attempt> topAttempts = this.getTopAttempts();
+    public String getThreeLiftScore() {
         StringBuilder topAttemptsString = new StringBuilder();
-        for (Attempt a : topAttempts) {
-            assert a != null;
-            topAttemptsString.append("/").append(a.getWeightAttempted());
+        for (Exercise exercise : competition.getExerciseList()) {
+            Lift lift = exercise.getLift();
+            topAttemptsString.append("/").append(getLiftScore(lift));
         }
         String outputAttempts = topAttemptsString.toString();
         return outputAttempts.substring(1);

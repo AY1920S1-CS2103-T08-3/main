@@ -35,7 +35,7 @@ public class ParticipationCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(participation.getPerson().getName().toString());
         competition.setText(participation.getCompetition().toString());
-        attempts.setText(participation.getTopAttemptString());
+        attempts.setText(participation.getThreeLiftScore());
     }
 
     @Override
