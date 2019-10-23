@@ -8,6 +8,7 @@ import seedu.address.model.attempt.Attempt;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.exercise.Exercise;
 import seedu.address.model.exercise.Lift;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
 /**
@@ -78,6 +79,10 @@ public class Participation extends UniqueElement {
 
     public List<Attempt> getAttempts() {
         return attempts;
+    }
+
+    public Name getName() {
+        return person.getName();
     }
 
     /**

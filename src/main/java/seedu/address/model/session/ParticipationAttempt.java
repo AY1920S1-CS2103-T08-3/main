@@ -40,6 +40,10 @@ public class ParticipationAttempt {
         return attempt;
     }
 
+    public int getWeight() {
+        return attempt.getWeightAttempted();
+    }
+
     public int getAttemptIndex() {
         return attemptIndex;
     }
