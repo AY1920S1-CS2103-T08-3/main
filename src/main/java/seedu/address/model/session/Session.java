@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import seedu.address.model.attempt.Attempt;
-import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 
 /**
@@ -14,11 +13,11 @@ import seedu.address.model.participation.Participation;
  * and the participation athletes associated with it.
  */
 public class Session {
-    private final Competition competition;
+    private final List<Participation> participationList;
     private ObservableList<ParticipationAttempt> attemptList;
 
-    public Session(Competition competition) {
-        this.competition = competition;
+    public Session(List<Participation> participationList) {
+        this.participationList = participationList;
         this.attemptList = FXCollections.observableArrayList();
     }
 

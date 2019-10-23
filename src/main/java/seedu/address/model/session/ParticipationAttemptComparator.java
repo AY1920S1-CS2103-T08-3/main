@@ -3,7 +3,8 @@ package seedu.address.model.session;
 import java.util.Comparator;
 
 /**
- * Compares two PartcipationAttempt objects based on their attempt index.
+ * Compares two PartcipationAttempt objects based on their attempt index,
+ * and order them in increasing weight attempted for each respective lift and attempt.
  */
 public class ParticipationAttemptComparator implements Comparator {
     /**
