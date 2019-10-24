@@ -15,7 +15,7 @@
 <ul class="sectlevel2">
 <li><a href="#competitions">3.1. Competitions</a></li>
 <li><a href="#getting-competitors-data">3.2. Getting Competitors’ Data</a></li>
-<li><a href="#participation">3.3. Participation</a></li>
+<li><a href="#session-handling">3.3. Session Handling</a></li>
 </ul>
 </li>
 </ul>
@@ -346,7 +346,7 @@ Ensure Java 11 is downloaded into your machine.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="participation"><a class="link" href="#participation">3.3. Participation</a></h3>
+<h3 id="session-handling"><a class="link" href="#session-handling">3.3. Session Handling</a></h3>
 <div class="paragraph">
 <p>This feature handles the entire flow of each session during Meet Day. It allows event
 organisers to submit an Athlete’s Squat, Bench, Deadlift attempts, as well as the
@@ -359,20 +359,21 @@ facilitate the competition session will be presented in order below:</p>
 The flow of events, and the commands to facilitate the competition session will be presented in order below:</p>
 </div>
 <div class="sect3">
-<h4 id="prepare-for-a-new-session-code-new-code"><a class="link" href="#prepare-for-a-new-session-code-new-code">3.3.1. Prepare for a new session: <code>new</code></a></h4>
+<h4 id="prepare-for-a-new-session-code-loadsess-code"><a class="link" href="#prepare-for-a-new-session-code-loadsess-code">3.3.1. Prepare for a new session: <code>loadSess</code></a></h4>
 <div class="paragraph">
-<p>Creates a new session of SBD lifts for the given ID of the competition, separated by a space. This will load all the athletes who are participating in this competition. *im giving a dummy competition id as i dont know the format for the real one yet.</p>
+<p>Loads the session of SBD lifts for the given name of the competition (provided it exists), separated by a space.
+This will load all the athletes who are participating in this competition, and start the session associated with this competition.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>new COMPETITION_ID</code></p>
+<p>Format: <code>loadSess COMPETITION_NAME</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>new 0123</code></p>
+<p><code>loadSess Test of Strength 2019</code></p>
 </li>
 </ul>
 </div>
@@ -387,7 +388,7 @@ The flow of events, and the commands to facilitate the competition session will 
 For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>attempts n/NAME S1/S2/S3 B1/B2/B3 D1/D2/D3</code></p>
+<p>Format: <code>attempts n/NAME s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -395,18 +396,20 @@ For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>attempts n/farhannafahrid 115/120/125 40/47.5/55 155/165/170</code></p>
+<p><code>attempts n/farhannafahrid s/115/120/125 b/40/47.5/55 d/155/165/170</code></p>
 </li>
 <li>
-<p><code>attempts n/marcustay 190/200/205 135/140/145 210/220/230</code></p>
+<p><code>attempts n/marcustay s/90/200/205 b/135/140/145 d/210/220/230</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="starts-the-session"><a class="link" href="#starts-the-session">3.3.3. Starts the session</a></h4>
+<h4 id="starts-the-session-code-start-code"><a class="link" href="#starts-the-session-code-start-code">3.3.3. Starts the session <code>start</code></a></h4>
 <div class="paragraph">
-<p>The session can be started after all participating athletes have submitted their 9 attempts for their 3 lifts. This command will sort the athletes and the weight they are attempting in increasing order, after being sorted in this order: Squat Attempts 1,2,3 , Bench Attempts 1,2,3 , Deadlift Attempts 1,2,3.</p>
+<p>The session can be started after all participating athletes have submitted their 9 attempts for their 3 lifts.
+This command will sort the athletes and the weight they are attempting in increasing order, after being sorted in this order:
+Squat Attempts 1,2,3 , Bench Attempts 1,2,3 , Deadlift Attempts 1,2,3.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>start</code></p>
@@ -423,15 +426,37 @@ For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.3.4. Get the next lifter in line: <code>next</code></a></h4>
+<h4 id="update-lift-or-no-lift-code-lift-code"><a class="link" href="#update-lift-or-no-lift-code-lift-code">3.3.4. Update lift or no lift: <code>lift</code></a></h4>
 <div class="paragraph">
-<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular lift and attempt. This will also prompt the user to update whether the lift is successfu l or not. The user should update accordingly. (not sure if the second part should be a command by itself or not, since we can just referrence the current card&#8217;s object and update using a prompt.)</p>
+<p>Updates whether the athlete succeeds in his attempt, or fails it.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>lift n/NAME ATTEMPT_INDEX Y/N</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lift n/christabel teo 8 N</code></p>
+</li>
+<li>
+<p><code>lift n/shawn koh 3 Y</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.3.5. Get the next lifter in line: <code>next</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular lift and attempt.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>next</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -443,4 +468,4 @@ For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-22 07:21:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 06:40:11 UTC</div></div></div></body></html>
