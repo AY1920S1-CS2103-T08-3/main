@@ -298,6 +298,7 @@ public class ModelManager implements Model {
         requireAllNonNull(participations);
         session.start(participations);
     }
+
     //==========================================================================================
 
     @Override
