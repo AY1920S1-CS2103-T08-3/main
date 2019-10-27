@@ -14,9 +14,11 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.attempt.Attempt;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.ParticipationAttempt;
 import seedu.address.model.session.Session;
 
 /**
@@ -288,15 +290,34 @@ public class ModelManager implements Model {
         filteredParticipations.setPredicate(predicate);
     }
 
-    //=========== Session =============================================================
+    //=========== Session Handling =============================================================
 
+    @Override
     public Session getSession() {
         return session;
     }
 
-    public void setSession(ObservableList<Participation> participations) {
+    @Override
+    public void startSession(ObservableList<Participation> participations) {
         requireAllNonNull(participations);
         session.start(participations);
+    }
+
+    @Override
+    public void loadParticipationAttempts(Participation participation, List<Attempt> nineAttempts) {
+        requireNonNull(participation);
+        requireAllNonNull(nineAttempts);
+        session.loadAttempts(participation, nineAttempts);
+    }
+
+    @Override
+    public ParticipationAttempt makeAttempt() {
+        return session.attemptMade();
+    }
+
+    @Override
+    public ParticipationAttempt getNextLifter() {
+        return session.nextLifter();
     }
 
     //==========================================================================================

@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import seedu.address.model.attempt.Attempt;
+import seedu.address.model.attempt.exceptions.AttemptHasBeenAttemptedException;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Name;
 import seedu.address.model.session.exceptions.AttemptsSubmittedException;
@@ -69,7 +70,6 @@ public class Session {
      * @param attempts a list of the participation's 9 attempts for the different lifts
      *
      * @throws AttemptsSubmittedException when a participant has submitted his/her attempts
-     * @throws NoOngoingSessionException if there is no ongoing session to load attempts for
      */
     public void loadAttempts(Participation participation, List<Attempt> attempts)
             throws AttemptsSubmittedException, NoOngoingSessionException {
@@ -108,6 +108,7 @@ public class Session {
                 nonSubmissionNames.add(p.getName());
             }
         }
+
         if (!nonSubmissionNames.isEmpty()) {
             throw new IncompleteAttemptSubmissionException(nonSubmissionNames);
         }
@@ -127,7 +128,7 @@ public class Session {
      * @throws PreviousAttemptNotDoneException if the previous lifter has not completed his attempt,
      *                                         and the next lifter is not ready to be called
      */
-    public Participation nextLifter() throws NoOngoingSessionException, IncompleteAttemptSubmissionException,
+    public ParticipationAttempt nextLifter() throws NoOngoingSessionException, IncompleteAttemptSubmissionException,
             PreviousAttemptNotDoneException {
         if (!isOngoing) {
             throw new NoOngoingSessionException();
@@ -145,25 +146,34 @@ public class Session {
             end();
         }
 
-        ParticipationAttempt nextAttempt = attemptList.get(0);
-        Participation nextLifter = nextAttempt.getParticipation();
+        ParticipationAttempt nextParticipationAttempt = attemptList.get(0);
         isReady = false;
-        return nextLifter;
+        return nextParticipationAttempt;
     }
 
     /**
      * Records the attempt made by the lifter.
      *
-     * @throws NoOngoingSessionException
+     * @throws NoOngoingSessionException if there is no ongoing competition session
+     * @throws AttemptHasBeenAttemptedException if an attempt has already been made
+     * @throws IncompleteAttemptSubmissionException if there exists athletes who have not submitted their attempts
      */
-    public void attemptMade()
-            throws NoOngoingSessionException {
+    public ParticipationAttempt attemptMade() throws NoOngoingSessionException,
+            AttemptHasBeenAttemptedException, IncompleteAttemptSubmissionException {
         if (!isOngoing) {
             throw new NoOngoingSessionException();
         }
 
-        attemptList.remove(0);
+        if (!isPrepared) {
+            prepare();
+        }
+
+        if (isReady) {
+            throw new AttemptHasBeenAttemptedException();
+        }
+
         isReady = true;
+        return attemptList.remove(0);
     }
 
     /**
@@ -186,11 +196,20 @@ public class Session {
         loadedParticipations = new ArrayList<>();
     }
 
-    /**
-     * Retrieves the list of all ParticipationAttempts.
-     *
-     * @return an ObservableList of ParticipationAttempt list
-     */
+    public Participation getParticipationByName(Name name) {
+        Participation participation = null;
+        for (Participation p : participationList) {
+            if (p.getName().equals(name)) {
+                participation = p;
+            }
+        }
+        return participation;
+    }
+
+    public ObservableList<Participation> getParticipationList() {
+        return participationList;
+    }
+
     public ObservableList<ParticipationAttempt> getAttemptList() {
         return attemptList;
     }

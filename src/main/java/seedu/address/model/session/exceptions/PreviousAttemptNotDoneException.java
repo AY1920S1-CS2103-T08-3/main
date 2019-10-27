@@ -8,6 +8,6 @@ public class PreviousAttemptNotDoneException extends RuntimeException {
 
     public PreviousAttemptNotDoneException() {
         super("The next lifter is not ready to be called until"
-                + "the current lifter has completed and recorded the attempt.");
+                + " the current lifter has completed and recorded the attempt.");
     }
 }

@@ -32,6 +32,23 @@ public class ParticipationAttempt {
         }
     }
 
+    /**
+     * Gets the suffix for the attempt number.
+     *
+     * @return suffix to append after attempt number
+     */
+    private String attemptIndexToString() {
+        if (attemptIndex % 3 == 0) {
+            return "3rd";
+        } else if (attemptIndex % 3 == 2) {
+            return "2nd";
+        } else if (attemptIndex % 3 == 1) {
+            return "1st";
+        } else {
+            return "";
+        }
+    }
+
     public Participation getParticipation() {
         return athlete;
     }
@@ -46,5 +63,9 @@ public class ParticipationAttempt {
 
     public int getAttemptIndex() {
         return attemptIndex;
+    }
+
+    public String toString() {
+        return String.format("%s %s attempt", attemptIndexToString(), attempt.getLift());
     }
 }

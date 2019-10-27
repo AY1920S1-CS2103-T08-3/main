@@ -1,19 +1,25 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.attempt.Attempt;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.ParticipationAttempt;
+import seedu.address.model.session.Session;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Competition> PREDICATE_SHOW_ALL_COMPETITIONS = unused -> true;
     Predicate<Participation> PREDICATE_SHOW_ALL_PARTICIPATIONS = unused -> true;
@@ -57,7 +63,9 @@ public interface Model {
      */
     void setPersons(ReadOnlyData<Person> persons);
 
-    /** Returns the data of persons */
+    /**
+     * Returns the data of persons
+     */
     ReadOnlyData<Person> getPersons();
 
     /**
@@ -84,11 +92,14 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
@@ -100,7 +111,9 @@ public interface Model {
      */
     void setCompetitions(ReadOnlyData<Competition> competitions);
 
-    /** Returns the data of competitions */
+    /**
+     * Returns the data of competitions
+     */
     ReadOnlyData<Competition> getCompetitions();
 
     /**
@@ -128,11 +141,14 @@ public interface Model {
      */
     void setCompetition(Competition target, Competition editedCompetition);
 
-    /** Returns an unmodifiable view of the filtered competition list */
+    /**
+     * Returns an unmodifiable view of the filtered competition list
+     */
     ObservableList<Competition> getFilteredCompetitionList();
 
     /**
      * Updates the filter of the filtered competition list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredCompetitionList(Predicate<Competition> predicate);
@@ -144,7 +160,9 @@ public interface Model {
      */
     void setParticipations(ReadOnlyData<Participation> participations);
 
-    /** Returns the Participation */
+    /**
+     * Returns the Participation
+     */
     ReadOnlyData<Participation> getParticipations();
 
     /**
@@ -182,12 +200,51 @@ public interface Model {
      */
     void setParticipation(Participation target, Participation editedParticipation);
 
-    /** Returns an unmodifiable view of the filtered participation list */
+    /**
+     * Returns an unmodifiable view of the filtered participation list
+     */
     ObservableList<Participation> getFilteredParticipationList();
 
     /**
      * Updates the filter of the filtered participation list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredParticipationList(Predicate<Participation> predicate);
+
+
+    //=========== Session Handling ================================================================================
+
+    /**
+     * Gets the current session.
+     * @return the current session
+     */
+    Session getSession();
+
+    /**
+     * Starts the session with a list of participants for this competition.
+     *
+     * @param participations list of participations for the current competition session
+     */
+    void startSession(ObservableList<Participation> participations);
+
+    /**
+     * Loads participation's attempts for the competition session.
+     *
+     * @param participation the participation whose attempts is being submitted
+     * @param nineAttempts 3 attempts each for the squat, bench, and deadlift
+     */
+    void loadParticipationAttempts(Participation participation, List<Attempt> nineAttempts);
+
+    /**
+     * Updates and records the success after a lifter has made an attempt.
+     */
+    ParticipationAttempt makeAttempt();
+
+    /**
+     * Gets the next lifter and his/her attempt in line.
+     *
+     * @return the associated ParticipationAttempt object
+     */
+    ParticipationAttempt getNextLifter();
 }

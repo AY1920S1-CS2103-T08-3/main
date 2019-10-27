@@ -41,7 +41,6 @@ public class Participation extends UniqueElement {
      */
     public List<Attempt> addAttempts(List<Integer> weightOfAttemptsList) {
         List<Exercise> exerciseList = competition.getExerciseList();
-        List<Attempt> attempts = new ArrayList<>();
         int index = 0;
         for (Exercise exercise : exerciseList) {
             Lift lift = exercise.getLift();
@@ -61,12 +60,10 @@ public class Participation extends UniqueElement {
      * @param isSuccess a boolean indicating the success of the attempt
      */
     public void updateAttempt(int index, boolean isSuccess) {
-        final boolean hasAttempted = true;
         Attempt attempt = attempts.get(index - 1);
         assert attempt != null;
-        Attempt updatedAttempt = new Attempt(attempt.getLift(), attempt.getWeightAttempted(),
-                hasAttempted, isSuccess);
-        attempts.set(index - 1, updatedAttempt);
+        attempt.setSuccess(isSuccess);
+        attempts.set(index - 1, attempt);
     }
 
     public Person getPerson() {

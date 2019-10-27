@@ -14,8 +14,8 @@ public class ListPartCommandParser implements Parser<ListPartCommand> {
      * @throws ParseException if {@code userInput} does not conform the expected format
      */
     @Override
-    public ListPartCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
+    public ListPartCommand parse(String userInput) throws ParseException {
+        String trimmedArgs = userInput.trim();
         if (trimmedArgs.isEmpty()) {
             return new ListPartCommand();
         }

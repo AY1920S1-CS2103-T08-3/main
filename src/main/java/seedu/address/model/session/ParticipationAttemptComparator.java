@@ -30,9 +30,9 @@ public class ParticipationAttemptComparator implements Comparator<ParticipationA
     @Override
     public int compare(ParticipationAttempt pa1, ParticipationAttempt pa2) {
         if (pa1.getAttemptIndex() == pa2.getAttemptIndex()) {
-            return pa2.getWeight() - pa1.getWeight();
+            return pa1.getWeight() - pa2.getWeight();
         } else {
-            return pa2.getAttemptIndex() - pa1.getAttemptIndex();
+            return pa1.getAttemptIndex() - pa2.getAttemptIndex();
         }
     }
 }

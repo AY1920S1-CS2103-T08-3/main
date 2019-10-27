@@ -9,8 +9,8 @@ import seedu.address.model.person.Name;
  * for the competition have submitted their attempts.
  */
 public class IncompleteAttemptSubmissionException extends RuntimeException {
-    private static final String message = " have not submitted their attempts."
-            + "Try again after all athletes have done so.";
+    private static final String message = "have not submitted their attempts."
+            + " Try again after all athletes have done so.";
     private final List<Name> namesOfNonSubmission;
 
     public IncompleteAttemptSubmissionException(List<Name> nameList) {
@@ -21,7 +21,7 @@ public class IncompleteAttemptSubmissionException extends RuntimeException {
     public String getMessage() {
         StringBuilder nameString = new StringBuilder();
         for (Name name : namesOfNonSubmission) {
-            nameString.append(name);
+            nameString.append(name).append(", ");
         }
         return nameString.toString() + message;
     }
