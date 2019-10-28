@@ -11,6 +11,7 @@ import seedu.address.model.attempt.exceptions.AttemptHasBeenAttemptedException;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Name;
 import seedu.address.model.session.exceptions.AttemptsSubmittedException;
+import seedu.address.model.session.exceptions.CompetitionEndedException;
 import seedu.address.model.session.exceptions.CompetitionNotFinishedException;
 import seedu.address.model.session.exceptions.IncompleteAttemptSubmissionException;
 import seedu.address.model.session.exceptions.NoOngoingSessionException;
@@ -26,7 +27,7 @@ public class Session {
 
     private ObservableList<Participation> participationList;
     private ObservableList<ParticipationAttempt> attemptList;
-    private List<Participation> loadedParticipations; // list of participations who have loaded their attempts
+    private List<Participation> loadedParticipations; // list of participations who have submitted their attempts
 
     private boolean isOngoing; // where session has been session loaded with participations of a particular competition
     private boolean isPrepared; // where competition and attempts are ongoing
@@ -59,8 +60,13 @@ public class Session {
             throw new OngoingSessionException();
         }
 
-        this.participationList = participations;
         this.isOngoing = true;
+        this.participationList = participations;
+        for (Participation p : participations) {
+            if (p.getAreAttemptsSubmitted()) {
+                loadAttempts(p, p.getAttempts());
+            }
+        }
     }
 
     /**
@@ -70,6 +76,7 @@ public class Session {
      * @param attempts a list of the participation's 9 attempts for the different lifts
      *
      * @throws AttemptsSubmittedException when a participant has submitted his/her attempts
+     * @throws NoOngoingSessionException if there is no ongoing session
      */
     public void loadAttempts(Participation participation, List<Attempt> attempts)
             throws AttemptsSubmittedException, NoOngoingSessionException {
@@ -81,11 +88,13 @@ public class Session {
             throw new AttemptsSubmittedException(participation.getPerson());
         }
 
-        int index = 0; // 1,2,3 are squats attempts in order; 4,5,6 for bench; 7,8,9 deadlift
-        for (Attempt attempt : attempts) {
-            index++;
-            ParticipationAttempt partAttempt = new ParticipationAttempt(participation, attempt, index);
-            attemptList.add(partAttempt);
+        for (int i = 0; i < 9; i++) {
+            Attempt attempt = attempts.get(i);
+            if (!attempt.getHasAttempted()) {
+                // index param: 1,2,3 are squats attempts in order; 4,5,6 for bench; 7,8,9 deadlift
+                ParticipationAttempt partAttempt = new ParticipationAttempt(participation, attempt, i + 1);
+                attemptList.add(partAttempt);
+            }
         }
         loadedParticipations.add(participation);
     }
@@ -127,9 +136,10 @@ public class Session {
      * @throws IncompleteAttemptSubmissionException if there exists athletes who have not submitted their attempts
      * @throws PreviousAttemptNotDoneException if the previous lifter has not completed his attempt,
      *                                         and the next lifter is not ready to be called
+     * @throws CompetitionEndedException if the last attempt has been made, and the competition has come to an end
      */
     public ParticipationAttempt nextLifter() throws NoOngoingSessionException, IncompleteAttemptSubmissionException,
-            PreviousAttemptNotDoneException {
+            PreviousAttemptNotDoneException, CompetitionEndedException {
         if (!isOngoing) {
             throw new NoOngoingSessionException();
         }
@@ -144,6 +154,7 @@ public class Session {
 
         if (attemptList.isEmpty()) {
             end();
+            throw new CompetitionEndedException(participationList.get(0).getCompetition());
         }
 
         ParticipationAttempt nextParticipationAttempt = attemptList.get(0);
@@ -220,5 +231,9 @@ public class Session {
 
     public boolean getIsPrepared() {
         return isPrepared;
+    }
+
+    public boolean getIsReady() {
+        return isReady;
     }
 }

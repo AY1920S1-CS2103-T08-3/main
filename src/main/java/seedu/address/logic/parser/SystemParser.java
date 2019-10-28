@@ -22,7 +22,7 @@ import seedu.address.logic.commands.ListCompCommand;
 import seedu.address.logic.commands.ListPartCommand;
 import seedu.address.logic.commands.session.AttemptLiftedCommand;
 import seedu.address.logic.commands.session.LoadAttemptsCommand;
-import seedu.address.logic.commands.session.NewSessionCommand;
+import seedu.address.logic.commands.session.SessionCommand;
 import seedu.address.logic.commands.session.NextLifterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.session.AttemptLiftedCommandParser;
@@ -104,7 +104,7 @@ public class SystemParser {
         case NextLifterCommand.COMMAND_WORD:
             return new NextLifterCommand();
 
-        case NewSessionCommand.COMMAND_WORD:
+        case SessionCommand.COMMAND_WORD:
             return new NewSessionCommandParser().parse(arguments);
 
         default:

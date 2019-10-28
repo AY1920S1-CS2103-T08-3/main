@@ -20,26 +20,28 @@ public class Participation extends UniqueElement {
     private final Competition competition;
 
     private List<Attempt> attempts;
+    private boolean areAttemptsSubmitted;
 
     public Participation(Person person, Competition competition) {
         this.person = person;
         this.competition = competition;
         this.attempts = new ArrayList<>(9);
+        this.areAttemptsSubmitted = false;
     }
 
     public Participation(Person person, Competition competition, List<Attempt> attempts) {
         this.person = person;
         this.competition = competition;
         this.attempts = attempts;
+        this.areAttemptsSubmitted = true;
     }
 
     /**
      * This method adds all the weight to be attempted for this participation.
      *
      * @param weightOfAttemptsList a list of the weight to be attempted for eaCh lift and attempt
-     * @return list of attempts to track the athlete progress throughout the competition
      */
-    public List<Attempt> addAttempts(List<Integer> weightOfAttemptsList) {
+    public void addAttempts(List<Integer> weightOfAttemptsList) {
         List<Exercise> exerciseList = competition.getExerciseList();
         int index = 0;
         for (Exercise exercise : exerciseList) {
@@ -50,7 +52,7 @@ public class Participation extends UniqueElement {
                 index++;
             }
         }
-        return attempts;
+        areAttemptsSubmitted = true;
     }
 
     /**
@@ -80,6 +82,10 @@ public class Participation extends UniqueElement {
 
     public Name getName() {
         return person.getName();
+    }
+
+    public boolean getAreAttemptsSubmitted() {
+        return areAttemptsSubmitted;
     }
 
     /**

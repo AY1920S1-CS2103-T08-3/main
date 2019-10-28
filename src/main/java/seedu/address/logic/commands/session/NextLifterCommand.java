@@ -4,6 +4,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.session.ParticipationAttempt;
+import seedu.address.model.session.exceptions.CompetitionEndedException;
 import seedu.address.model.session.exceptions.IncompleteAttemptSubmissionException;
 import seedu.address.model.session.exceptions.NoOngoingSessionException;
 import seedu.address.model.session.exceptions.PreviousAttemptNotDoneException;
@@ -24,11 +25,13 @@ public class NextLifterCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) {
-        ParticipationAttempt next;
+        ParticipationAttempt next = null;
         try {
             next = model.getNextLifter();
         } catch (NoOngoingSessionException | IncompleteAttemptSubmissionException
                 | PreviousAttemptNotDoneException e) {
+            return new CommandResult(e.getMessage());
+        } catch (CompetitionEndedException e) {
             return new CommandResult(e.getMessage());
         }
         return new CommandResult(MESSAGE_SUCCESS + next.getParticipation().getName()

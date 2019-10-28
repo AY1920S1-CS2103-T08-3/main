@@ -17,16 +17,16 @@ import seedu.address.model.session.exceptions.OngoingSessionException;
 /**
  * Loads a new session for a specific competition with its participants.
  */
-public class NewSessionCommand extends Command {
+public class SessionCommand extends Command {
 
-    public static final String COMMAND_WORD = "newSess";
+    public static final String COMMAND_WORD = "session";
     public static final String MESSAGE_SUCCESS = " has started!";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " Competition Name";
     public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist : ";
 
     private final Name competitionName;
 
-    public NewSessionCommand(Name competition) {
+    public SessionCommand(Name competition) {
         requireNonNull(competition);
         this.competitionName = competition;
     }
