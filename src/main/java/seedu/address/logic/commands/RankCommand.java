@@ -30,7 +30,7 @@ public class RankCommand extends Command {
     public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist : ";
     public static final String MESSAGE_ATHLETE_NOT_FOUND = "The athlete with the given name does not exist for "
             + "competition: ";
-    public static final String MESSAGE_SUCCESS = "Rank is: %1$d for athlete %2$s for competition %3$s";
+    public static final String MESSAGE_SUCCESS = "Rank: %1$d Score: %2$d Athlete: %3$s Competition: %4$s";
 
     private final Name athleteName;
     private final Name competitionName;
@@ -72,16 +72,18 @@ public class RankCommand extends Command {
         List<Participation> pLists = copy(participationList);
         pLists.sort(new ParticipationComparator());
         int rank = 1;
+        int score = 0;
         for (Participation p : pLists) {
             if (p.getPerson().isSameElement(athlete)) {
+                score += p.getTotalScore();
                 break;
             }
             rank += 1;
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, rank, athleteName, competitionName));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, rank, score, athleteName, competitionName));
     }
-    
+
     /**
      * Copies an obs list into a normal java list for sorting purposes
      *
