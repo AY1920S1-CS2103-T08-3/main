@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
@@ -20,6 +22,7 @@ import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.ParticipationAttempt;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionInformation;
 
 /**
  * Represents the in-memory model of the data of the system.
@@ -35,6 +38,8 @@ public class ModelManager implements Model {
     private final FilteredList<Participation> filteredParticipations;
     private final UserPrefs userPrefs;
     private final Session session;
+    private final SessionInformation sessionInformation;
+    private final ObservableValue<SessionInformation> sessionInfoView;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -56,6 +61,8 @@ public class ModelManager implements Model {
         this.participations = new Data<>(participations);
         filteredParticipations = new FilteredList<>(this.participations.getListOfElements());
         this.session = Session.getInstance();
+        this.sessionInformation = SessionInformation.getInstance();
+        this.sessionInfoView = new ReadOnlyObjectWrapper<>(sessionInformation);
     }
 
     public ModelManager() {
@@ -318,6 +325,28 @@ public class ModelManager implements Model {
     @Override
     public ParticipationAttempt getNextLifter() {
         return session.nextLifter();
+    }
+
+    @Override
+    public ObservableValue<SessionInformation> getSessionInfoView() {
+        return sessionInfoView;
+    }
+
+    @Override
+    public void setCompetitionForSession(Competition competitionForSession) {
+        sessionInformation.setCompetition(competitionForSession);
+    }
+
+    @Override
+    public void setNextAttemptForSession(ParticipationAttempt participationAttempt) {
+        sessionInformation.setAttemptWeight(participationAttempt.getWeight());
+        sessionInformation.setLiftAndAttemptNumber(participationAttempt.toString());
+        sessionInformation.setParticipation(participationAttempt.getParticipation());
+    }
+
+    @Override
+    public void endSession() {
+        sessionInformation.endSession();
     }
 
     //==========================================================================================

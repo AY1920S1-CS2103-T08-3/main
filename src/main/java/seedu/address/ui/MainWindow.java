@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private ParticipationListPanel participationListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private SessionCard sessionCard;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -57,6 +58,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane sessionCardPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -132,6 +136,9 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        sessionCard = new SessionCard(logic.getSessionInformation());
+        sessionCardPlaceholder.getChildren().add(sessionCard.getRoot());
     }
 
     /**

@@ -28,10 +28,12 @@ public class NextLifterCommand extends Command {
         ParticipationAttempt next = null;
         try {
             next = model.getNextLifter();
+            model.setNextAttemptForSession(next);
         } catch (NoOngoingSessionException | IncompleteAttemptSubmissionException
                 | PreviousAttemptNotDoneException e) {
             return new CommandResult(e.getMessage());
         } catch (CompetitionEndedException e) {
+            model.endSession();
             return new CommandResult(e.getMessage());
         }
         return new CommandResult(MESSAGE_SUCCESS + next.getParticipation().getName()
