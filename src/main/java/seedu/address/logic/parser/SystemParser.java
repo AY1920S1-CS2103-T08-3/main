@@ -20,6 +20,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListCompCommand;
 import seedu.address.logic.commands.ListPartCommand;
+import seedu.address.logic.commands.RankCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -81,6 +82,9 @@ public class SystemParser {
 
         case ListPartCommand.COMMAND_WORD:
             return new ListPartCommandParser().parse(arguments);
+
+        case RankCommand.COMMAND_WORD:
+            return new RankCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
