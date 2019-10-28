@@ -31,7 +31,7 @@ public class EditCompCommand extends Command {
             + "by the index number used in the displayed competition list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_NAME + "COMPETITION NAME] "
             + "[" + PREFIX_START_DATE + "START DATE OF COMPETITION] "
             + "[" + PREFIX_END_DATE + "END DATE OF COMPETITION] "
             + "Example: " + COMMAND_WORD + " 1 "

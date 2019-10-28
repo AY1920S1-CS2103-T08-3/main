@@ -96,6 +96,9 @@ public class SystemParser {
         case ListPartCommand.COMMAND_WORD:
             return new ListPartCommandParser().parse(arguments);
 
+        case RankCommand.COMMAND_WORD:
+            return new RankCommandParser().parse(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
