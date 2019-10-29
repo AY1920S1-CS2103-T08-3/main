@@ -46,7 +46,6 @@ public class EditCompCommandParser implements Parser<EditCompCommand> {
         if (argMultimap.getValue(PREFIX_END_DATE).isPresent()) {
             editCompetitionDescriptor.setEndDate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get()));
         }
-
         if (!editCompetitionDescriptor.isAnyFieldEdited()) {
 
             throw new ParseException(EditCompCommand.MESSAGE_NOT_EDITED);
