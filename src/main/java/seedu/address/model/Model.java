@@ -1,12 +1,10 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
-import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.attempt.Attempt;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
@@ -227,14 +225,6 @@ public interface Model {
      * @param participations list of participations for the current competition session
      */
     void startSession(ObservableList<Participation> participations);
-
-    /**
-     * Loads participation's attempts for the competition session.
-     *
-     * @param participation the participation whose attempts is being submitted
-     * @param nineAttempts 3 attempts each for the squat, bench, and deadlift
-     */
-    void loadParticipationAttempts(Participation participation, List<Attempt> nineAttempts);
 
     /**
      * Updates and records the success after a lifter has made an attempt.

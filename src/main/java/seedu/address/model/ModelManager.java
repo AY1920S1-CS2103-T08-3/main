@@ -304,13 +304,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void loadParticipationAttempts(Participation participation, List<Attempt> nineAttempts) {
-        requireNonNull(participation);
-        requireAllNonNull(nineAttempts);
-        session.loadAttempts(participation, nineAttempts);
-    }
-
-    @Override
     public ParticipationAttempt makeAttempt() {
         return session.attemptMade();
     }
