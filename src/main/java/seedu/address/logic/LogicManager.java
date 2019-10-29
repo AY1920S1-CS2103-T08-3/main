@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -18,7 +17,6 @@ import seedu.address.model.ReadOnlyData;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
-import seedu.address.model.session.SessionInformation;
 import seedu.address.storage.Storage;
 
 /**
@@ -89,10 +87,5 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
-    }
-
-    @Override
-    public ObservableValue<SessionInformation> getSessionInformation() {
-        return model.getSessionInfoView();
     }
 }

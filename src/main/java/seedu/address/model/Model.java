@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Predicate;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.attempt.Attempt;
@@ -13,7 +12,6 @@ import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.ParticipationAttempt;
 import seedu.address.model.session.Session;
-import seedu.address.model.session.SessionInformation;
 
 /**
  * The API of the Model component.
@@ -244,33 +242,9 @@ public interface Model {
     ParticipationAttempt makeAttempt();
 
     /**
-     * Generates the next lifter and his/her attempt in line.
+     * Gets the next lifter and his/her attempt in line.
+     *
+     * @return the associated ParticipationAttempt object
      */
     ParticipationAttempt getNextLifter();
-
-    //=========== Session Information ================================================================================
-
-    /**
-     * Returns an unmodifiable view of the session information to be displayed.
-     */
-    ObservableValue<SessionInformation> getSessionInfoView();
-
-    /**
-     * Sets the competition for the session.
-     *
-     * @param competitionForSession competition that is in session
-     */
-    void setCompetitionForSession(Competition competitionForSession);
-
-    /**
-     * Sets the next attempt information for the session.
-     *
-     * @param participationAttempt the ParticipationAttempt object relative for the next attempt
-     */
-    void setNextAttemptForSession(ParticipationAttempt participationAttempt);
-
-    /**
-     * Ends the competition session.
-     */
-    void endSession();
 }

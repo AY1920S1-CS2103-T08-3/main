@@ -60,7 +60,6 @@ public class SessionCommand extends Command {
             model.updateFilteredParticipationList(filterByCompetition);
             ObservableList<Participation> partForThisComp = model.getFilteredParticipationList();
             model.startSession(partForThisComp);
-            model.setCompetitionForSession(competition);
         } catch (OngoingSessionException e) {
             return new CommandResult(e.getMessage());
         }
