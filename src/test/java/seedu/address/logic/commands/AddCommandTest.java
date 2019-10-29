@@ -9,7 +9,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import seedu.address.model.Data;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyData;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.attempt.Attempt;
 import seedu.address.model.competition.Competition;
 import seedu.address.model.participation.Participation;
 import seedu.address.model.person.Person;
