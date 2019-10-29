@@ -261,11 +261,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void loadParticipationAttempts(Participation participation, List<Attempt> nineAttempts) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ParticipationAttempt makeAttempt() {
             throw new AssertionError("This method should not be called.");
         }
