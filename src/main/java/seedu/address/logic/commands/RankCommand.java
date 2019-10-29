@@ -30,7 +30,8 @@ public class RankCommand extends Command {
     public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist : ";
     public static final String MESSAGE_ATHLETE_NOT_FOUND = "The athlete with the given name does not exist for "
             + "competition: ";
-    public static final String MESSAGE_SUCCESS = "Rank: %1$d Score: %2$d Athlete: %3$s Competition: %4$s";
+    public static final String MESSAGE_SUCCESS = " Athlete: %1$s Competition: %2$s \n Rank: %3$d \n Total Score: %4$d "
+            + "\n Max Bench Press: %5$s \n Max Squat: %6$s \n Max Deadlift: %7$s ";
 
     private final Name athleteName;
     private final Name competitionName;
@@ -72,16 +73,19 @@ public class RankCommand extends Command {
         List<Participation> pLists = copy(participationList);
         pLists.sort(new ParticipationComparator());
         int rank = 1;
-        int score = 0;
+        int totalScore = 0;
+        String[] threeLiftScore = new String[3];
         for (Participation p : pLists) {
             if (p.getPerson().isSameElement(athlete)) {
-                score += p.getTotalScore();
+                totalScore += p.getTotalScore();
+                threeLiftScore = p.getThreeLiftScore().split("/");
                 break;
             }
             rank += 1;
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, rank, score, athleteName, competitionName));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, athleteName, competitionName, rank, totalScore,
+                threeLiftScore[1], threeLiftScore[0], threeLiftScore[2]));
     }
 
     /**
