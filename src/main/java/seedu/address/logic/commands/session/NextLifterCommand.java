@@ -15,7 +15,10 @@ import seedu.address.model.session.exceptions.PreviousAttemptNotDoneException;
 public class NextLifterCommand extends Command {
 
     public static final String COMMAND_WORD = "next";
-    public static final String MESSAGE_SUCCESS = "The next lift is ";
+    public static final String MESSAGE_NEXT_LIFTER = "The next lifter is ";
+
+    private ParticipationAttempt next = null;
+    private ParticipationAttempt following = null;
 
     /**
      * Executes the NextLifterCommand and returns the result message.
@@ -25,16 +28,26 @@ public class NextLifterCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) {
-        ParticipationAttempt next = null;
         try {
             next = model.getNextLifter();
+            following = model.getFollowingLifter();
         } catch (NoOngoingSessionException | IncompleteAttemptSubmissionException
                 | PreviousAttemptNotDoneException e) {
             return new CommandResult(e.getMessage());
         } catch (CompetitionEndedException e) {
             return new CommandResult(e.getMessage());
         }
-        return new CommandResult(MESSAGE_SUCCESS + next.getParticipation().getName()
-                + "'s " + next.toString());
+        return new CommandResult(String.format("%S%n%s", next.toString(), followingAttemptToString()));
+    }
+
+    /**
+     * Returns the information for the following attempt and the lifter.
+     */
+    private String followingAttemptToString() {
+        if (following == null) {
+            return "This is the last attempt for the competition.";
+        } else {
+            return MESSAGE_NEXT_LIFTER + following.toString();
+        }
     }
 }

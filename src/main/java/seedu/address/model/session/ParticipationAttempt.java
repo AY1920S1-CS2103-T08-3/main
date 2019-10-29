@@ -37,15 +37,11 @@ public class ParticipationAttempt {
      *
      * @return suffix to append after attempt number
      */
-    private String attemptIndexToString() {
+    private int attemptIndexToNumber() {
         if (attemptIndex % 3 == 0) {
-            return "3rd";
-        } else if (attemptIndex % 3 == 2) {
-            return "2nd";
-        } else if (attemptIndex % 3 == 1) {
-            return "1st";
+            return 3;
         } else {
-            return "";
+            return attemptIndex % 3;
         }
     }
 
@@ -65,7 +61,11 @@ public class ParticipationAttempt {
         return attemptIndex;
     }
 
+    /**
+     * Returns the string representation of a participation attempt.
+     */
     public String toString() {
-        return String.format("%s %s attempt", attemptIndexToString(), attempt.getLift());
+        return String.format("%s - %s attempt %d: %dkg",
+                athlete.getName(), attempt.getLift(), attemptIndexToNumber(), attempt.getWeightAttempted());
     }
 }

@@ -12,13 +12,14 @@ import seedu.address.model.session.exceptions.IncompleteAttemptSubmissionExcepti
 import seedu.address.model.session.exceptions.NoOngoingSessionException;
 
 /**
- *
+ * Records and updates the success of failure of the attempt that was lifted.
  */
 public class AttemptLiftedCommand extends Command {
 
     public static final String COMMAND_WORD = "lift";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + " Y/N (where 'Y' represents success and 'N' represents failure)";
+    public static final String MESSAGE_NEXT_LIFTER = "The next lifter is ";
 
     private final boolean isSuccess;
 
@@ -35,29 +36,31 @@ public class AttemptLiftedCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        ParticipationAttempt partAttempt;
+        ParticipationAttempt nextPartAttempt;
+        ParticipationAttempt followingPartAttempt;
         Participation participation;
 
         try {
-            partAttempt = model.makeAttempt();
-            participation = partAttempt.getParticipation();
+            followingPartAttempt = model.getFollowingLifter();
+            nextPartAttempt = model.makeAttempt();
+            participation = nextPartAttempt.getParticipation();
             Participation updatedPart = participation;
-            updatedPart.updateAttempt(partAttempt.getAttemptIndex(), isSuccess);
+            updatedPart.updateAttempt(nextPartAttempt.getAttemptIndex(), isSuccess);
             model.setParticipation(participation, updatedPart);
         } catch (NoOngoingSessionException | AttemptHasBeenAttemptedException
                 | IncompleteAttemptSubmissionException e) {
             return new CommandResult(e.getMessage());
         }
 
-        return new CommandResult(participation.getName() + "'s "
-                + partAttempt.toString() + getSuccessOrFailure());
+        return new CommandResult(String.format("%S%s%n%s%s", nextPartAttempt.toString(), getSuccessOrFailure(),
+                MESSAGE_NEXT_LIFTER, followingPartAttempt.toString()));
     }
 
     private String getSuccessOrFailure() {
         if (isSuccess) {
-            return " is a success.";
+            return "  is a success.";
         } else {
-            return " is a failure.";
+            return "  is a failure.";
         }
     }
 }

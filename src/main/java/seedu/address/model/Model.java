@@ -247,4 +247,11 @@ public interface Model {
      * @return the associated ParticipationAttempt object
      */
     ParticipationAttempt getNextLifter();
+
+    /**
+     * Gets the following lifter and his/her attempt, so as to get ready for his/her lift.
+     *
+     * @return the associated ParticipationAttempt object
+     */
+    ParticipationAttempt getFollowingLifter();
 }

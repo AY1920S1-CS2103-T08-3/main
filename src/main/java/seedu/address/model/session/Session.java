@@ -236,4 +236,13 @@ public class Session {
     public boolean getIsReady() {
         return isReady;
     }
+
+    /**
+     * Gets the participation attempt instance of the following lifter for the session.
+     *
+     * @return
+     */
+    public ParticipationAttempt getFollowingLifter() {
+        return attemptList.get(1);
+    }
 }

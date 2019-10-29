@@ -320,6 +320,11 @@ public class ModelManager implements Model {
         return session.nextLifter();
     }
 
+    @Override
+    public ParticipationAttempt getFollowingLifter() {
+        return session.getFollowingLifter();
+    }
+
     //==========================================================================================
 
     @Override
