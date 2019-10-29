@@ -1,6 +1,8 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.participation;
 
-import seedu.address.logic.commands.ListPartCommand;
+import seedu.address.logic.commands.participation.ListPartCommand;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
 

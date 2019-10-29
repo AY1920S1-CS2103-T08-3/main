@@ -37,6 +37,7 @@ public class Session {
         this.participationList = FXCollections.observableArrayList();
         this.attemptList = FXCollections.observableArrayList();
         this.loadedParticipations = new ArrayList<>();
+
         this.isOngoing = false;
         this.isPrepared = false;
         this.isReady = false;
@@ -78,7 +79,7 @@ public class Session {
      * @throws AttemptsSubmittedException when a participant has submitted his/her attempts
      * @throws NoOngoingSessionException if there is no ongoing session
      */
-    public void loadAttempts(Participation participation, List<Attempt> attempts)
+    private void loadAttempts(Participation participation, List<Attempt> attempts)
             throws AttemptsSubmittedException, NoOngoingSessionException {
         if (!isOngoing) {
             throw new NoOngoingSessionException();

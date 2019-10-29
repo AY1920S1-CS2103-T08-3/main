@@ -19,14 +19,15 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListCompCommand;
-import seedu.address.logic.commands.ListPartCommand;
+import seedu.address.logic.commands.participation.AddPartCommand;
+import seedu.address.logic.commands.participation.ListPartCommand;
 import seedu.address.logic.commands.session.AttemptLiftedCommand;
-import seedu.address.logic.commands.session.LoadAttemptsCommand;
 import seedu.address.logic.commands.session.NextLifterCommand;
 import seedu.address.logic.commands.session.SessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.participation.AddPartCommandParser;
+import seedu.address.logic.parser.participation.ListPartCommandParser;
 import seedu.address.logic.parser.session.AttemptLiftedCommandParser;
-import seedu.address.logic.parser.session.LoadAttemptsCommandParser;
 import seedu.address.logic.parser.session.NewSessionCommandParser;
 
 /**
@@ -62,6 +63,9 @@ public class SystemParser {
         case AddCompCommand.COMMAND_WORD:
             return new AddCompCommandParser().parse(arguments);
 
+        case AddPartCommand.COMMAND_WORD:
+            return new AddPartCommandParser().parse(arguments);
+
         case AttemptLiftedCommand.COMMAND_WORD:
             return new AttemptLiftedCommandParser().parse(arguments);
 
@@ -91,9 +95,6 @@ public class SystemParser {
 
         case ListPartCommand.COMMAND_WORD:
             return new ListPartCommandParser().parse(arguments);
-
-        case LoadAttemptsCommand.COMMAND_WORD:
-            return new LoadAttemptsCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

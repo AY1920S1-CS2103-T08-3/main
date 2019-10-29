@@ -274,6 +274,11 @@ public class AddCommandTest {
         public ParticipationAttempt getNextLifter() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public ParticipationAttempt getFollowingLifter() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
