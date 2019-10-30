@@ -129,7 +129,6 @@ public class RankCommand extends Command {
 
     /**
      * Compares two participations for sorting
-     *
      */
     public static class OverallScoreComparator implements Comparator<Participation> {
         @Override
