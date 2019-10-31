@@ -8,25 +8,11 @@ import java.util.regex.Pattern;
 
 import seedu.system.logic.commands.Command;
 import seedu.system.logic.commands.insession.AttemptLiftedCommand;
+import seedu.system.logic.commands.insession.EndSessionCommand;
 import seedu.system.logic.commands.insession.NextLifterCommand;
 import seedu.system.logic.commands.insession.RankCommand;
 import seedu.system.logic.commands.insession.RanklistCommand;
-import seedu.system.logic.commands.outofsession.AddCompetitionCommand;
-import seedu.system.logic.commands.outofsession.AddParticipationCommand;
-import seedu.system.logic.commands.outofsession.AddPersonCommand;
-import seedu.system.logic.commands.outofsession.ClearCommand;
-import seedu.system.logic.commands.outofsession.DeleteCompetitionCommand;
-import seedu.system.logic.commands.outofsession.DeletePersonCommand;
-import seedu.system.logic.commands.outofsession.EditCompetitionCommand;
-import seedu.system.logic.commands.outofsession.EditPersonCommand;
-import seedu.system.logic.commands.outofsession.ExitCommand;
-import seedu.system.logic.commands.outofsession.FindPersonCommand;
-import seedu.system.logic.commands.outofsession.ListCompetitionCommand;
-import seedu.system.logic.commands.outofsession.ListParticipationCommand;
-import seedu.system.logic.commands.outofsession.ListPersonCommand;
-import seedu.system.logic.commands.outofsession.OutOfSessionHelpCommand;
-import seedu.system.logic.commands.outofsession.OverallRankCommand;
-import seedu.system.logic.commands.outofsession.StartSessionCommand;
+import seedu.system.logic.commands.outofsession.*;
 import seedu.system.logic.parser.exceptions.ParseException;
 import seedu.system.logic.parser.insession.AddParticipationCommandParser;
 import seedu.system.logic.parser.insession.AttemptLiftedCommandParser;
@@ -94,6 +80,9 @@ public class SystemParser {
         case DeleteCompetitionCommand.COMMAND_WORD:
             return new DeleteCompetitionCommandParser().parse(arguments);
 
+        case DeleteParticipationCommand.COMMAND_WORD:
+            return new DeleteParticipationCommandParser().parse(arguments);
+
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
@@ -129,6 +118,9 @@ public class SystemParser {
 
         case OverallRankCommand.COMMAND_WORD:
             return new OverallRankCommand();
+
+        case EndSessionCommand.COMMAND_WORD:
+            return new EndSessionCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
