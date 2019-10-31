@@ -213,6 +213,16 @@ To display all persons for NUS 2022 competition only:
 
 * `listParticipation NUS 2022`
 
+==== Deleting an existing participation: `deleteParticipation`
+Deletes the participation identified by the index number, used in Participation list (shown in the GUI).
+
+Format: `deleteParticipation INDEX`
+
+Examples:
+
+* `deleteParticipation 2`
+
+
 === Auxiliary commands
 
 ==== Cleaning entire data from the GUI: `clear`
@@ -233,14 +243,14 @@ Sorts and displays ranking of athletes according to the amount of times they are
 
 Format: `overallRank`
 
-==== Starting a competition event along with its competing athletes (person): `session`
+==== Starting a competition event along with its competing athletes (person): `startSession`
 Only display athletes who are participating for a specified competition. 
 
-Format: `session COMPETITION NAME`
+Format: `startSession COMPETITION NAME`
 
 Example:
 
-* `session NUS 2022`
+* `startSession NUS 2022`
 
 == Context: During Competition (In-session)
 
@@ -291,3 +301,10 @@ Example:
 * `ranklist by/overall`
 
 * `ranklist by/squat`
+
+==== Ending and exiting the session `endSession`
+Ends the session, and shifts the user back to the out-of-session state.
+This command is also automatically triggered when a competition has ended,
+which means there are no more attempts for any lifters.
+
+Format: `endSession`
