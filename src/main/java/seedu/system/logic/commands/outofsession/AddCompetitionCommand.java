@@ -17,16 +17,10 @@ import seedu.system.model.competition.Competition;
 /**
  * Adds a Competition to the address book.
  */
-<<<<<<< HEAD:src/main/java/seedu/system/logic/commands/outofsession/AddCompetitionCommand.java
 public class AddCompetitionCommand extends Command {
 
     public static final String COMMAND_WORD = "addCompetition";
     public static final CommandType COMMAND_TYPE = CommandType.COMPETITION;
-=======
-public class AddCompCommand extends Command {
-
-    public static final String COMMAND_WORD = "addComp";
->>>>>>> 96407ab7... checks start/end dates:src/main/java/seedu/address/logic/commands/AddCompCommand.java
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a competition to the address book. "
             + "Parameters: "
             + PREFIX_NAME + "COMPETITION NAME "

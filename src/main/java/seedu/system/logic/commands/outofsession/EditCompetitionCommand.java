@@ -1,24 +1,16 @@
 package seedu.system.logic.commands.outofsession;
 
 import static java.util.Objects.requireNonNull;
-<<<<<<< HEAD:src/main/java/seedu/system/logic/commands/outofsession/EditCompetitionCommand.java
+
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_START_END_DATES;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.system.model.Model.PREDICATE_SHOW_ALL_COMPETITIONS;
-=======
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_START_END_DATES;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_COMPETITIONS;
->>>>>>> 96407ab7... checks start/end dates:src/main/java/seedu/address/logic/commands/EditCompCommand.java
 
 import java.util.List;
 import java.util.Optional;
 
-<<<<<<< HEAD:src/main/java/seedu/system/logic/commands/outofsession/EditCompetitionCommand.java
 import seedu.system.commons.core.Messages;
 import seedu.system.commons.core.index.Index;
 import seedu.system.commons.util.CollectionUtil;
@@ -32,17 +24,6 @@ import seedu.system.model.Model;
 import seedu.system.model.competition.Competition;
 import seedu.system.model.person.CustomDate;
 import seedu.system.model.person.Name;
-=======
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.Model;
-import seedu.address.model.competition.Competition;
-import seedu.address.model.person.CustomDate;
-import seedu.address.model.person.Name;
->>>>>>> 96407ab7... checks start/end dates:src/main/java/seedu/address/logic/commands/EditCompCommand.java
 
 /**
  * Edits the details of an existing competition in the address book.
