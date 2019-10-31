@@ -10,14 +10,27 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#powerlifting-background-read-this-if-you-are-new-to-powerlifting">2. Powerlifting Background: Read this if you are new to powerlifting</a>
 <ul class="sectlevel2">
-<li><a href="#competitions">3.1. Competitions</a></li>
-<li><a href="#getting-competitors-data">3.2. Getting Competitors’ Data</a></li>
-<li><a href="#competition-handling">3.3. Competition Handling</a></li>
-<li><a href="#participation-handling">3.4. Participation Handling</a></li>
-<li><a href="#session-handling">3.5. Session Handling</a></li>
+<li><a href="#what-is-powerlifting">2.1. What is Powerlifting?</a></li>
+<li><a href="#how-are-scores-computed-for-powerlifting">2.2. How are scores computed for Powerlifting?</a></li>
+<li><a href="#how-is-the-overall-score-determined-for-powerlifting">2.3. How is the overall score determined for Powerlifting?</a></li>
+<li><a href="#how-are-winners-determined-for-powerlifting">2.4. How are winners determined for Powerlifting?</a></li>
+</ul>
+</li>
+<li><a href="#quick-start">3. Quick Start</a></li>
+<li><a href="#Features">4. Features</a></li>
+<li><a href="#context-outside-of-competition-out-session">5. Context: Outside Of Competition (Out-session)</a>
+<ul class="sectlevel2">
+<li><a href="#commands-related-to-competition">5.1. Commands related to competition</a></li>
+<li><a href="#commands-related-to-person-athlete">5.2. Commands related to person (athlete)</a></li>
+<li><a href="#commands-related-to-participation-linking-persons-and-competitions-together">5.3. Commands related to participation (linking persons and competitions together)</a></li>
+<li><a href="#auxiliary-commands">5.4. Auxiliary commands</a></li>
+</ul>
+</li>
+<li><a href="#context-during-competition-in-session">6. Context: During Competition (In-session)</a>
+<ul class="sectlevel2">
+<li><a href="#handling-competition-during-a-competition-event">6.1. Handling Competition During a Competition event</a></li>
 </ul>
 </li>
 </ul>
@@ -35,7 +48,50 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="powerlifting-background-read-this-if-you-are-new-to-powerlifting"><a class="link" href="#powerlifting-background-read-this-if-you-are-new-to-powerlifting">2. Powerlifting Background: Read this if you are new to powerlifting</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="what-is-powerlifting"><a class="link" href="#what-is-powerlifting">2.1. What is Powerlifting?</a></h3>
+<div class="paragraph">
+<p>Powerlifting athletes compete in 3 events: The Squat, The Deadlift and The Bench Press.
+For each event, all athletes have 3 tries: they declare a weight which they want to attempt for each try.
+Example: John declares the following 3 weights for the 1st, 2nd and 3rd attempt of the squat respectively: 100kg, 150kg, 200kg.
+The athletes will usually compete in the different events and perform all 3 attempts for an event in the following order:
+The Squat, The Bench Press and finally, The Deadlift.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-are-scores-computed-for-powerlifting"><a class="link" href="#how-are-scores-computed-for-powerlifting">2.2. How are scores computed for Powerlifting?</a></h3>
+<div class="paragraph">
+<p>Suppose that John declares 100kg for the 1st attempt of the squat.
+If he succeeds in clearing the 1st attempt, 100kg will be considered for the overall score for the squat event.
+Consequently, if John declares 200kg for the 2nd attempt of the squat and succeeds in clearing that attempt, 200kg will be considered for the overall score for the squat event.
+For each event, an athlete obtains a score which is the maximum weight of the 3 attempts.
+Example: Suppose John fails the 3rd attempt, the weight he has declared for that attempt will not be considered for the overall score.
+So, the John&#8217;s final score for the squat attempt is max(200kg, 100kg), which is 200kg.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-is-the-overall-score-determined-for-powerlifting"><a class="link" href="#how-is-the-overall-score-determined-for-powerlifting">2.3. How is the overall score determined for Powerlifting?</a></h3>
+<div class="paragraph">
+<p>For each athlete, just sum the maximum weight obtained for each event.
+Suppose John has the following results:
+The maximum weight for squat: 200kg
+The maximum weight for bench press: 150kg
+The maximum weight for deadlift: 300kg
+The total score for John: 200kg + 150kg + 300kg = 650kg</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-are-winners-determined-for-powerlifting"><a class="link" href="#how-are-winners-determined-for-powerlifting">2.4. How are winners determined for Powerlifting?</a></h3>
+<div class="paragraph">
+<p>Just find which athlete has the highest overall score.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Download the software from our git repo.
@@ -49,7 +105,7 @@ Ensure Java 11 is downloaded into your machine.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -72,299 +128,114 @@ Ensure Java 11 is downloaded into your machine.</p>
 </li>
 <li>
 <p>Note that Powerlifting Coordinator has different commands for different contexts.
-There are two contexts: During Competition (In-session) and Outside of Competition (Out-session)</p>
+There are only two contexts: During Competition (In-session) and Outside of Competition (Out-session)</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context-outside-of-competition-out-session"><a class="link" href="#context-outside-of-competition-out-session">5. Context: Outside Of Competition (Out-session)</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="commands-related-to-competition"><a class="link" href="#commands-related-to-competition">5.1. Commands related to competition</a></h3>
+<div class="paragraph">
+<p>Commands related to managing competitions outside of a competition setting shall be introduced first.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-competition-addcompetition"><a class="link" href="#adding-a-new-competition-addcompetition">5.1.1. Adding a new competition: addCompetition</a></h4>
+<div class="paragraph">
+<p>Format: <code>addCompetition n/COMPETITION NAME startDate/START DATE OF COMPETITION endDate/END DATE OF COMPETITION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>addCompetition n/IPF World&#8217;s startDate/12/02/1995 endDate/15/02/1995</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-existing-competition-deletecompetition"><a class="link" href="#deleting-an-existing-competition-deletecompetition">5.1.2. Deleting an existing competition: deleteCompetition</a></h4>
+<div class="paragraph">
+<p>Deletes the competition identified by the index number, used in Competition list (shown in the GUI)</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteCompetition INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>deleteCompetition 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-information-of-a-competition-person-code-editcompetition-code"><a class="link" href="#editing-information-of-a-competition-person-code-editcompetition-code">5.1.3. Editing information of a competition person: <code>editCompetition</code></a></h4>
+<div class="paragraph">
+<p>Edits the details of the competition identified by the index number, used in the Competition list (shown in the GUI).
+Existing values will be overwritten by the input values.
+In addition to INDEX, you must supply a value for at least one of the following fields:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>COMPETITION NAME</p>
+</li>
+<li>
+<p>START DATE OF COMPETITION</p>
+</li>
+<li>
+<p>END DATE OF COMPETITION</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: <code>editCompetition INDEX (must be a positive integer) [n/COMPETITION NAME] [startDate/START DATE OF COMPETITION] [endDate/END DATE OF COMPETITION]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>1.When all fields are supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editCompetition 1 n/IPF World&#8217;s startDate/12/02/1995 endDate/15/02/1995</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>2.When only 1 field is supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editCompetition 1 n/IPF World&#8217;s</code></p>
+</li>
+<li>
+<p><code>editCompetition 1 endDate/15/02/1995</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-records-of-current-and-past-competitions-listcompetition"><a class="link" href="#listing-all-records-of-current-and-past-competitions-listcompetition">5.1.4. Listing all records of current and past competitions: listCompetition</a></h4>
+<div class="paragraph">
+<p>This command has no parameters</p>
+</div>
+<div class="paragraph">
+<p>Format: listCompetition</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="competitions"><a class="link" href="#competitions">3.1. Competitions</a></h3>
+<h3 id="commands-related-to-person-athlete"><a class="link" href="#commands-related-to-person-athlete">5.2. Commands related to person (athlete)</a></h3>
 <div class="paragraph">
-<p>The commands listed below in 3.2, 3.3, … are based on the context of a competition.</p>
+<p>Commands related to managing persons (athletes) outside of a competition setting shall be introduced now.</p>
 </div>
 <div class="sect3">
-<h4 id="context-no-competition"><a class="link" href="#context-no-competition">3.1.1. Context: No Competition</a></h4>
+<h4 id="adding-a-new-person-code-addperson-code"><a class="link" href="#adding-a-new-person-code-addperson-code">5.2.1. Adding a new person: <code>addPerson</code></a></h4>
 <div class="paragraph">
-<p><strong>Commands</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Save: this changes the context to <code>Creating a competition</code></p>
-</li>
-<li>
-<p>Select: changes the context of a <code>Competition</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="context-creating-a-competition"><a class="link" href="#context-creating-a-competition">3.1.2. Context: Creating a Competition</a></h4>
-<div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>name</p>
-</li>
-<li>
-<p>date</p>
-</li>
-<li>
-<p>Type</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Commands</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Save</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="context-on-a-competition"><a class="link" href="#context-on-a-competition">3.1.3. Context: On a Competition</a></h4>
-<div class="paragraph">
-<p><strong>Commands</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Athletes</p>
-</li>
-<li>
-<p>List</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Prints a list of competitions</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Finalise</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Id</p>
-</li>
-<li>
-<p>name</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Marks the competition as completed and prevents further edits</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Switch</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>id</p>
-</li>
-<li>
-<p>name</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Switch context to a different competition</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Delete</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Parameters</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Id</p>
-</li>
-<li>
-<p>name</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="getting-competitors-data"><a class="link" href="#getting-competitors-data">3.2. Getting Competitors’ Data</a></h3>
-<div class="sect3">
-<h4 id="sorting-athletes-code-sort-code"><a class="link" href="#sorting-athletes-code-sort-code">3.2.1. Sorting Athletes: <code>sort</code></a></h4>
-<div class="paragraph">
-<p>Groups and sorts all athletes into their respective weight classes or attempted weights for an event.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>sort wc/WEIGHTCLASS</code></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>sort aw/EVENT</code></p>
-</div>
-<div class="paragraph">
-<p>Example(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>sort wc/90kg</code></p>
-</li>
-<li>
-<p><code>sort aw/Squat</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="getting-top-scorers-code-score-code"><a class="link" href="#getting-top-scorers-code-score-code">3.2.2. Getting top scorers: <code>score</code></a></h4>
-<div class="paragraph">
-<p>Gets and displays leading athletes and their scores for individual events or for their total scores.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>score e/EVENT t</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>to get scores for individual events only:
-<code>score e/Squat</code></p>
-</li>
-<li>
-<p>to get total scores only
-<code>score t</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="getting-rank-of-an-athlete-code-rank-code"><a class="link" href="#getting-rank-of-an-athlete-code-rank-code">3.2.3. Getting rank of an athlete: <code>rank</code></a></h4>
-<div class="paragraph">
-<p>Gets current position of an athlete relative to other athletes for a competition.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>rank n/NAME comp/COMPETITION</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>rank n/John comp/IPF 2020</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="affiliation-of-an-athlete-code-aff-code"><a class="link" href="#affiliation-of-an-athlete-code-aff-code">3.2.4. Affiliation of an athlete: <code>aff</code></a></h4>
-<div class="paragraph">
-<p>Gets the name of an organisation and a country, an athlete is associated with.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>aff n/NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>aff n/John</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-data-of-an-athlete-code-edit-code"><a class="link" href="#edit-data-of-an-athlete-code-edit-code">3.2.5. Edit data of an athlete: <code>edit</code></a></h4>
-<div class="paragraph">
-<p>Edits field(s) of information belonging to an athlete</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>edit n/CURRENTNAME newN/NEWNAME bw/BODYWEIGHT wc/WEIGHTCLASS aff/AFFILIATION s/SCORE</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>To edit name only:
-<code>edit n/John newN/Johnny</code></p>
-</li>
-<li>
-<p>To edit bodyweight only:
-<code>edit n/John bw/100kg</code></p>
-</li>
-<li>
-<p>To edit subset of fields:
-<code>edit n/John newN/Johnny wc/100kg aff/Singapore</code></p>
-</li>
-<li>
-<p>To edit all fields:
-<code>edit n/John newN/Johnny bw/90 wc/90 aff/Singapore s/1000</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="get-top-3-athletes-code-top3-code"><a class="link" href="#get-top-3-athletes-code-top3-code">3.2.6. Get top 3 athletes: <code>top3</code></a></h4>
-<div class="paragraph">
-<p>Gets top 3 athletes (currently in 1st, 2nd and 3rd) for each weight class.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>top3 wc/WEIGHTCLASS</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="paragraph">
-<p><code>top3 wc/100kg</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="competition-handling"><a class="link" href="#competition-handling">3.3. Competition Handling</a></h3>
-<div class="paragraph">
-<p>This feature adds/edits/lists competitions which are available on the UI.</p>
-</div>
-<div class="sect3">
-<h4 id="adds-a-new-competition-code-addcomp-code"><a class="link" href="#adds-a-new-competition-code-addcomp-code">3.3.1. Adds a new competition: <code>addComp</code></a></h4>
-<div class="paragraph">
-<p>Adds a new competition to the existing list of competitions on the UI.
-User supplies competition name, start and end dates of competition to the command prompt.
-Dates should be in DD/MM/YYYY format. Eg: 19/01/2019 or 01/02/2020.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>addComp n/COMPETITION_NAME startDate/START_DATE_OF_COMPETITION endDate/END_DATE_OF_COMPETITION</code></p>
+<p>Format: <code>addPerson n/NAME dob/DATE OF BIRTH g/GENDER</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -372,95 +243,18 @@ Dates should be in DD/MM/YYYY format. Eg: 19/01/2019 or 01/02/2020.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addComp n/IWF startDate/18/01/2019 endDate/19/01/2019</code></p>
+<p><code>addPerson n/John Doe dob/12/02/1995 g/male</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edits-a-new-competition-code-editcomp-code"><a class="link" href="#edits-a-new-competition-code-editcomp-code">3.3.2. Edits a new competition: <code>editComp</code></a></h4>
+<h4 id="deleting-an-existing-person-code-deleteperson-code"><a class="link" href="#deleting-an-existing-person-code-deleteperson-code">5.2.2. Deleting an existing person: <code>deletePerson</code></a></h4>
 <div class="paragraph">
-<p>Changes details of an existing competition listed on the UI to updated ones.
-INDEX here refers to the position of the existing competition in the list of competitions shown on the UI.
-Fields which come after INDEX refers to data fields which a user wish to change.
-Dates should be in DD/MM/YYYY format. Eg: 19/01/2019 or 01/02/2020.</p>
+<p>Deletes the person identified by the index number, used in Person list (shown in the GUI).</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>editComp INDEX n/NAME startDate/START_DATE_OF_COMPETITION endDate/END_DATE_OF_COMPETITION</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editComp 1 n/IWF startDate/18/01/2019 endDate/19/01/2019</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deletes-a-new-competition-code-deletecomp-code"><a class="link" href="#deletes-a-new-competition-code-deletecomp-code">3.3.3. Deletes a new competition: <code>deleteComp</code></a></h4>
-<div class="paragraph">
-<p>Removes an existing competition from a list of competitions listed on the UI.
-INDEX here refers to the position of the existing competition in the list of competitions shown on the UI.</p>
-</div>
-<div class="paragraph">
-<p>Dates should be in DD/MM/YYYY format. Eg: 19/01/2019 or 01/02/2020.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>deleteComp INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteComp 1</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="lists-all-competitions-code-listcomp-code"><a class="link" href="#lists-all-competitions-code-listcomp-code">3.3.4. Lists all competitions: <code>listComp</code></a></h4>
-<div class="paragraph">
-<p>Displays all competitions available.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>listComp</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listComp</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="participation-handling"><a class="link" href="#participation-handling">3.4. Participation Handling</a></h3>
-<div class="paragraph">
-<p>This feature creates an associated participation between an existing person and competition.
-Every participation will have a list of 9 attempts, which they are lifting for that particular competition they are taking part in.
-A person can participate in more than one competition, each with a different set of attempts.</p>
-</div>
-<div class="sect3">
-<h4 id="add-a-new-participation-code-addpart-code"><a class="link" href="#add-a-new-participation-code-addpart-code">3.4.1. Add a new participation <code>addPart</code></a></h4>
-<div class="paragraph">
-<p>Creates the associated participation between a person and a competition.
-To create participation, the athletes 9 attempts for the 3 lifts should also be submitted to prepare for the competition.</p>
-</div>
-<div class="paragraph">
-<p>S is abbreviated for squat, B for bench, and D for deadlift. The numbers 1,2,3 represents the attempt number for that lift.
-For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>addPart n/ATHLETE_NAME c/COMP_NAME s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
+<p>Format: <code>deletePerson INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -468,21 +262,68 @@ For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addPart n/Farhanna Fahrid c/Asian Powerlifting Championships 2019 s/115/120/125 b/40/47.5/55 d/155/165/170</code></p>
-</li>
-<li>
-<p><code>addPart n/Marcus Tay c/Test of Strength 2019 s/90/200/205 b/135/140/145 d/210/220/230</code></p>
+<p><code>deletePerson 1</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-participations-code-listpart-code"><a class="link" href="#list-participations-code-listpart-code">3.4.2. List participations <code>listPart</code></a></h4>
+<h4 id="editing-information-of-an-existing-person-code-editperson-code"><a class="link" href="#editing-information-of-an-existing-person-code-editperson-code">5.2.3. Editing information of an existing person: <code>editPerson</code></a></h4>
 <div class="paragraph">
-<p>Lists all participations present in the address book, or those associated to an existing competition.</p>
+<p>Edits the details of the person identified by the index number, used in the Person list (shown in the GUI).
+Existing values will be overwritten by the input values.
+In addition to INDEX, you must supply a value for at least one of the following fields:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>NAME</p>
+</li>
+<li>
+<p>DATEOFBIRTH</p>
+</li>
+<li>
+<p>GENDER</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Format: <code>listPart COMPETITION_NAME (optional)</code></p>
+<p>Format: <code>editPerson INDEX (must be a positive integer) [n/NAME] [dob/DATEOFBIRTH] [g/GENDER]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>1.When all fields are supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editPerson 1 n/John Doe dob/12/02/1995 g/MALE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>2.When only 1 field is supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editPerson 1 n/John Doe</code></p>
+</li>
+<li>
+<p><code>editPerson 1 dob/12/02/1995</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-person-s-code-findperson-code"><a class="link" href="#finding-person-s-code-findperson-code">5.2.4. Finding person(s): <code>findPerson</code></a></h4>
+<div class="paragraph">
+<p>Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a numerically ordered list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findPerson [KEYWORD(s)]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -490,78 +331,196 @@ For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>listPart</code> to list all existing participations in the address book.</p>
+<p>Find Alex Yeoh only:
+<code>findPerson Alex</code></p>
 </li>
 <li>
-<p><code>listPart NUS Powerlifting Open 2019</code> to list all participations associated to the competition.</p>
+<p>Find Alex Yeoh only:
+<code>findPerson alex</code></p>
+</li>
+<li>
+<p>Find Alex Yeoh only:
+<code>findPerson yeoh</code></p>
+</li>
+<li>
+<p>Find Alex Yeoh and Bernice Yu:
+<code>findPerson yeoh yu</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-existing-persons-code-listperson-code"><a class="link" href="#listing-all-existing-persons-code-listperson-code">5.2.5. Listing all existing persons: <code>listPerson</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>listPerson</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="commands-related-to-participation-linking-persons-and-competitions-together"><a class="link" href="#commands-related-to-participation-linking-persons-and-competitions-together">5.3. Commands related to participation (linking persons and competitions together)</a></h3>
+<div class="paragraph">
+<p>Commands related to managing persons participating in competitions will be introduced now.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-participation-code-addparticipation-code"><a class="link" href="#adding-a-new-participation-code-addparticipation-code">5.3.1. Adding a new participation: <code>addParticipation</code></a></h4>
+<div class="paragraph">
+<p>Adds an existing person as shown in the Person list (shown in the GUI) into an existing competition as shown in the Competition list (shown in the GUI). User also needs to supply 3 weight attempts for each of the following events:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Squat</p>
+</li>
+<li>
+<p>Bench</p>
+</li>
+<li>
+<p>Deadlift</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: `addParticipation n/Athlete_Name c/Competition Name s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3 `
+Note: S1 means the 1st attempted weight for the Squat and so on.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addParticipation n/Ho c/NUS 2022 s/100/101/102 b/300/400/500 d/1000/2000/3000</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-persons-who-are-participating-in-all-competitions-or-for-one-competition-code-listparticipation-code"><a class="link" href="#listing-all-persons-who-are-participating-in-all-competitions-or-for-one-competition-code-listparticipation-code">5.3.2. Listing all persons who are participating in all competitions or for one competition: <code>listParticipation</code></a></h4>
+<div class="paragraph">
+<p>Note that the user can choose to provide a competition name or not.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listParticipation [COMPETITION NAME]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+To display all persons for all competitions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listParticipation</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To display all persons for NUS 2022 competition only:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listParticipation NUS 2022</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-existing-participation-code-deleteparticipation-code"><a class="link" href="#deleting-an-existing-participation-code-deleteparticipation-code">5.3.3. Deleting an existing participation: <code>deleteParticipation</code></a></h4>
+<div class="paragraph">
+<p>Deletes the participation identified by the index number, used in Participation list (shown in the GUI).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteParticipation INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteParticipation 2</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="session-handling"><a class="link" href="#session-handling">3.5. Session Handling</a></h3>
+<h3 id="auxiliary-commands"><a class="link" href="#auxiliary-commands">5.4. Auxiliary commands</a></h3>
+<div class="sect3">
+<h4 id="cleaning-entire-data-from-the-gui-code-clear-code"><a class="link" href="#cleaning-entire-data-from-the-gui-code-clear-code">5.4.1. Cleaning entire data from the GUI: <code>clear</code></a></h4>
+<div class="paragraph">
+<p>Removes all persons, participations and competitions information from the GUI</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-and-closing-the-gui-code-exit-code"><a class="link" href="#exiting-and-closing-the-gui-code-exit-code">5.4.2. Exiting and closing the GUI: <code>exit</code></a></h4>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-help-instructions-code-help-code"><a class="link" href="#showing-help-instructions-code-help-code">5.4.3. Showing help instructions: <code>help</code></a></h4>
+<div class="paragraph">
+<p>Display URL to this User Guide to teach users how to use the appropriate commands for Outside Of Competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-overall-ranking-code-overallrank-code"><a class="link" href="#showing-overall-ranking-code-overallrank-code">5.4.4. Showing overall ranking: <code>overallRank</code></a></h4>
+<div class="paragraph">
+<p>Sorts and displays ranking of athletes according to the amount of times they are the overall champions for any competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>overallRank</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="starting-a-competition-event-along-with-its-competing-athletes-person-code-startsession-code"><a class="link" href="#starting-a-competition-event-along-with-its-competing-athletes-person-code-startsession-code">5.4.5. Starting a competition event along with its competing athletes (person): <code>startSession</code></a></h4>
+<div class="paragraph">
+<p>Only display athletes who are participating for a specified competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>startSession COMPETITION NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>startSession NUS 2022</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context-during-competition-in-session"><a class="link" href="#context-during-competition-in-session">6. Context: During Competition (In-session)</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="handling-competition-during-a-competition-event"><a class="link" href="#handling-competition-during-a-competition-event">6.1. Handling Competition During a Competition event</a></h3>
 <div class="paragraph">
 <p>This feature handles the entire flow of each session during Meet Day. It allows event
-organisers to submit an Athlete’s Squat, Bench, Deadlift attempts, as well as the
+organisers to submit a person(athlete)’s Squat, Bench, Deadlift attempts, as well as the
 success of their lifts. It will show the relevant information to prepare for the
 athletes lift (displaying name, weight, etc). The flow of events, and the commands to
 facilitate the competition session will be presented in order below:</p>
 </div>
 <div class="paragraph">
-<p>This feature handles the entire flow of each session during Meet Day. It allows event organisers to submit an Athlete’s Squat, Bench, Deadlift attempts, as well as the success of their lifts. It will show the relevant information to prepare for the athletes lift (displaying name, weight, etc).
+<p>This feature handles the entire flow of each session during Meet Day. It allows event organisers to submit a person’s Squat, Bench, Deadlift attempts, as well as the success of their lifts. It will show the relevant information to prepare for the athletes lift (displaying name, weight, etc).
 The flow of events, and the commands to facilitate the competition session will be presented in order below:</p>
 </div>
 <div class="sect3">
-<h4 id="prepare-for-a-new-session-code-session-code"><a class="link" href="#prepare-for-a-new-session-code-session-code">3.5.1. Prepare for a new session: <code>session</code></a></h4>
+<h4 id="updating-success-or-failure-of-a-lift-code-lift-code"><a class="link" href="#updating-success-or-failure-of-a-lift-code-lift-code">6.1.1. Updating success or failure of a lift: <code>lift</code></a></h4>
 <div class="paragraph">
-<p>Loads the session of SBD lifts for the given name of the competition (provided it exists), separated by a space.
-This will load all the athletes who are participating in this competition, and start the session associated with this competition.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>session COMPETITION_NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>session Test of Strength 2019</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="submit-attempts-code-attempts-code"><a class="link" href="#submit-attempts-code-attempts-code">3.5.2. Submit attempts: <code>attempts</code></a></h4>
-<div class="paragraph">
-<p>Submits all 9 attempts for the 3 lifts, separating the lifts by a single space, and the attempts for each lift with a slash.</p>
-</div>
-<div class="paragraph">
-<p>S is abbreviated for squat, B for bench, and D for deadlift. The numbers 1,2,3 represents the attempt number for that lift.
-For example, S1 means squat attempt 1, and D3 means deadlift attempt 3.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>attempts n/NAME s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>attempts n/farhannafahrid s/115/120/125 b/40/47.5/55 d/155/165/170</code></p>
-</li>
-<li>
-<p><code>attempts n/marcustay s/90/200/205 b/135/140/145 d/210/220/230</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="update-lift-or-no-lift-code-lift-code"><a class="link" href="#update-lift-or-no-lift-code-lift-code">3.5.3. Update lift or no lift: <code>lift</code></a></h4>
-<div class="paragraph">
-<p>Updates whether the athlete succeeds in his/her attempt, or fails it.
+<p>Updates whether the person (athlete) succeeds in his/her attempt, or fails it.
 The lift updated will be the one that was just called up.</p>
 </div>
 <div class="paragraph">
@@ -582,15 +541,74 @@ The lift updated will be the one that was just called up.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">3.5.4. Get the next lifter in line: <code>next</code></a></h4>
+<h4 id="getting-the-rank-of-a-person-athlete-for-a-given-competition-code-rank-code"><a class="link" href="#getting-the-rank-of-a-person-athlete-for-a-given-competition-code-rank-code">6.1.2. Getting the rank of a person (athlete) for a given competition: <code>rank</code></a></h4>
 <div class="paragraph">
-<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular lift and attempt.
-If there are no more attempts to be made by any lifter, this command will trigger the end of the competition.</p>
+<p>Retrieves the rank of a person relative other competitors in the competition.</p>
 </div>
 <div class="paragraph">
-<p>Format/Example: <code>next</code></p>
+<p>Format: <code>rank n/NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rank n/Ho</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-the-rank-of-a-person-athlete-for-a-given-competition-using-a-specific-criterion-code-rank-code"><a class="link" href="#getting-the-rank-of-a-person-athlete-for-a-given-competition-using-a-specific-criterion-code-rank-code">6.1.3. Getting the rank of a person (athlete) for a given competition, using a specific criterion: <code>rank</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the rank of a person relative other competitors in the competition using a condition.
+Available conditions are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Squat</p>
+</li>
+<li>
+<p>Deadlift</p>
+</li>
+<li>
+<p>Bench Press</p>
+</li>
+<li>
+<p>Overall (overall score)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: <code>ranklist by/CRITERION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ranklist by/overall</code></p>
+</li>
+<li>
+<p><code>ranklist by/squat</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ending-and-exiting-the-session-code-endsession-code"><a class="link" href="#ending-and-exiting-the-session-code-endsession-code">6.1.4. Ending and exiting the session <code>endSession</code></a></h4>
+<div class="paragraph">
+<p>Ends the session, and shifts the user back to the out-of-session state.
+This command is also automatically triggered when a competition has ended,
+which means there are no more attempts for any lifters.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>endSession</code></p>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 11:54:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 16:20:14 UTC</div></div></div></body></html>
