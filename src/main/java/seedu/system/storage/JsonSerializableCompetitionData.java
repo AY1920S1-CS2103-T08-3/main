@@ -1,5 +1,6 @@
 package seedu.system.storage;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +43,7 @@ public class JsonSerializableCompetitionData implements JsonSerializableData {
     }
 
     @Override
-    public Data toModelType() throws IllegalValueException {
+    public Data toModelType() throws IllegalValueException, ParseException {
         Data<Competition> competitions = new Data();
         for (JsonAdaptedCompetition jsonAdaptedCompetition : this.competitions) {
             Competition competition = jsonAdaptedCompetition.toModelType();

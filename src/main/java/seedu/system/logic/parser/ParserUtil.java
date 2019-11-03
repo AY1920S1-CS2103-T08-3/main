@@ -54,7 +54,7 @@ public class ParserUtil {
      * @return CustomeDate object with date trimmed.
      * @throws ParseException if the given {@code dateOfBirth} is invalid.
      */
-    public static CustomDate parseDate(String date) throws ParseException {
+    public static CustomDate parseDate(String date) throws ParseException, java.text.ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
         if (!CustomDate.isValidDate(trimmedDate)) {

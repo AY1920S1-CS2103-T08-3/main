@@ -47,15 +47,23 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditPersonCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditPersonCommand.EditPersonDescriptor DESC_BOB;
+    private static EditPersonCommand.EditPersonDescriptor descAmy;
+    private static EditPersonCommand.EditPersonDescriptor descBob;
 
     static {
-        DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withDateOfBirth(VALID_DOB_AMY).withGender(VALID_GENDER_AMY).build();
+        try {
+            descAmy = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
+                    .withDateOfBirth(VALID_DOB_AMY).withGender(VALID_GENDER_AMY).build();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
-        DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withDateOfBirth(VALID_DOB_BOB).withGender(VALID_GENDER_BOB).build();
+        try {
+            descBob = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
+                    .withDateOfBirth(VALID_DOB_BOB).withGender(VALID_GENDER_BOB).build();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -113,5 +121,14 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
+
+    public static EditPersonCommand.EditPersonDescriptor getDescAmy() {
+        return descAmy;
+    }
+
+    public static EditPersonCommand.EditPersonDescriptor getDescBob() {
+        return descBob;
+    }
+
 
 }

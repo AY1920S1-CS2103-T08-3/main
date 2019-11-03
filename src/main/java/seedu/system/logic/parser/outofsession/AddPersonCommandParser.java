@@ -26,7 +26,7 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
      * and returns an AddPersonCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddPersonCommand parse(String args) throws ParseException {
+    public AddPersonCommand parse(String args) throws ParseException, java.text.ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DOB, PREFIX_GENDER);
 

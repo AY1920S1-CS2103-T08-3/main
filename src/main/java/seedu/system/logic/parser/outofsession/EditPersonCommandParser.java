@@ -25,7 +25,7 @@ public class EditPersonCommandParser implements Parser<EditPersonCommand> {
      * and returns an EditPersonCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public EditPersonCommand parse(String args) throws ParseException {
+    public EditPersonCommand parse(String args) throws ParseException, java.text.ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DOB, PREFIX_GENDER);

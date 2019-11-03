@@ -1,5 +1,7 @@
 package seedu.system.testutil;
 
+import java.text.ParseException;
+
 import seedu.system.logic.commands.outofsession.EditPersonCommand.EditPersonDescriptor;
 import seedu.system.model.person.CustomDate;
 import seedu.system.model.person.Gender;
@@ -42,7 +44,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code dateOfBirth} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withDateOfBirth(String dateOfBirth) {
+    public EditPersonDescriptorBuilder withDateOfBirth(String dateOfBirth) throws ParseException {
         descriptor.setDateOfBirth(new CustomDate(dateOfBirth));
         return this;
     }

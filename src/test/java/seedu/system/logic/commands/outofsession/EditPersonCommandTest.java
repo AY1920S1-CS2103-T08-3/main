@@ -2,17 +2,19 @@ package seedu.system.logic.commands.outofsession;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.system.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.system.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.system.logic.commands.CommandTestUtil.VALID_DOB_BOB;
 import static seedu.system.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.system.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.system.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.system.logic.commands.CommandTestUtil.getDescAmy;
+import static seedu.system.logic.commands.CommandTestUtil.getDescBob;
 import static seedu.system.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.system.testutil.TypicalCompetitions.getTypicalCompetitionData;
 import static seedu.system.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.system.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.system.testutil.TypicalPersons.getTypicalPersonData;
+
+import java.text.ParseException;
 
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +50,8 @@ public class EditPersonCommandTest {
             sampleParticipationData,
             new UserPrefs()
         );
+    private EditPersonDescriptor descAmy = getDescAmy();
+    private EditPersonDescriptor descBob = getDescBob();
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -65,7 +69,7 @@ public class EditPersonCommandTest {
     }
 
     @Test
-    public void execute_someFieldsSpecifiedUnfilteredList_success() {
+    public void execute_someFieldsSpecifiedUnfilteredList_success() throws ParseException {
         Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
         Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
 
@@ -165,10 +169,10 @@ public class EditPersonCommandTest {
 
     @Test
     public void equals() {
-        final EditPersonCommand standardCommand = new EditPersonCommand(INDEX_FIRST_PERSON, DESC_AMY);
+        final EditPersonCommand standardCommand = new EditPersonCommand(INDEX_FIRST_PERSON, descAmy);
 
         // same values -> returns true
-        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
+        EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(descAmy);
         EditPersonCommand commandWithSameValues = new EditPersonCommand(INDEX_FIRST_PERSON, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -182,10 +186,10 @@ public class EditPersonCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditPersonCommand(INDEX_SECOND_PERSON, DESC_AMY)));
+        assertFalse(standardCommand.equals(new EditPersonCommand(INDEX_SECOND_PERSON, descAmy)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditPersonCommand(INDEX_FIRST_PERSON, DESC_BOB)));
+        assertFalse(standardCommand.equals(new EditPersonCommand(INDEX_FIRST_PERSON, descBob)));
     }
 
 }

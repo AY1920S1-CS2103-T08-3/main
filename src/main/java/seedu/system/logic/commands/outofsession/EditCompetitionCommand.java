@@ -102,7 +102,7 @@ public class EditCompetitionCommand extends Command {
         CustomDate updatedEndDate = editCompetitionDescriptor.getEndDate().orElse(compToEdit.getEndDate());
         System.out.println(updatedStartDate.toString());
         System.out.println(updatedEndDate.toString());
-        if (!updatedStartDate.before(updatedEndDate)) {
+        if (!CustomDate.isValidDateRange(updatedStartDate, updatedEndDate)) {
             throw new ParseException(MESSAGE_INVALID_START_END_DATES);
         }
         return new Competition(updatedName, updatedStartDate, updatedEndDate);

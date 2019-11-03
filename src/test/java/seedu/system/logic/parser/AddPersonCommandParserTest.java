@@ -16,7 +16,7 @@ import static seedu.system.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 
 import static seedu.system.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.system.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.system.testutil.TypicalPersons.BOB;
+import static seedu.system.testutil.TypicalPersons.getBob;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,9 +30,11 @@ import seedu.system.testutil.PersonBuilder;
 public class AddPersonCommandParserTest {
     private AddPersonCommandParser parser = new AddPersonCommandParser();
 
+    private Person bob = getBob();
+
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).build();
+        Person expectedPerson = new PersonBuilder(bob).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + DOB_DESC_BOB + GENDER_DESC_BOB,

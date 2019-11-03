@@ -1,5 +1,7 @@
 package seedu.system.testutil;
 
+import java.text.ParseException;
+
 import seedu.system.model.person.CustomDate;
 import seedu.system.model.person.Gender;
 import seedu.system.model.person.Name;
@@ -12,8 +14,16 @@ import seedu.system.model.person.Person;
 public class PersonBuilder {
 
     public static final Name DEFAULT_NAME = new Name("Alice Pline");
-    public static final CustomDate DEFAULT_DOB = new CustomDate("12/02/1995");
     public static final Gender DEFAULT_GENDER = Gender.FEMALE;
+    private static CustomDate defaultDOB;
+
+    static {
+        try {
+            defaultDOB = new CustomDate("12/02/1995");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     private Name name;
     private CustomDate dateOfBirth;
@@ -21,7 +31,7 @@ public class PersonBuilder {
 
     public PersonBuilder() {
         name = DEFAULT_NAME;
-        dateOfBirth = DEFAULT_DOB;
+        dateOfBirth = defaultDOB;
         gender = DEFAULT_GENDER;
 
     }
@@ -47,7 +57,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code DateOfBirth} of the {@code Person} that we are building.
      */
-    public PersonBuilder withDateOfBirth(String dateOfBirth) {
+    public PersonBuilder withDateOfBirth(String dateOfBirth) throws ParseException {
         this.dateOfBirth = new CustomDate(dateOfBirth);
         return this;
     }

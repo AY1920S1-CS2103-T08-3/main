@@ -1,5 +1,7 @@
 package seedu.system.model.util;
 
+import java.text.ParseException;
+
 import seedu.system.model.Data;
 import seedu.system.model.ReadOnlyData;
 import seedu.system.model.competition.Competition;
@@ -13,7 +15,7 @@ import seedu.system.model.person.Person;
  * Contains utility methods for populating {@code Data} with sample data.
  */
 public class SampleDataUtil {
-    public static Person[] getSamplePersons() {
+    public static Person[] getSamplePersons() throws ParseException {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new CustomDate("02/02/1995"), Gender.MALE),
             new Person(new Name("Bernice Yu"), new CustomDate("03/02/1997"), Gender.FEMALE),
@@ -21,7 +23,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyData<Person> getSamplePersonData() {
+    public static ReadOnlyData<Person> getSamplePersonData() throws ParseException {
         Data<Person> persons = new Data<>();
         for (Person samplePerson : getSamplePersons()) {
             persons.addUniqueElement(samplePerson);
@@ -29,7 +31,7 @@ public class SampleDataUtil {
         return persons;
     }
 
-    public static Competition[] getSampleCompetitions() {
+    public static Competition[] getSampleCompetitions() throws ParseException {
         return new Competition[]{
             new Competition(
                 new Name("NUS Powerlifting Open 2019"),
@@ -38,7 +40,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyData<Competition> getSampleCompetitionData() {
+    public static ReadOnlyData<Competition> getSampleCompetitionData() throws ParseException {
         Data<Competition> competitions = new Data<>();
         for (Competition sampleCompetition : getSampleCompetitions()) {
             competitions.addUniqueElement(sampleCompetition);

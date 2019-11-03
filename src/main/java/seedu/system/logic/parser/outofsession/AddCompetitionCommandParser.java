@@ -27,7 +27,7 @@ public class AddCompetitionCommandParser implements Parser<AddCompetitionCommand
      *
      * @throws ParseException if the user input does not conform to the expected format
      */
-    public AddCompetitionCommand parse(String args) throws ParseException {
+    public AddCompetitionCommand parse(String args) throws ParseException, java.text.ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_DATE, PREFIX_END_DATE);
 
@@ -41,7 +41,7 @@ public class AddCompetitionCommandParser implements Parser<AddCompetitionCommand
         CustomDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
         CustomDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
-        if (!startDate.before(endDate)) {
+        if (!CustomDate.isValidDateRange(startDate, endDate)) {
             throw new ParseException(MESSAGE_INVALID_START_END_DATES);
         }
 

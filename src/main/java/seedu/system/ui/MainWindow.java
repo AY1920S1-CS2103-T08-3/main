@@ -185,7 +185,8 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see seedu.system.logic.Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private CommandResult executeCommand(String commandText) throws CommandException, ParseException,
+            java.text.ParseException {
         try {
             CommandResult commandResult = logic.execute(commandText);
             CommandType commandType = commandResult.getCommandType();
@@ -201,7 +202,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             return commandResult;
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | java.text.ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;

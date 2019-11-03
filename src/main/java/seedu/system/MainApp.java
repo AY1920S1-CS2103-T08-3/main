@@ -2,6 +2,7 @@ package seedu.system;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -118,6 +119,8 @@ public class MainApp extends Application {
             initialPersonData = new Data();
             initialCompetitionData = new Data();
             initialParticipationData = new Data();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         return new ModelManager(initialPersonData, initialCompetitionData, initialParticipationData, userPrefs);

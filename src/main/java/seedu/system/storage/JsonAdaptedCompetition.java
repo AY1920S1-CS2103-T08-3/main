@@ -45,7 +45,7 @@ class JsonAdaptedCompetition implements JsonAdaptedData<Competition> {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted competition.
      */
-    public Competition toModelType() throws IllegalValueException {
+    public Competition toModelType() throws IllegalValueException, java.text.ParseException {
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }

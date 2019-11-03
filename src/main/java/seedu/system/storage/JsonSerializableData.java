@@ -1,5 +1,7 @@
 package seedu.system.storage;
 
+import java.text.ParseException;
+
 import seedu.system.commons.exceptions.IllegalValueException;
 import seedu.system.model.Data;
 
@@ -13,5 +15,5 @@ public interface JsonSerializableData {
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public Data toModelType() throws IllegalValueException;
+    public Data toModelType() throws IllegalValueException, ParseException;
 }

@@ -7,7 +7,7 @@ import static seedu.system.logic.commands.CommandTestUtil.DOB_DESC_AMY;
 import static seedu.system.logic.commands.CommandTestUtil.GENDER_DESC_AMY;
 import static seedu.system.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.system.testutil.Assert.assertThrows;
-import static seedu.system.testutil.TypicalPersons.AMY;
+import static seedu.system.testutil.TypicalPersons.getAmy;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -32,11 +32,11 @@ import seedu.system.storage.StorageManager;
 import seedu.system.testutil.PersonBuilder;
 
 public class LogicManagerTest {
-    private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
 
+    private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
     @TempDir
     public Path temporaryFolder;
-
+    private Person amy = getAmy();
     private Model model = new ModelManager();
     private Logic logic;
 
@@ -52,6 +52,7 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(jsonSystemStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
+
 
     @Test
     public void execute_invalidCommandFormat_throwsParseException() {
@@ -87,7 +88,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = AddPersonCommand.COMMAND_WORD + NAME_DESC_AMY + DOB_DESC_AMY + GENDER_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).build();
+        Person expectedPerson = new PersonBuilder(amy).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
@@ -108,7 +109,8 @@ public class LogicManagerTest {
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-                                      Model expectedModel) throws CommandException, ParseException {
+                                      Model expectedModel) throws CommandException, ParseException,
+            java.text.ParseException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);

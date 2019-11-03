@@ -3,9 +3,9 @@ package seedu.system.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.system.testutil.Assert.assertThrows;
-import static seedu.system.testutil.TypicalPersons.ALICE;
-import static seedu.system.testutil.TypicalPersons.HOON;
-import static seedu.system.testutil.TypicalPersons.IDA;
+import static seedu.system.testutil.TypicalPersons.getAlice;
+import static seedu.system.testutil.TypicalPersons.getHoon;
+import static seedu.system.testutil.TypicalPersons.getIda;
 import static seedu.system.testutil.TypicalPersons.getTypicalPersonData;
 
 import java.io.IOException;
@@ -21,10 +21,15 @@ import seedu.system.model.ReadOnlyData;
 import seedu.system.model.person.Person;
 
 public class JsonSystemStorageTest {
+
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSystemStorageTest");
 
     @TempDir
     public Path testFolder;
+
+    private Person hoon = getHoon();
+    private Person alice = getAlice();
+    private Person ida = getIda();
 
     @Test
     public void readAddressBook_nullFilePath_throwsNullPointerException() {
@@ -89,8 +94,8 @@ public class JsonSystemStorageTest {
         assertEquals(personData, new Data(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        personData.addUniqueElement(HOON);
-        personData.removeElement(ALICE);
+        personData.addUniqueElement(hoon);
+        personData.removeElement(alice);
         JsonSerializablePersonData modifiedJsonSerializablePersonData =
             new JsonSerializablePersonData(personData);
         jsonSystemStorage.saveData(modifiedJsonSerializablePersonData, personDataFilePath);
@@ -98,7 +103,7 @@ public class JsonSystemStorageTest {
         assertEquals(personData, new Data(readBack));
 
         // Save and read without specifying file path
-        personData.addUniqueElement(IDA);
+        personData.addUniqueElement(ida);
         jsonSystemStorage.savePersonData(personData); // file path not specified
         readBack = jsonSystemStorage.readPersonData().get(); // file path not specified
         assertEquals(personData, new Data(readBack));

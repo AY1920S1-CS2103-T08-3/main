@@ -1,5 +1,7 @@
 package seedu.system.storage;
 
+import java.text.ParseException;
+
 import seedu.system.commons.exceptions.IllegalValueException;
 import seedu.system.model.Data;
 import seedu.system.model.UniqueElement;
@@ -13,5 +15,5 @@ public interface JsonAdaptedData<T extends UniqueElement> {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted element.
      */
-    public T toModelType() throws IllegalValueException;
+    public T toModelType() throws IllegalValueException, ParseException;
 }

@@ -1,5 +1,6 @@
 package seedu.system.storage;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,7 +42,7 @@ class JsonSerializablePersonData implements JsonSerializableData {
     }
 
     @Override
-    public Data toModelType() throws IllegalValueException {
+    public Data toModelType() throws IllegalValueException, ParseException {
         Data<Person> persons = new Data();
         for (JsonAdaptedPerson jsonAdaptedPerson : this.persons) {
             Person person = jsonAdaptedPerson.toModelType();

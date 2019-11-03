@@ -1,5 +1,7 @@
 package seedu.system.storage;
 
+import java.text.ParseException;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -45,7 +47,7 @@ class JsonAdaptedPerson implements JsonAdaptedData<Person> {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
-    public Person toModelType() throws IllegalValueException {
+    public Person toModelType() throws IllegalValueException, ParseException {
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));

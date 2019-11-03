@@ -21,6 +21,8 @@ import static seedu.system.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.system.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.system.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 
+import java.text.ParseException;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.system.commons.core.index.Index;
@@ -86,7 +88,7 @@ public class EditPersonCommandParserTest {
     }
 
     @Test
-    public void parse_allFieldsSpecified_success() {
+    public void parse_allFieldsSpecified_success() throws ParseException {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY + DOB_DESC_BOB + GENDER_DESC_AMY;
 
@@ -98,7 +100,7 @@ public class EditPersonCommandParserTest {
     }
 
     @Test
-    public void parse_someFieldsSpecified_success() {
+    public void parse_someFieldsSpecified_success() throws ParseException {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + DOB_DESC_BOB;
 
@@ -109,7 +111,7 @@ public class EditPersonCommandParserTest {
     }
 
     @Test
-    public void parse_oneFieldSpecified_success() {
+    public void parse_oneFieldSpecified_success() throws ParseException {
         // name
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
@@ -132,7 +134,7 @@ public class EditPersonCommandParserTest {
     }
 
     @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
+    public void parse_multipleRepeatedFields_acceptsLast() throws ParseException {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + DOB_DESC_AMY + GENDER_DESC_AMY
                 + DOB_DESC_BOB + DOB_DESC_BOB + GENDER_DESC_BOB;
@@ -145,7 +147,7 @@ public class EditPersonCommandParserTest {
     }
 
     @Test
-    public void parse_invalidValueFollowedByValidValue_success() {
+    public void parse_invalidValueFollowedByValidValue_success() throws ParseException {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + INVALID_DOB_DESC + DOB_DESC_BOB;

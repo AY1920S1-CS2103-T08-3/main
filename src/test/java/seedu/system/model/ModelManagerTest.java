@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.system.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.system.testutil.Assert.assertThrows;
-import static seedu.system.testutil.TypicalCompetitions.NUS_OPEN;
-import static seedu.system.testutil.TypicalPersons.ALICE;
-import static seedu.system.testutil.TypicalPersons.BENSON;
+import static seedu.system.testutil.TypicalCompetitions.getNusOpen;
+import static seedu.system.testutil.TypicalPersons.getAlice;
+import static seedu.system.testutil.TypicalPersons.getBenson;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,13 +16,18 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.system.commons.core.GuiSettings;
+import seedu.system.model.competition.Competition;
 import seedu.system.model.person.NameContainsKeywordsPredicate;
+import seedu.system.model.person.Person;
 import seedu.system.model.util.SampleDataUtil;
 import seedu.system.testutil.DataBuilder;
 
 public class ModelManagerTest {
 
     private ModelManager modelManager = new ModelManager();
+    private Person alice = getAlice();
+    private Person benson = getBenson();
+    private Competition nusOpen = getNusOpen();
 
     @Test
     public void constructor() {
@@ -81,13 +86,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasPerson(ALICE));
+        assertFalse(modelManager.hasPerson(alice));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.addPerson(ALICE);
-        assertTrue(modelManager.hasPerson(ALICE));
+        modelManager.addPerson(alice);
+        assertTrue(modelManager.hasPerson(alice));
     }
 
     @Test
@@ -97,8 +102,8 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Data personData = new DataBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        Data competitionData = new DataBuilder().withCompetition(NUS_OPEN).build();
+        Data personData = new DataBuilder().withPerson(alice).withPerson(benson).build();
+        Data competitionData = new DataBuilder().withCompetition(nusOpen).build();
         Data participationData =
             new Data(SampleDataUtil.getSampleParticipationData(personData, competitionData));
         Data differentPersonData = new Data();
@@ -138,7 +143,7 @@ public class ModelManagerTest {
         );
 
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().toString().split("\\s+");
+        String[] keywords = alice.getName().toString().split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(
             modelManager.equals(

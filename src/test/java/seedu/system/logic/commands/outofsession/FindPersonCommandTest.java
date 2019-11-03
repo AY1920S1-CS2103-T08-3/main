@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.system.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.system.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.system.testutil.TypicalCompetitions.getTypicalCompetitionData;
-import static seedu.system.testutil.TypicalPersons.CARL;
-import static seedu.system.testutil.TypicalPersons.ELLE;
-import static seedu.system.testutil.TypicalPersons.FIONA;
+import static seedu.system.testutil.TypicalPersons.getCarl;
+import static seedu.system.testutil.TypicalPersons.getElle;
+import static seedu.system.testutil.TypicalPersons.getFiona;
 import static seedu.system.testutil.TypicalPersons.getTypicalPersonData;
 
 import java.util.Arrays;
@@ -35,6 +35,10 @@ public class FindPersonCommandTest {
     private Data<Competition> sampleCompetitionData = getTypicalCompetitionData();
     private Data<Participation> sampleParticipationData =
         new Data(SampleDataUtil.getSampleParticipationData(samplePersonData, sampleCompetitionData));
+
+    private Person carl = getCarl();
+    private Person elle = getElle();
+    private Person fiona = getFiona();
 
     private Model model =
         new ModelManager(
@@ -90,7 +94,7 @@ public class FindPersonCommandTest {
         FindPersonCommand command = new FindPersonCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
+        assertEquals(Arrays.asList(carl, elle, fiona), model.getFilteredPersonList());
     }
 
     /**

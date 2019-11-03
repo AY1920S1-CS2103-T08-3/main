@@ -1,5 +1,6 @@
 package seedu.system.testutil;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +13,16 @@ import seedu.system.model.competition.Competition;
  */
 public class TypicalCompetitions {
 
-    public static final Competition NUS_OPEN = new CompetitionBuilder().withName("NUS Powerlifting Open 2019")
-        .withStartDate("08/05/2019").withEndDate("08/09/2019").build();
+    private static Competition nusOpen;
+
+    static {
+        try {
+            nusOpen = new CompetitionBuilder().withName("NUS Powerlifting Open 2019")
+                    .withStartDate("08/05/2019").withEndDate("08/09/2019").build();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     private TypicalCompetitions() {} // prevents instantiation
 
@@ -29,6 +38,10 @@ public class TypicalCompetitions {
     }
 
     public static List<Competition> getTypicalCompetitions() {
-        return new ArrayList<>(Arrays.asList(NUS_OPEN));
+        return new ArrayList<>(Arrays.asList(nusOpen));
+    }
+
+    public static Competition getNusOpen() {
+        return nusOpen;
     }
 }

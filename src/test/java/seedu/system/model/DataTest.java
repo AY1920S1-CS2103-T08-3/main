@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.system.logic.commands.CommandTestUtil.VALID_DOB_BOB;
 import static seedu.system.testutil.Assert.assertThrows;
-import static seedu.system.testutil.TypicalPersons.ALICE;
+import static seedu.system.testutil.TypicalPersons.getAlice;
 import static seedu.system.testutil.TypicalPersons.getTypicalPersonData;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,6 +25,8 @@ import seedu.system.testutil.PersonBuilder;
 public class DataTest {
 
     private final Data<Person> persons = new Data<>();
+
+    private Person alice = getAlice();
 
     @Test
     public void constructor() {
@@ -43,11 +46,11 @@ public class DataTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() throws ParseException {
         // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withDateOfBirth(VALID_DOB_BOB)
+        Person editedAlice = new PersonBuilder(alice).withDateOfBirth(VALID_DOB_BOB)
                 .build();
-        List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
+        List<Person> newPersons = Arrays.asList(alice, editedAlice);
         DataStub newData = new DataStub(newPersons);
 
         assertThrows(DuplicateElementException.class, () -> persons.resetData(newData));
@@ -60,19 +63,19 @@ public class DataTest {
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(persons.hasUniqueElement(ALICE));
+        assertFalse(persons.hasUniqueElement(alice));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        persons.addUniqueElement(ALICE);
-        assertTrue(persons.hasUniqueElement(ALICE));
+        persons.addUniqueElement(alice);
+        assertTrue(persons.hasUniqueElement(alice));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        persons.addUniqueElement(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withDateOfBirth(VALID_DOB_BOB).build();
+    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() throws ParseException {
+        persons.addUniqueElement(alice);
+        Person editedAlice = new PersonBuilder(alice).withDateOfBirth(VALID_DOB_BOB).build();
         assertTrue(persons.hasUniqueElement(editedAlice));
     }
 
