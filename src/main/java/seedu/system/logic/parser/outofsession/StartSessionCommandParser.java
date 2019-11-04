@@ -1,4 +1,4 @@
-package seedu.system.logic.parser.insession;
+package seedu.system.logic.parser.outofsession;
 
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
@@ -11,7 +11,7 @@ import seedu.system.model.person.Name;
 /**
  * Parses user input and returns StartSessionCommand.
  */
-public class NewSessionCommandParser implements Parser<StartSessionCommand> {
+public class StartSessionCommandParser implements Parser<StartSessionCommand> {
     /**
      * Parses the given string {@code userInput} into a StartSessionCommand and returns it.
      *

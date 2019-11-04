@@ -1,4 +1,4 @@
-package seedu.system.logic.parser.insession;
+package seedu.system.logic.parser.outofsession;
 
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_NEGATIVE_ATTEMPT_WEIGHT;

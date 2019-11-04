@@ -31,10 +31,10 @@ import seedu.system.logic.commands.outofsession.OutOfSessionHelpCommand;
 import seedu.system.logic.commands.outofsession.OverallRankCommand;
 import seedu.system.logic.commands.outofsession.StartSessionCommand;
 import seedu.system.logic.parser.exceptions.ParseException;
-import seedu.system.logic.parser.insession.AddParticipationCommandParser;
+import seedu.system.logic.parser.outofsession.AddParticipationCommandParser;
 import seedu.system.logic.parser.insession.AttemptLiftedCommandParser;
-import seedu.system.logic.parser.insession.ListParticipationCommandParser;
-import seedu.system.logic.parser.insession.NewSessionCommandParser;
+import seedu.system.logic.parser.outofsession.ListParticipationCommandParser;
+import seedu.system.logic.parser.outofsession.StartSessionCommandParser;
 import seedu.system.logic.parser.insession.RankCommandParser;
 import seedu.system.logic.parser.insession.RanklistCommandParser;
 import seedu.system.logic.parser.outofsession.AddCompetitionCommandParser;
@@ -131,7 +131,7 @@ public class SystemParser {
             return new NextLifterCommand();
 
         case StartSessionCommand.COMMAND_WORD:
-            return new NewSessionCommandParser().parse(arguments);
+            return new StartSessionCommandParser().parse(arguments);
 
         case OverallRankCommand.COMMAND_WORD:
             return new OverallRankCommand();
