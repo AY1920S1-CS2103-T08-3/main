@@ -14,12 +14,18 @@ public class CustomDate {
     public static final String MESSAGE_CONSTRAINTS =
             "Date should follow the following format DD/MM/YYYY.";
     public static final String DATE_FORMAT = "dd/MM/yyyy";
-    public final String date;
+    private final String date;
+    private Date dateObj;
 
     public CustomDate(String date) {
         requireNonNull(date);
         checkArgument(isValidDate(date.trim()), MESSAGE_CONSTRAINTS);
         this.date = date.trim();
+        try {
+            dateObj = new SimpleDateFormat(DATE_FORMAT).parse(date);
+        } catch (ParseException e) {
+            dateObj = null;
+        }
     }
 
     /**
@@ -39,14 +45,8 @@ public class CustomDate {
     }
 
     public Date getDate() {
-        try {
-            return new SimpleDateFormat(DATE_FORMAT).parse(date);
-        } catch (ParseException e) {
-            return null;
-        }
-
+        return dateObj;
     }
-
 
     /**
      * Returns true if both customs have the same date string.

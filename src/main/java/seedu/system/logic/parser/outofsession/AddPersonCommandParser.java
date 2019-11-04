@@ -1,9 +1,13 @@
 package seedu.system.logic.parser.outofsession;
 
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.system.commons.core.Messages.MESSAGE_INVALID_PERSONS_DOB;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import seedu.system.logic.commands.outofsession.AddPersonCommand;
 import seedu.system.logic.parser.ArgumentMultimap;
@@ -24,7 +28,7 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddPersonCommand
      * and returns an AddPersonCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform the expected format or {@code dateOfBirth} is invalid
      */
     public AddPersonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
@@ -36,9 +40,16 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        CustomDate dateOfBirth = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DOB).get());
-        Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get());
 
+        SimpleDateFormat formatter = new SimpleDateFormat(CustomDate.DATE_FORMAT);
+        Date currentDate = new Date();
+        CustomDate currDate = new CustomDate(formatter.format(currentDate));
+        CustomDate dateOfBirth = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DOB).get());
+        if (!ParserUtil.isBefore(dateOfBirth, currDate)) {
+            throw new ParseException(MESSAGE_INVALID_PERSONS_DOB);
+        }
+
+        Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get());
         Person person = new Person(name, dateOfBirth, gender);
 
         return new AddPersonCommand(person);
