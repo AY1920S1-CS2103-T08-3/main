@@ -158,7 +158,6 @@ public class Session {
         }
 
         if (attemptList.isEmpty()) {
-            end();
             throw new CompetitionEndedException(participationList.get(0).getCompetition());
         }
 
