@@ -1,6 +1,7 @@
 package seedu.system.logic.commands.outofsession;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.system.logic.parser.CliSyntax.PREFIX_COMP;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -26,7 +27,7 @@ public class StartSessionCommand extends Command {
     public static final String MESSAGE_SUCCESS = " session has started.\n"
             + "Enter 'next' to get the next lifter in line.\n"
             + "Enter 'rank' or 'ranklist' to get the ranks of the participation/competition.";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " Competition_Name";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + PREFIX_COMP + "Competition_Name";
     public static final String MESSAGE_COMPETITION_NOT_FOUND = "The competition with the given name does not exist : ";
 
     private final Name competitionName;
