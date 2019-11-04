@@ -109,7 +109,6 @@ public class ParserUtil {
         Date start = startDate.getDate();
         Date end = endDate.getDate();
         return start.equals(end) || start.before(end);
-
     }
-    
+
 }
