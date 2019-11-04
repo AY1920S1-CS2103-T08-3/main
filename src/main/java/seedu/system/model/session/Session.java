@@ -65,6 +65,7 @@ public class Session {
 
         this.competition = competition;
         this.participationList = participations;
+        this.attemptList = FXCollections.observableArrayList();
         for (Participation p : participations) {
             if (p.getAreAttemptsSubmitted()) {
                 loadAttempts(p, p.getAttempts());
