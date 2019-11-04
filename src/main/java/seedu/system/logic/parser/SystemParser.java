@@ -18,7 +18,7 @@ import seedu.system.logic.commands.outofsession.AddPersonCommand;
 import seedu.system.logic.commands.outofsession.ClearCommand;
 import seedu.system.logic.commands.outofsession.DeleteCompetitionCommand;
 import seedu.system.logic.commands.outofsession.DeleteParticipationCommand;
-import seedu.system.logic.commands.outofsession.DeleteParticipationCommandParser;
+import seedu.system.logic.parser.outofsession.DeleteParticipationCommandParser;
 import seedu.system.logic.commands.outofsession.DeletePersonCommand;
 import seedu.system.logic.commands.outofsession.EditCompetitionCommand;
 import seedu.system.logic.commands.outofsession.EditPersonCommand;
