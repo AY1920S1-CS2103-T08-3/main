@@ -38,38 +38,15 @@ public class CustomDate {
         return false;
     }
 
-    /**
-     * Returns true if dateTwo is after the current CustomDate object.
-     *
-     */
-
-    public boolean before(CustomDate dateTwo) {
-        String[] dateOneArr = this.toString().split("/");
-        String[] dateTwoArr = dateTwo.toString().split("/");
-
-        int dayOne = Integer.valueOf(dateOneArr[0]);
-        int dayTwo = Integer.valueOf(dateTwoArr[0]);
-
-        int monthOne = Integer.valueOf(dateOneArr[1]);
-        int monthTwo = Integer.valueOf(dateTwoArr[1]);
-
-        int yearOne = Integer.valueOf(dateOneArr[2]);
-        int yearTwo = Integer.valueOf(dateTwoArr[2]);
-
-        if (yearOne < yearTwo) {
-            return true;
-        } else if (yearOne == yearTwo) {
-            if (monthOne > monthTwo) {
-                return false;
-            }
-            if (dayOne > dayTwo) {
-                return false;
-            }
-            return true;
+    public Date getDate() {
+        try {
+            return new SimpleDateFormat(DATE_FORMAT).parse(date);
+        } catch (ParseException e) {
+            return null;
         }
 
-        return false;
     }
+
 
     /**
      * Returns true if both customs have the same date string.

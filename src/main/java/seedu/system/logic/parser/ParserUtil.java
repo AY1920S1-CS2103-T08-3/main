@@ -2,7 +2,6 @@ package seedu.system.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.stream.Stream;
 
@@ -106,17 +105,11 @@ public class ParserUtil {
     /**
      * Returns true if {@code startDate} is exactly or before {@code endDate}
      */
-    public static boolean isBefore(String dateFormat, String startDate, String endDate) {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat(dateFormat);
-            Date start = format.parse(startDate);
-            Date end = format.parse(endDate);
-            return start.equals(end) || start.before(end);
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+    public static boolean isBefore(CustomDate startDate, CustomDate endDate) {
+        Date start = startDate.getDate();
+        Date end = endDate.getDate();
+        return start.equals(end) || start.before(end);
 
+    }
 
 }
