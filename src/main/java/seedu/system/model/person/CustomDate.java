@@ -29,6 +29,16 @@ public class CustomDate {
     }
 
     /**
+     * Returns a {@code currDate} which is a CustomDate object which has information about today's date.
+     */
+    public static CustomDate obtainCurrentDate () {
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        Date currentDate = new Date();
+        CustomDate currDate = new CustomDate(formatter.format(currentDate));
+        return currDate;
+    }
+
+    /**
      * Returns true if a given string has a valid date format.
      */
     public static boolean isValidDate(String date) {
