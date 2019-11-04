@@ -11,7 +11,7 @@ import seedu.system.model.Model;
 import seedu.system.model.person.NameContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
+ * Finds and lists all persons in system whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindPersonCommand extends Command {
@@ -42,7 +42,7 @@ public class FindPersonCommand extends Command {
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()),
                 COMMAND_TYPE
-            );
+        );
     }
 
     @Override
