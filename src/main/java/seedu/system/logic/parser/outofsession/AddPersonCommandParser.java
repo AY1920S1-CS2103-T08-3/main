@@ -6,6 +6,9 @@ import static seedu.system.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import seedu.system.logic.commands.outofsession.AddPersonCommand;
 import seedu.system.logic.parser.ArgumentMultimap;
 import seedu.system.logic.parser.ArgumentTokenizer;
@@ -37,7 +40,7 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-
+        
         CustomDate currDate = CustomDate.obtainCurrentDate();
         CustomDate dateOfBirth = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DOB).get());
         if (!ParserUtil.isBefore(dateOfBirth, currDate)) {

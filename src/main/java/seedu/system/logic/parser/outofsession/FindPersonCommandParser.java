@@ -24,10 +24,6 @@ public class FindPersonCommandParser implements Parser<FindPersonCommand> {
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPersonCommand.MESSAGE_USAGE));
-<<<<<<< HEAD
-=======
-
->>>>>>> 676be018... Further furnishing for issue 65
         }
         String[] nameKeywords = trimmedArgs.split("\\s+");
         return new FindPersonCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
