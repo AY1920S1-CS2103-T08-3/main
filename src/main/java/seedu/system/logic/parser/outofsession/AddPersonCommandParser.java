@@ -6,9 +6,6 @@ import static seedu.system.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import seedu.system.logic.commands.outofsession.AddPersonCommand;
 import seedu.system.logic.parser.ArgumentMultimap;
 import seedu.system.logic.parser.ArgumentTokenizer;
