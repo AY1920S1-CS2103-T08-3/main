@@ -179,6 +179,8 @@ This section describes some noteworthy details on how certain features are imple
 
 === Context-Switching feature between sessions
 
+===== Overview
+
 Our features are mainly split into 2 contexts. An in-competition, and an out-of-competition session mode.
 A session is started when the user wants to start an existing competition to call lifters to perform their attempt,
 record them, and finally to view the ranking leader board for the competition, all within in-session mode.
@@ -188,16 +190,32 @@ is where all create, read, update delete of the Person, Competition, and Partici
 The reason for this context-switching feature is to prevent users from using out-session commands that are strictly for
 in-session mode and vice versa.
 
+.Activity Diagram for average user flow from out to in-session.
+image::ActivityDiagram.png[]
 
-=== Out-Session
+Figure 9 shows the average user flow of how the user can go in-session,
+and also distinctly shows the commands that can be done in each state.
+However, the end of every competition session does not signify the end of a user's activity.
+The user can still go in and out of the competition session (start and end), to perform the different commands
+from the different states.
 
-==== Start session feature
-
-==== Help feature (?)
+===== How it is being implemented (mingsheng)
 
 === In-Session
+In-Session is the state where the user enters competition mode, where users can command the app to generate
+the next lifter, as well as record any attempt. At the end of the competition, the rank of the participants
+and competition can be viewed too.
+
+To handle the state of the competition, we have created a new `Session` class that is packaged into model and
+managed by the ModelManager. The `Session` class is a singleton class, and only has one instance in the ModelManager.
+The reason behind the use of a singleton class to handle sessions, is that we only want one ongoing session at any
+point in time.
+
+.Class Diagram of the Session package in the Model
+image::SessionClassDiagram.png[]
 
 ==== Next feature
+
 
 ==== Lift feature
 
@@ -206,6 +224,61 @@ in-session mode and vice versa.
 ==== RankList feature
 
 ==== End session feature
+
+
+=== Out-Session
+
+==== Start Session feature
+The start session feature is a command to start a new competition session, when a user is not in competition state.
+
+Format: `startSession`
+
+==== Participation feature
+A Participation is an association class we have created for every Person who has participation in a particular
+Competition. A person can take part in many competitions, and for each competition he/she takes part in, there will be a
+corresponding Participation class associated to that Person and Competition instance.
+
+===== Create a new Participation
+To create a new Participation, the associated Person and Competition must exist. If either doesnt,
+an exception will be thrown to the user through the result box to prompt the user to input an existing one.
+
+Format: `addParticipation n/Athlete Name c/Competition Name s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3`
+
+Note: S1 means the 1st attempted weight for the Squat and so on.
+
+===== List Participation
+The list participation feature allows the user to filter the participation list on the PCC app based on a particular
+competition. If no parameters (competition name) are taken in,
+the command will list out all of the participations stored in the system.
+
+Format: `listParticipation` or `listParticipation c/COMPETITION_NAME`
+
+===== Delete Existing Participation
+The user can delete an existing participation, maybe in the case he/she has withdrawn or is disqualified
+from that competition.
+
+Format: `deleteParticipation INDEX`
+
+We have decided to use the index of the participation in the list to delete a participation instead of
+other parameter types, like the name or competition of the participation. The main reason is because,
+there may exist more than one participation with the same name and different competition,
+or different name and same competition.
+
+Pros:
+
+* Takes in less parameters, user can type less.
+
+* Avoid complications between unmatched name and competition.
+
+* Easy to implement.
+
+Cons:
+
+* User will have to scroll through the participation list on the app to type in the index.
+
+
+==== (Any other features yall want to include)
+
 
 == Documentation
 
@@ -248,21 +321,18 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` | event organizer | create a new competition |
 start and organize a new competition
 
-|`* * *` | event organizer |find athletes according to their weight class |
-see which athletes are in the same competition
-
-|`* * *` | event organizer |sort athletes according to their attempted weights for different lifting events |
+|`* * *` | event organizer | sort athletes according to their attempted weights for different lifting events |
 adjust the weight on stage call for the next athlete to come and attempt their lift
 
-|`* * *` | event organizer |find which athletes are currently in the lead (individual lifts and aggregate score) |
+|`* * *` | event organizer | find which athletes are currently in the lead (individual lifts and aggregate score) |
 so that I can let the competitors know who is in the lead for their resepective weight classes and  let them calculate
 what they need to do to win the competition
 
-|`* * *` | event organizer |the relative position of an athlete as compared to other athletes in their weight class |
+|`* * *` | event organizer | the relative position of an athlete as compared to other athletes in their weight class |
 see which athletes are in the same competition
 
-|`* * *` | event organizer | edit the weight of a lifting attempt for an athlete |
-so that the lifting order of athletes can be updated
+|`* * *` | event organizer | create participation between a person and a competition |
+so as to know the participants for the respective competitions
 
 |`* * *` | event organizer | update an athlete’s score after a successful lift |
 so that the ranking of the athletes can be updated
@@ -270,18 +340,9 @@ so that the ranking of the athletes can be updated
 |`* * *` | event organizer | edit an athlete's name |
 update the athlete's name in case the athletes have change their names or they were inputted incorrectly previously
 
-|`* * *` | event organizer | input/edit an athlete's body weight |
-update the athlete's weight so the athelete is taking part in the correct weight class
-
 |`* * *` | event organizer | record when a lifter fails/succeed in his/her lift |
 update the athlete's score and ranking accordingly and to keep a record for how each athlete's
 score was derived
-
-|`* *` |event organizer | input/edit an athlete's country/club |
-which country/club the athlete is representing
-
-|`* * *` |event organizer | know the rack height for bench press/squat |
-the racks can be prepared before the athletes make their lifting attempt and save time
 
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
 
