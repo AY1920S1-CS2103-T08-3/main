@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Ooi Ming Sheng- Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Powerlifting Competition Coordinator</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-T11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Ooi Ming Sheng- Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-powerlifting-competition-coordinator"><a class="link" href="#project-powerlifting-competition-coordinator">PROJECT: Powerlifting Competition Coordinator</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator is a free application for powerlifting competition event organizers
+that is simple, fast, and easy to use. It is targeted at organizers of small to medium sized powerlifting
+competitions who require a hassle-free way of managing and tracking the lifts of participants in and out
+of the powerlifting competitions. During competition mode, the system has real time maintenance of athlete
+rankings within their respective weight classes allowing the organizer track the participants'
+standings at all times throughout the duration of the competition. The user interacts with it using a
+CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 18 kLoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement 1</strong>: added <strong>the ability to support the many-to-many relationships between the competitions
+and persons</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to create participations (i.e. a person takes part in a particular
+competition) that can be store and retrieved from the JSON storage</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a user can have flexibility over
+the number of people participating in a particular competition while persisting their respective
+competition results in the JSON storage for future reference and use. Data of athletes over various
+competitions can be tracked and used to track performance across time and competition.</p>
+</li>
+<li>
+<p>Highlights: Given the original architecture of address book, saving association classes was not
+immediately enabled as the storage that was intended was mainly for entities
+with a one-to-one/one-to-many relationship and definitely not a many-to-many relationship.
+It required an in-depth analysis of design alternatives, one of which was to possible store the data in XML form, since using a
+database was not allowed for the project. I did not user the XML storage as it would require too
+much time to implement. The modification of the JSON storage was still challenging as it required a deep
+understanding of the underlying JSON storage infrastructure and how everything was saved in order to
+be able to save the association class properly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement 2</strong>: added *the ability to enter and exit a competition session (i.e. context switching)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: controls user actions/commands depending on the context that the application is in (i.e.
+whether a competition is in ongoing/in-session)</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly even though we have actually limited
+user actions depending on the context of the application. The control of the user flow actually focuses
+the user to performing the right actions during the competition session and hence, optimizes the user to perform
+the necessary commands on the application to record the results of the competition as efficiently as possible.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future as the context
+limits what kind of commands can be done at any one point of time.
+This required an in-depth analysis of understanding of how powerlifting competitions function and how the
+user flow could be optimized for efficient recording of competition results, especially since delays in powerlifting
+competitions can be very unprofessional and damaging to the reputation of the user who is organizing this event.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement 3</strong>: added *the ability to give a ranking of the athletes using different ranking methods</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to list the participations in a selected competition in a sorted order
+as determined by the rank method (i.e. overall score or maximum weight lifted for a given exercise like
+bench press or squat)</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly as competitions are only relevant if we
+can determine a winner and track relative performance. This feature is therefore central to the application
+as it gives the user and therefore, the participants of the competition knowledge of their standings among their fellow
+competitors. This encourages their competitive spirit and adds to the excitement of the competition.</p>
+</li>
+<li>
+<p>Highlights: This enhancement gives extreme flexibility and extensibility to future ranking methods
+that need to be added in the future as the developer can just add a new ranking methods and scoring function in
+order to use this new ranking methods to order the participants.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Used java generics to support the various lists of entities and is therefore extensible
+for additional entities to be added should a developer require</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Updated the user interface to support 3 different lists</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2</code> - <code>v1.4</code> (3 releases) on GitHub</p>
+</li>
+<li>
+<p>Managed the integration of the various features from other group members</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the layout to the application (Pull request <a href="https://github.com">#59</a>)</p>
+</li>
+<li>
+<p>Wrote tests for new features to increase coverage (Pull requests <a href="https://github.com">#127</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the User Guide: <a href="https://github.com">#14</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments):
+<a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated Travis and Netlify to the team repo for Continuous integration purposes</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-nusanswers"><a class="link" href="#project-nusanswers">PROJECT: NUSanswers</a></h2>
+<div class="sectionbody">
+<hr>
+<div class="paragraph">
+<p>This application was written on a react frontend and an elixir-phoenix backend. This application
+was created with the intention of creating an online platform for NUS exam questions to be posted
+there and allow for a crowd sourcing of answers to NUS exam questions which are not released to
+the student body. Please refer to <a href="https://github.com/cs3216/a3-mobile-cloud-group-08" class="bare">https://github.com/cs3216/a3-mobile-cloud-group-08</a> for more information.</p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 23:54:20 UTC</div></div></div></body></html>
