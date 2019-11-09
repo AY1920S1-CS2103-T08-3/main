@@ -37,7 +37,7 @@ public class AddPersonCommandParser implements Parser<AddPersonCommand> {
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        
+
         CustomDate currDate = CustomDate.obtainCurrentDate();
         CustomDate dateOfBirth = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DOB).get());
         if (!ParserUtil.isBefore(dateOfBirth, currDate)) {
