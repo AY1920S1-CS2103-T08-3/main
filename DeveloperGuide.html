@@ -409,7 +409,7 @@ from the different states.</p>
 <div class="paragraph">
 <p>In-Session is the state where the user enters competition mode, where users can command the app to generate
 the next lifter, as well as record any attempt. At the end of the competition, the rank of the participants
-and competition can be viewed too.</p>
+and competition can be viewed too, as long as a competition session has yet to end.</p>
 </div>
 <div class="paragraph">
 <p>To handle the state of the competition, we have created a new <code>Session</code> class that is packaged into model and
@@ -433,7 +433,50 @@ point in time.</p>
 </div>
 <div class="sect3">
 <h4 id="rank-feature"><a class="link" href="#rank-feature">4.2.3. Rank feature</a></h4>
-
+<div class="paragraph">
+<p>A RankCommand class is created to facilitate ranking of an athlete for a given competition he or she participates in.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>RankCommand extends the Command Abstract Class, the rationale is explained in <code>Choice of Design Pattern</code> sub-section of the Rank feature.</p>
+</div>
+<div class="paragraph">
+<p>Rank feature has 2 sequential checks:
+1. Checks if a competition session is ongoing, rank command can only be used if a competition session persists.
+2. Checks if an athlete participates in a competition, rank command can only be used if an athlete participates in a competition.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the feature returns an athlete&#8217;s report card for a competition. For example,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Athlete: Alex Yeoh
+Competition: NUS Powerlifting Open 2019
+Rank: 1
+Total Score: 1
+Max Squat: 1
+Max Bench Press: 0
+Max Deadlift: 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the rank feature is used, RankCommand interacts with other classes to return an athlete&#8217;s report card. See the
+sequence diagram for a depiction of how RankCommand interacts with other classes.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern"><a class="link" href="#choice-of-design-pattern">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Original AB3 code base uses a Command Design Pattern, which facilitates execution of different commands,
+without the programme knowing which type of command is being executed. Furthermore, the original AB3 code base achieves
+a Command Design Pattern by requiring different types of command classes to extend from a Command Abstract Class.</p>
+</div>
+<div class="paragraph">
+<p>Due to time constraint and to achieve consistency with the Command Design Pattern of the original Code Base,
+we decide to apply the Command Design Pattern for the Rank command too.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="ranklist-feature"><a class="link" href="#ranklist-feature">4.2.4. RankList feature</a></h4>
@@ -1580,4 +1623,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 01:02:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:33:46 UTC</div></div></div></body></html>
