@@ -415,7 +415,10 @@ and competition can be viewed too, as long as a competition session has yet to e
 <p>To handle the state of the competition, we have created a new <code>Session</code> class that is packaged into model and
 managed by the ModelManager. The <code>Session</code> class is a singleton class, and only has one instance in the ModelManager.
 The reason behind the use of a singleton class to handle sessions, is that we only want one ongoing session at any
-point in time.</p>
+point in time. The singleton class will also only temporarily store its participation list, and participationAttempt
+list in relation to the ongoing session. Once the session ends, all data is reset.
+Any update in any objects such as the attempts or participation details will be handled by the ModelManager,
+which will be explained in more details in the respective features below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -425,11 +428,91 @@ point in time.</p>
 </div>
 <div class="sect3">
 <h4 id="next-feature"><a class="link" href="#next-feature">4.2.1. Next feature</a></h4>
-
+<div class="paragraph">
+<p>One of the main purpose of the in-session function is to generate the next lifter and his attempt details accordingly.
+In the <code>Session</code> class, the list of <code>ParticipationAttempt</code> is maintained so that athletes can make their attempt
+in order of the type of lift, attempt number, and in increasing weight to be attempted. Upon calling the <code>next</code> command,
+the next lifter is called up, and the following lifter should be asked to prepare for his lift, after the next lifter.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next</code></p>
+</div>
+<div class="paragraph">
+<p>Given below is the example flow of what the model does when the <code>NextLifterCommand</code> is executed after being parsed
+through the LogicManager.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1:</strong> A new <code>NextLifterCommand</code> is constructed when the user inputs <code>next</code> in the command box.
+When <code>NextLifterCommand#execute()</code> is called, the model will get the following lifter, and store the
+ParticipationAttempt retrieved from <code>Session#getFollowingLifter()</code> in a local variable,
+to be returned together with the CommandResult later on.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong> The <code>ModelManager</code> will call <code>Session#NextLifter()</code> to generate the next lifter and attempt in the form of a
+<code>ParticipationAttempt</code> object. If the <code>Session</code> is not prepared, which means that the imported <code>ParticipationAttempts</code>
+are not sorted, <code>prepare()</code> will be called internally. When this method is called, the ParticipationAttempt list in the
+Session will be sorted according to the new <code>ParticipationAttemptComparator</code>. When this is done, the session is now
+prepared, and next or following lifters can be generated based on this sorted list.
+(This method is usually called once just after starting the session.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> The <code>Session#NextLifter()</code> method will then return the first <code>ParticipationAttempt</code> in the list.
+This is equivalent to the next lifter to make his attempt, since he is the top most in the sorted list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4:</strong> A new <code>CommandResult</code> will be returned. Details of the next and following ParticipationAttempt will be
+included and displayed in the Dialogue Box to the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/NextSequenceDiagram.png" alt="NextSequenceDiagram">
+</div>
+<div class="title">Figure 11. Sequence Diagram for the NextLifterCommand</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="lift-feature"><a class="link" href="#lift-feature">4.2.2. Lift feature</a></h4>
-
+<div class="paragraph">
+<p>This command allows the user to update and record the result of the attempt that was just made.
+The participation&#8217;s dependent attempts as well as scores will be automatically updated according to the lifts made and
+recording using this command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>lift Y/N</code></p>
+</div>
+<div class="paragraph">
+<p>Given below is the example flow of how the model executes the <code>AttemptLiftedCommand</code> in the model after it is
+parsed through the <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1:</strong> An <code>AttemptLiftedCommand</code> is created with a boolean parameter to indicate the success of the lift.
+An input <code>lift y</code> by the user will create an <code>AttemptLiftedCommand</code>, taking in boolean <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong> The following lifter and attempt is retrieved and stored in a local variable in the execute method of the
+command, so that we can prompt the user of the following lifter, before any changes are made to the existing attempts.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> <code>model#makeAttempt()</code> is called in the execute method of the command. The <code>ModelManager</code> will then call
+<code>Session#attemptMade()</code> to indicate the attempt has been made. This method will return a <code>ParticipationAttempt</code> object
+that has just been made, and stored in a local variable named <code>next</code>. If this particular attempt has already been made,
+an exception will be thrown to inform the user in the form of a <code>CommandResult</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4:</strong> The <code>Participation</code> of the <code>next</code> will be retrieved, so that we can update the participant&#8217;s attempt by
+calling <code>Participation#updateAttempt()</code>. <code>ModelManager#setParticipation()</code> will then update the participation&#8217;s attempt
+in the storage accordingly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 5:</strong> <code>AttemptLiftedCommand#execute()</code> will then return a new <code>CommandResult</code> containing the associated result,
+together with the following lifter.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LiftSequenceDiagram.png" alt="LiftSequenceDiagram">
+</div>
+<div class="title">Figure 12. Sequence Diagram for the AttemptLiftedCommand</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="rank-feature"><a class="link" href="#rank-feature">4.2.3. Rank feature</a></h4>
@@ -479,7 +562,7 @@ we decide to apply the Command Design Pattern for the Rank command too.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="ranklist-feature"><a class="link" href="#ranklist-feature">4.2.4. RankList feature</a></h4>
+<h4 id="rank-list-feature"><a class="link" href="#rank-list-feature">4.2.4. Rank list feature</a></h4>
 
 </div>
 <div class="sect3">
@@ -504,10 +587,43 @@ session states, without worrying about the state of the competition.</p>
 <div class="sect3">
 <h4 id="start-session-feature"><a class="link" href="#start-session-feature">4.3.1. Start Session feature</a></h4>
 <div class="paragraph">
-<p>The start session feature is a command to start a new competition session, when a user is not in competition state.</p>
+<p>The start session feature is a command to start a new competition session, when a user is not in competition state.
+As mentioned in Section 4.2. above, <code>Session</code> allows the user to start any competition session as and when, even when a
+competition has not ended (there are still attempts left to be made). To start a session, the user can enter
+the command with the specified competition.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>startSession</code></p>
+<p>Format: <code>startSession c/COMPETITION_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Given below is the flow of execution in the model after a <code>StartSessionCommand#execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1:</strong> <code>Model#startSession(comp, partList)</code> is called, where <code>comp</code> is the <code>Competition</code> object to start the session
+with, and <code>partList</code> is the list of <code>Participation</code> who will be participating in this competition session.
+The method then calls <code>Session#start(comp, partList)</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong> An internal call in the <code>start()</code> method, <code>loadAttempts(p, p.getAttempts())</code>, is made for every
+<code>Participation</code> object, <code>p</code>, by looping through the <code>partList</code>, loading all unattempted attempts into the
+participationAttemptList temporarily stored in the Session instance.
+(<code>p.getAttempts()</code> retrieves the list of all 9 <code>Attempt</code> instance that the participation has submitted at the start.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> The <code>loadAttempts()</code> method will loop through all the 9 <code>Attempt</code> objects taken in as parameter, and checks if
+each has been attempted. If an <code>Attempt</code> by that <code>Participation</code> has not been attempted, a new <code>ParticipationAttempt</code>
+object will be created and added to the list.</p>
+</div>
+<div class="paragraph">
+<p>Because of the way <code>Session</code> handles the initialising of every new session, be it starting a new competition, resuming a
+competition, or even starting a session with a competition that has already ended (all attempts have been made by the
+athletes) is made possible.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
+</div>
+<div class="title">Figure 13. Sequence Diagram for the StartSessionCommand</div>
 </div>
 </div>
 <div class="sect3">
@@ -528,7 +644,7 @@ corresponding Participation class associated to that Person and Competition inst
 an exception will be thrown to the user through the result box to prompt the user to input an existing one.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addParticipation n/Athlete Name c/Competition Name s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
+<p>Format: <code>addParticipation n/PERSON_NAME c/COMPETITION_NAME s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
 </div>
 <div class="paragraph">
 <p>Note: S1 means the 1st attempted weight for the Squat and so on.</p>
@@ -589,7 +705,7 @@ or different name and same competition.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="any-other-features-yall-want-to-include"><a class="link" href="#any-other-features-yall-want-to-include">4.3.4. (Any other features yall want to include)</a></h4>
+<h4 id="overall-rank-feature"><a class="link" href="#overall-rank-feature">4.3.4. Overall Rank feature</a></h4>
 
 </div>
 </div>
@@ -1623,4 +1739,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:33:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:43:56 UTC</div></div></div></body></html>
