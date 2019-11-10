@@ -29,7 +29,7 @@
 <li><a href="#Design-Architecture">3.1. Architecture</a></li>
 <li><a href="#Design-Ui">3.2. UI component</a></li>
 <li><a href="#Design-Logic">3.3. Logic component</a></li>
-<li><a href="#Design-Model">3.4. Model component (needs to change)</a></li>
+<li><a href="#Design-Model">3.4. Model component</a></li>
 <li><a href="#Design-Storage">3.5. Storage component</a></li>
 </ul>
 </li>
@@ -333,15 +333,14 @@ quick overview of each component.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-T11-3/main/docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
+The files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103-T11-3/main/docs/diagrams/">diagrams</a> folder.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and
-<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/Main.java"><code>Main</code></a> and
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -397,7 +396,8 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface
+and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -428,13 +428,18 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>,
+ <code>CompetitionListPanel</code>, <code>ParticipationListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>,
+inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that
+are in the <code>src/main/resources/view</code> folder. For example, the layout of the
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/ui/MainWindow.java"><code>MainWindow</code></a> is specified in
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -460,7 +465,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -504,7 +509,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component (needs to change)</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">3.4. Model component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -512,7 +517,14 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p>Please note that due to the limitations of PlantUml, the diagram above is unable
+to show the java generics being used here (e.g. Data, UniqueElementList and others).
+We also did not delve into the session classes as we felt the diagram would be overly
+convoluted. For more details, regarding the class interactions for session, please refer
+to the implementation of competition sessions below.</p>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -523,29 +535,20 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the System data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes unmodifiable <code>ObservableList&lt;Person&gt;</code>, <code>ObservableList&lt;Competition&gt;</code> and <code>ObservableList&lt;Participation&gt;</code>
+that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the
+data in the list change.</p>
+</li>
+<li>
+<p>exposes a Session class to handle the context switching between in and out of competition sessions.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -557,7 +560,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -568,7 +571,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the <code>Person</code>, <code>Competition</code>, <code>Participation</code> data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -611,8 +614,14 @@ from the different states.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-is-being-implemented-mingsheng"><a class="link" href="#how-it-is-being-implemented-mingsheng">4.1.2. How it is being implemented (mingsheng)</a></h4>
-
+<h4 id="how-it-is-being-implemented"><a class="link" href="#how-it-is-being-implemented">4.1.2. How it is being implemented</a></h4>
+<div class="paragraph">
+<p>This is done using an instance of the Session class, which is exposed from the model manager.
+The session has a competition field to indicate the current competition that is ongoing during the session.
+If there is no competition set in the session, then there is no ongoing session. Using this simple
+but highly effective method, we are able to use very simple logic to achieve the necessary context-switching behaviour
+described in the above diagram.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -779,8 +788,60 @@ we decide to apply the Command Design Pattern for the Rank command too.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="rank-list-feature"><a class="link" href="#rank-list-feature">4.2.4. Rank list feature</a></h4>
-
+<h4 id="ranklist-feature"><a class="link" href="#ranklist-feature">4.2.4. Ranklist feature</a></h4>
+<div class="paragraph">
+<p>A RanklistCommand class is created to facilitate ranking of all the participants for a given competition that is
+currently ongoing (i.e. in-session). The ranking can be altered depending on the ranking method chosen by the user.
+This provides the user a variety of ranking methods to suit the user&#8217;s need during a powerlifting competition.
+Typically, a powerlifting competition usually provides rankings for their participants based either on their overall
+score or the maximum weight lifted for a particular lift.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p>RankCommand extends the Command Abstract Class, the rationale is explained in <code>Choice of Design Pattern</code>
+sub-section of the Ranklist feature.</p>
+</div>
+<div class="paragraph">
+<p>Rank feature has 1 check:
+1. Checks if a competition session is ongoing, Ranklist command can only be used if a competition session
+is currently ongoing.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the feature returns a listing of the athletes based on the ranking method provided. For example,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> Ranking of athletes by overall score in competition NUS Powerlifting Open 2019:
+1. Alex Yeoh (Score: 100)
+2. Bernice Yu (Score: 97)
+3. Charlotte Oliveiro (Score: 2)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the Ranklist feature is used, RanklistCommand interacts with other classes to return a participant&#8217;s score for
+a given ranking method before sorting the list and displaying it on the screen as seen above. Please refer to the
+sequence diagram for a high level depiction of how RanklistCommand interacts with other classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RanklistCommand.png" alt="RanklistCommand">
+</div>
+<div class="title">Figure 14. Sequence Diagram of the RanklistCommand</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern-2"><a class="link" href="#choice-of-design-pattern-2">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Original AB3 code base uses a Command Design Pattern, which facilitates execution of different commands,
+without the programme knowing which type of command is being executed. Furthermore, the original AB3 code base achieves
+a Command Design Pattern by requiring different types of command classes to extend from a Command Abstract Class.</p>
+</div>
+<div class="paragraph">
+<p>Due to time constraint and to achieve consistency with the Command Design Pattern of the original Code Base,
+we decide to apply the Command Design Pattern for the Ranklist command too.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="end-session-feature"><a class="link" href="#end-session-feature">4.2.5. End session feature</a></h4>
@@ -840,7 +901,7 @@ athletes) is made possible.</p>
 <div class="content">
 <img src="images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
 </div>
-<div class="title">Figure 14. Sequence Diagram for the StartSessionCommand</div>
+<div class="title">Figure 15. Sequence Diagram for the StartSessionCommand</div>
 </div>
 </div>
 <div class="sect3">
@@ -879,13 +940,13 @@ of a competition. But, similar to adding a competition, the edited start date mu
 </div>
 </div>
 <div class="sect4">
-<h5 id="choice-of-design-pattern-2"><a class="link" href="#choice-of-design-pattern-2">Choice of Design Pattern</a></h5>
+<h5 id="choice-of-design-pattern-3"><a class="link" href="#choice-of-design-pattern-3">Choice of Design Pattern</a></h5>
 <div class="paragraph">
 <p>Similar to the Rank feature.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
 <div class="paragraph">
 <p>As mentioned earlier, editing or adding competitions require start date to be equal or before the end date.
 To ensure the dates given for a competition are valid, we created a CustomDate class.
@@ -896,7 +957,7 @@ classes.</p>
 <div class="content">
 <img src="images/CustomDate.png" alt="CustomDate">
 </div>
-<div class="title">Figure 15. Class Diagram for the CustomDate and Competition classes</div>
+<div class="title">Figure 16. Class Diagram for the CustomDate and Competition classes</div>
 </div>
 <div class="paragraph">
 <p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
@@ -905,7 +966,7 @@ classes.</p>
 <div class="content">
 <img src="images/addComp.png" alt="addComp">
 </div>
-<div class="title">Figure 16. Sequence Diagram of the addCompetition Command</div>
+<div class="title">Figure 17. Sequence Diagram of the addCompetition Command</div>
 </div>
 <div class="paragraph">
 <p>Pros of CustomDate:</p>
@@ -990,7 +1051,7 @@ But,  person must have already been born.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<h5 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h5>
 <div class="paragraph">
 <p>Similar to competition, the crux of editing or adding persons rely on the CustomDate class for date validation.</p>
 </div>
@@ -1002,7 +1063,7 @@ classes.</p>
 <div class="content">
 <img src="images/CustomDatePerson.png" alt="CustomDatePerson">
 </div>
-<div class="title">Figure 17. Class Diagram for the CustomDate and Person classes</div>
+<div class="title">Figure 18. Class Diagram for the CustomDate and Person classes</div>
 </div>
 <div class="paragraph">
 <p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
@@ -1011,7 +1072,7 @@ classes.</p>
 <div class="content">
 <img src="images/addPerson.png" alt="addPerson">
 </div>
-<div class="title">Figure 18. Sequence Diagram of the addPerson Command</div>
+<div class="title">Figure 19. Sequence Diagram of the addPerson Command</div>
 </div>
 <div class="paragraph">
 <p>Pros:</p>
@@ -1044,6 +1105,83 @@ Alternative consideration is similar to the Competition section.</p>
 <p>A Participation is an association class we have created for every Person who has participation in a particular
 Competition. A person can take part in many competitions, and for each competition he/she takes part in, there will be a
 corresponding Participation class associated to that Person and Competition instance.</p>
+</div>
+<div class="sect4">
+<h5 id="supporting-the-create-read-update-and-delete-of-the-instances-of-the-participation-association-class"><a class="link" href="#supporting-the-create-read-update-and-delete-of-the-instances-of-the-participation-association-class">Supporting the create, read, update and delete of the instances of the Participation association class</a></h5>
+<div class="paragraph">
+<p>To support the add, delete, and reading of the participation instances using the commands below,
+the JSON storage system was modified (please refer to the Storage section above) in order to support
+the many-to-many relationship between competition and person. This allows the association class to
+be saved which the original Address Book architecture did not allow.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern-4"><a class="link" href="#choice-of-design-pattern-4">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Optimally, such many-to-many relationships should be handled by some form of join table on a database. Due to
+the project restrictions, we mapped a similar structure the the JSON storage system treating each file as a table,
+attempting to parallel the way real databases worked while still using JSON storage.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h5>
+<div class="paragraph">
+<p>To achieve this we treated each file saved as a table. Hence, there is a save file for each of the participation,
+competition and person models. When reading from the JSON storage, the competition and person data are read first,
+before the participation data is read. This is because the Competition and Person objects need to be created first
+in order to be associated with the Participation class. Since the names of competitions and persons are unique,
+we used that to identify the competition and person instances the participation instance that was originally
+saved was associated with.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>By using a Json Storage, the amount of changes to the Storage system was substantial but minimized, while
+still being able to support the Participation association class which helped decouple the Person and Competition
+classes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Con:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The uploading of the participation class from JSON relies on the property that there is some unique data
+signature of a person and the competitions, which can be determined from the data stored as JSON. Since
+both Person and Competition extend UniqueELementList, they will certainly be have some unique data
+signature (i.e. in this case each person and competition have unique names), which can be used to determine the instances the
+Participation object was originally associated with before it was saved. Hence, the current JSON storage
+system is not designed extensibly for the developer to move away from using the UniqueElement class for its instances
+or store data in a way that is not unique to the instances as instances with the same data signature cannot be
+distinguished from each other using the current JSON storage system.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Alternative:</p>
+</div>
+<div class="paragraph">
+<p>We have considered using XML storage and/or creating foreign keys using the JSON storage. However, due to the
+limitations of time and the complexity of achieving such a feature, we settled with modifying the JSON storage.</p>
+</div>
+<div class="paragraph">
+<p>Please see the following Structure of the Storage Component diagram and check the repository to understand the utility
+of the Storage system to support the many-to-many relationship.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
+</div>
+<div class="title">Figure 20. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/system/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="create-a-new-participation"><a class="link" href="#create-a-new-participation">Create a new Participation</a></h5>
@@ -1114,7 +1252,43 @@ or different name and same competition.</p>
 </div>
 <div class="sect3">
 <h4 id="overall-rank-feature"><a class="link" href="#overall-rank-feature">4.3.5. Overall Rank feature</a></h4>
-
+<div class="paragraph">
+<p>The user can list the persons in the system by the number of times they won a competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>overallRank</code></p>
+</div>
+<div class="paragraph">
+<p>Due to time limitations we have not allowed the user to specify any other ranking method but given
+the design of our system which is highly extensible, it would not be hard to do so in future
+versions.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Takes in no parameters so user will make minimal mistakes.</p>
+</li>
+<li>
+<p>Avoid complications between unmatched name and person.</p>
+</li>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User will have to scroll through the person list if it is very long to find a specific name.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2239,4 +2413,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:54:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:36:03 UTC</div></div></div></body></html>
