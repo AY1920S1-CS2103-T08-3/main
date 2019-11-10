@@ -9,9 +9,9 @@
 
 == Overview
 PCC is a command line GUI which has a prompt. Users can key in commands into the prompt to manage athletes, Powerlifting
-competitions and athletes' participation in competitions.
-As a brief introduction, Powerlifting comprises 3 movements: The Squat, The Bench Press and The Deadlift.
-Powerlifting athletes aim to achieve the maximum weights attempted for the 3 movements mentioned above to win a
+competitions and athletes' participation in competitions. As a brief introduction, Powerlifting comprises 3
+movements: The Squat, The Bench Press and The Deadlift. Powerlifting athletes aim to achieve the maximum weights
+attempted for the 3 movements mentioned above to win a
 Powerlifting competition.
 
 == Summary of contributions
