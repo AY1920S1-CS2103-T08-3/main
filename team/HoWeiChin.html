@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Ho Wei Chin - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Powerlifting Competition Coordinator</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-T11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Ho Wei Chin - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-powerlifting-competition-coordinator-pcc"><a class="link" href="#project-powerlifting-competition-coordinator-pcc">PROJECT:  Powerlifting Competition Coordinator (PCC)</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PCC is a command line GUI which has a prompt. Users can key in commands into the prompt to manage athletes, Powerlifting
+competitions and athletes' participation in competitions.
+As a brief introduction, Powerlifting comprises 3 movements: The Squat, The Bench Press and The Deadlift.
+Powerlifting athletes aim to achieve the maximum weights attempted for the 3 movements mentioned above to win a
+Powerlifting competition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement 1</strong>: added <strong>Add/Edit/Delete Competitions</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to add new competitions, edit information for existing competitions and delete
+obsolete competition information.</p>
+</li>
+<li>
+<p>Justification: Allows users to add/edit competitions with valid start and end dates. Delete command ensures the
+programme is not cluttered with unused competition data.</p>
+</li>
+<li>
+<p>Highlights: The key feature here is the date validation for adding and editing competitions with the help of an auxiliary class: CustomDate class.
+Please read my contribution to the DG to understand what I have meant by valid start and end dates. Furthermore, the
+DG explains how CustomDate class aids in validating the dates.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement 2</strong>: added <strong>Rank athletes for a given competition session</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to generate a report card for an athlete for a given competition setting.</p>
+</li>
+<li>
+<p>Justification: Allows the coach or an athlete to know what are the best weights attempted for the bench press,
+deadlift and squat. Also, the coach or an athlete can know the position of an athlete to relative to his or her
+competitors.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Code contributed*: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=howeichin&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Functional code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Aided in making a significant backend change for Person class to accomodate what my team needs for PCC
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/35">#35</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Spearheaded writing a majority of the Commands for PCC UG: <a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/22">#22</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="context-outside-of-competition-out-session"><a class="link" href="#context-outside-of-competition-out-session">Context: Outside Of Competition (Out-session)</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="commands-related-to-competition"><a class="link" href="#commands-related-to-competition">Commands related to competition</a></h3>
+<div class="paragraph">
+<p>Commands related to managing competitions outside of a competition setting shall be introduced first.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-competition-addcompetition"><a class="link" href="#adding-a-new-competition-addcompetition">Adding a new competition: addCompetition</a></h4>
+<div class="paragraph">
+<p>Format: <code>addCompetition n/COMPETITION NAME startDate/START DATE OF COMPETITION endDate/END DATE OF COMPETITION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>addCompetition n/IPF World Championships startDate/12/02/1995 endDate/15/02/1995</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-existing-competition-deletecompetition"><a class="link" href="#deleting-an-existing-competition-deletecompetition">Deleting an existing competition: deleteCompetition</a></h4>
+<div class="paragraph">
+<p>Deletes the competition identified by the index number, used in Competition list (shown in the GUI)</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteCompetition INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>deleteCompetition 1</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-information-of-a-competition-code-editcompetition-code"><a class="link" href="#editing-information-of-a-competition-code-editcompetition-code">Editing information of a competition: <code>editCompetition</code></a></h4>
+<div class="paragraph">
+<p>Edits the details of the competition identified by the index number, used in the Competition list (shown in the GUI).
+Existing values will be overwritten by the input values.
+In addition to INDEX, you must supply a value for at least one of the following fields:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>COMPETITION NAME</p>
+</li>
+<li>
+<p>START DATE OF COMPETITION</p>
+</li>
+<li>
+<p>END DATE OF COMPETITION</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: <code>editCompetition INDEX (must be a positive integer) [n/COMPETITION NAME] [startDate/START DATE OF COMPETITION] [endDate/END DATE OF COMPETITION]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>1.When all fields are supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editCompetition 1 n/IPF World Championships startDate/12/02/1995 endDate/15/02/1995</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>2.When only 1 field is supplied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editCompetition 1 n/IPF World Championships</code></p>
+</li>
+<li>
+<p><code>editCompetition 1 endDate/15/02/1995</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-the-rank-of-a-person-athlete-for-a-given-competition-code-rank-code"><a class="link" href="#getting-the-rank-of-a-person-athlete-for-a-given-competition-code-rank-code">Getting the rank of a person (athlete) for a given competition: <code>rank</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the rank of a person relative other competitors in the competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>rank n/NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rank n/Ho</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="competition-features"><a class="link" href="#competition-features">Competition features</a></h4>
+<div class="paragraph">
+<p>There are 4 competition/person features: adding, deleting, editing and listing competitions.
+The features are briefly described below. The crux of adding and editing a competition commands is the CustomDate class
+, the CustomDate class is important for validating the starting and ending dates for a competition event. The date
+validation process will be discussed in detail in words and with the aid of class and sequence diagrams.</p>
+</div>
+<div class="sect4">
+<h5 id="adding-a-competition"><a class="link" href="#adding-a-competition">Adding a competition</a></h5>
+<div class="paragraph">
+<p>To add a competition, a user supplies the name of a competition and its start and end dates. But, the start date must
+be equal or before end date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-competition"><a class="link" href="#deleting-a-competition">Deleting a competition</a></h5>
+<div class="paragraph">
+<p>To delete a competition, a user supplies the index of that competition. The index of a competition will be displayed
+in the user interface of that programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-competition"><a class="link" href="#editing-a-competition">Editing a competition</a></h5>
+<div class="paragraph">
+<p>A user has the choice of editing one or more of the following competition fields:the competition name, start and end dates
+of a competition. But, similar to adding a competition, the edited start date must be equal or before the edited end date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-a-competition"><a class="link" href="#listing-a-competition">Listing a competition</a></h5>
+<div class="paragraph">
+<p>To list all competitions stored in the programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern"><a class="link" href="#choice-of-design-pattern">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Similar to the Rank feature.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>As mentioned earlier, editing or adding competitions require start date to be equal or before the end date.
+To ensure the dates given for a competition are valid, we created a CustomDate class.
+Please see the following class diagram for more information on the association between CustomDate and Competition
+classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CustomDate.png" alt="CustomDate">
+</div>
+<div class="title">Figure 1. Class Diagram for the CustomDate and Competition classes</div>
+</div>
+<div class="paragraph">
+<p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addComp.png" alt="addComp">
+</div>
+<div class="title">Figure 2. Sequence Diagram of the addCompetition Command</div>
+</div>
+<div class="paragraph">
+<p>Pros of CustomDate:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note that DATE_FORMAT is hard-coded by us (class diagram cannot explicitly show this), this ensures our programme
+maintains a consistent date format for all competitions.</p>
+</li>
+<li>
+<p>By storing a Date object in the CustomDate class, we enable ParserUtil to call the before() method of the Date
+class to check for valid dates. Please the sequence diagram for the addCompetitionCommand, which provides illustration
+on how this is achieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cons of CustomDate:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We need to ensure functions/classes which rely on CustomDate can catch and handle errors due to inappropriate
+date properly. This means that any changes to CustomDate in the future requires some work to propagate the changes to
+the rest of the code base.</p>
+</li>
+<li>
+<p>Users may wish to have their own date format.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Alternative:</p>
+</div>
+<div class="paragraph">
+<p>We have considered using only the Java Date object, but we think it will be neater to have a CustomDate class to
+package a date object and its associated date format string in a CustomDate object. Furthermore, we can recycle the
+functions available in the CustomDate class for person features too (read the next section).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rank-feature"><a class="link" href="#rank-feature">Rank feature</a></h4>
+<div class="paragraph">
+<p>A RankCommand class is created to facilitate ranking of an athlete for a given competition he or she participates in.</p>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>RankCommand extends the Command Abstract Class, the rationale is explained in <code>Choice of Design Pattern</code> sub-section of the Rank feature.</p>
+</div>
+<div class="paragraph">
+<p>Rank feature has 2 sequential checks:
+1. Checks if a competition session is ongoing, rank command can only be used if a competition session persists.
+2. Checks if an athlete participates in a competition, rank command can only be used if an athlete participates in a competition.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the feature returns an athlete&#8217;s report card for a competition. For example,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Athlete: Alex Yeoh
+Competition: NUS Powerlifting Open 2019
+Rank: 1
+Total Score: 1
+Max Squat: 1
+Max Bench Press: 0
+Max Deadlift: 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the rank feature is used, RankCommand interacts with other classes to return an athlete&#8217;s report card. See the
+sequence diagram for a high level depiction of how RankCommand interacts with other classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RankCommand.png" alt="RankCommand">
+</div>
+<div class="title">Figure 3. Sequence Diagram of the RankCommand</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern-2"><a class="link" href="#choice-of-design-pattern-2">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Original AB3 code base uses a Command Design Pattern, which facilitates execution of different commands,
+without the programme knowing which type of command is being executed. Furthermore, the original AB3 code base achieves
+a Command Design Pattern by requiring different types of command classes to extend from a Command Abstract Class.</p>
+</div>
+<div class="paragraph">
+<p>Due to time constraint and to achieve consistency with the Command Design Pattern of the original Code Base,
+we decide to apply the Command Design Pattern for the Rank command too.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:54:52 UTC</div></div></div></body></html>

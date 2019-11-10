@@ -56,7 +56,7 @@
 <li><a href="#instructions-for-manual-testing-to-do">Appendix F: Instructions for Manual Testing (To Do)</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
+<li><a href="#deleting-a-person-2">F.2. Deleting a person</a></li>
 <li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
 </li>
@@ -583,8 +583,8 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 </div>
 <div class="sect2">
 <h3 id="context-switching-feature-between-sessions"><a class="link" href="#context-switching-feature-between-sessions">4.1. Context-Switching feature between sessions</a></h3>
-<div class="sect4">
-<h5 id="overview"><a class="link" href="#overview">Overview</a></h5>
+<div class="sect3">
+<h4 id="overview"><a class="link" href="#overview">4.1.1. Overview</a></h4>
 <div class="paragraph">
 <p>Our features are mainly split into 2 contexts. An in-competition, and an out-of-competition session mode.
 A session is started when the user wants to start an existing competition to call lifters to perform their attempt,
@@ -610,8 +610,8 @@ The user can still go in and out of the competition session (start and end), to 
 from the different states.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="how-it-is-being-implemented-mingsheng"><a class="link" href="#how-it-is-being-implemented-mingsheng">How it is being implemented (mingsheng)</a></h5>
+<div class="sect3">
+<h4 id="how-it-is-being-implemented-mingsheng"><a class="link" href="#how-it-is-being-implemented-mingsheng">4.1.2. How it is being implemented (mingsheng)</a></h4>
 
 </div>
 </div>
@@ -844,53 +844,38 @@ athletes) is made possible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="competition-person-features"><a class="link" href="#competition-person-features">4.3.2. Competition/Person features</a></h4>
+<h4 id="competition-features"><a class="link" href="#competition-features">4.3.2. Competition features</a></h4>
 <div class="paragraph">
-<p>There are 4 competition/person features: adding, deleting, editing and listing competitions/persons.
-The features are briefly described below. Except for the listing and deleting competition/persons commands, the crux of
-adding and editing a competition/person commands is the CustomDate class (which will be discussed later).</p>
+<p>There are 4 competition/person features: adding, deleting, editing and listing competitions.
+The features are briefly described below. The crux of adding and editing a competition commands is the CustomDate class
+, the CustomDate class is important for validating the starting and ending dates for a competition event. The date
+validation process will be discussed in detail in words and with the aid of class and sequence diagrams.</p>
 </div>
 <div class="sect4">
-<h5 id="adding-a-competition-person"><a class="link" href="#adding-a-competition-person">Adding a competition/person</a></h5>
+<h5 id="adding-a-competition"><a class="link" href="#adding-a-competition">Adding a competition</a></h5>
 <div class="paragraph">
-<p>To add a competition, supply the name of a competition and it&#8217;s start and end dates. But, start date must be equal or
-before end date.</p>
-</div>
-<div class="paragraph">
-<p>To add a person, supply a person&#8217;s name, a date of birth and a gender (male or female only). A person must have
-already been born. Example, if today os 11/09/2019, a user cannot add a person who is borned in 15/09/2019 (in the
-future).</p>
+<p>To add a competition, a user supplies the name of a competition and its start and end dates. But, the start date must
+be equal or before end date.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="deleting-a-competition-person"><a class="link" href="#deleting-a-competition-person">Deleting a competition/person</a></h5>
+<h5 id="deleting-a-competition"><a class="link" href="#deleting-a-competition">Deleting a competition</a></h5>
 <div class="paragraph">
-<p>To delete a competition, supply the index of that competition.</p>
-</div>
-<div class="paragraph">
-<p>To delete a person, supply the index of that person.</p>
+<p>To delete a competition, a user supplies the index of that competition. The index of a competition will be displayed
+in the user interface of that programme.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="editing-a-competition-person"><a class="link" href="#editing-a-competition-person">Editing a competition/person</a></h5>
+<h5 id="editing-a-competition"><a class="link" href="#editing-a-competition">Editing a competition</a></h5>
 <div class="paragraph">
-<p>For competition, a user has the choice of editing either the competition name, start date of a competition or end date
-of a competition.</p>
-</div>
-<div class="paragraph">
-<p>But, start date cannot be after end date after editing a competition information.</p>
-</div>
-<div class="paragraph">
-<p>For person, a user has the choice of editing either the person name, date of birth or a gender.</p>
-</div>
-<div class="paragraph">
-<p>But,  person must have already been born.</p>
+<p>A user has the choice of editing one or more of the following competition fields:the competition name, start and end dates
+of a competition. But, similar to adding a competition, the edited start date must be equal or before the edited end date.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="listing-a-competition-person"><a class="link" href="#listing-a-competition-person">Listing a competition/person</a></h5>
+<h5 id="listing-a-competition"><a class="link" href="#listing-a-competition">Listing a competition</a></h5>
 <div class="paragraph">
-<p>To list all competitions/person stored in the programme.</p>
+<p>To list all competitions stored in the programme.</p>
 </div>
 </div>
 <div class="sect4">
@@ -902,34 +887,51 @@ of a competition.</p>
 <div class="sect4">
 <h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
 <div class="paragraph">
-<p>To ensure the dates given for a competition/person are valid, we created a CustomDate class which has the following
-important attributes: a Java Date object and a string which stores a date format (hard-coded).</p>
+<p>As mentioned earlier, editing or adding competitions require start date to be equal or before the end date.
+To ensure the dates given for a competition are valid, we created a CustomDate class.
+Please see the following class diagram for more information on the association between CustomDate and Competition
+classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CustomDate.png" alt="CustomDate">
+</div>
+<div class="title">Figure 15. Class Diagram for the CustomDate and Competition classes</div>
 </div>
 <div class="paragraph">
-<p>Pros:</p>
+<p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addComp.png" alt="addComp">
+</div>
+<div class="title">Figure 16. Sequence Diagram of the addCompetition Command</div>
+</div>
+<div class="paragraph">
+<p>Pros of CustomDate:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>By storing a hard-coded date format, our programme can ensure consistency of the date format for all
-competition events.</p>
+<p>Note that DATE_FORMAT is hard-coded by us (class diagram cannot explicitly show this), this ensures our programme
+maintains a consistent date format for all competitions.</p>
 </li>
 <li>
-<p>By storing a Date object, we allow the our programme to use a method from Java Date class: before(). As mentioned
-previously, this allows our programme to check if a competition start date is before or equals to the end date.
-Similarly, to allow a input person&#8217;s date of birth is before or equal to the current date. For example, if today&#8217;s
-date is 11/09/2019, a person&#8217;s date of birth must be equal or before 11/09/2019</p>
+<p>By storing a Date object in the CustomDate class, we enable ParserUtil to call the before() method of the Date
+class to check for valid dates. Please the sequence diagram for the addCompetitionCommand, which provides illustration
+on how this is achieved.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Con:</p>
+<p>Cons of CustomDate:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>We need to ensure exceptions due to inappropriate date format and due to start date occurring after an end date are
-handled properly by functions which depend on CustomDate.</p>
+<p>We need to ensure functions/classes which rely on CustomDate can catch and handle errors due to inappropriate
+date properly. This means that any changes to CustomDate in the future requires some work to propagate the changes to
+the rest of the code base.</p>
 </li>
 <li>
 <p>Users may wish to have their own date format.</p>
@@ -940,26 +942,104 @@ handled properly by functions which depend on CustomDate.</p>
 <p>Alternative:</p>
 </div>
 <div class="paragraph">
-<p>We have considered using just the Java Date object, but we think it will be neater to have a CustomDate class to keep a
-date object and its associated date format string together in a CustomDate object. Furthermore, we can use the
-functions available in the CustomDate class for competition and person objects. In particular, we can use the get
-method to obtain the Date objects for two different CustomDate objects and compare them to decide if a user input for
-dates is valid or not.</p>
+<p>We have considered using only the Java Date object, but we think it will be neater to have a CustomDate class to
+package a date object and its associated date format string in a CustomDate object. Furthermore, we can recycle the
+functions available in the CustomDate class for person features too (read the next section).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="person-features"><a class="link" href="#person-features">4.3.3. Person Features</a></h4>
+<div class="paragraph">
+<p>There are 4 person features: adding, deleting, editing and listing persons. Similar to competition features, the
+programme needs to validate date of birth when a user adds a person or edit a existing person&#8217;s date of birth. In
+particular, the programme needs to ensure a person added or edited will not have a date of birth which occurs in the
+future. In other words, the person added or edited must have a date of birth equal to or before today&#8217;s date.
+For example, if today is the 11/10/2019, a person&#8217;s date of birth must be prior to 11/10/2019 or it must be exactly
+11/10/2019.</p>
 </div>
 <div class="paragraph">
-<p>Please see the following activity diagram to understand the utility of CustomDate class in the context of adding a
-person.</p>
+<p>The features are briefly described below. Similar to the competition features, we will describe the association
+between CustomDate and Person classes. Subsequently, we will describe the validation process for person features.</p>
+</div>
+<div class="sect4">
+<h5 id="adding-a-person"><a class="link" href="#adding-a-person">Adding a person</a></h5>
+<div class="paragraph">
+<p>To add a person, supply a person&#8217;s name, a date of birth and a gender (male or female only). A person must have
+already been born. Example, if today os 11/09/2019, a user cannot add a person who is borned in 15/09/2019 (in the
+future).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h5>
+<div class="paragraph">
+<p>To delete a person, supply the index of that person.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-person"><a class="link" href="#editing-a-person">Editing a person</a></h5>
+<div class="paragraph">
+<p>For person, a user has the choice of editing either the person name, date of birth or a gender.
+But,  person must have already been born.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-people"><a class="link" href="#listing-people">Listing people</a></h5>
+<div class="paragraph">
+<p>To list all people stored in the programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<div class="paragraph">
+<p>Similar to competition, the crux of editing or adding persons rely on the CustomDate class for date validation.</p>
+</div>
+<div class="paragraph">
+<p>Please see the following class diagram for more information on the association between CustomDate and Person
+classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CustomDatePerson.png" alt="CustomDatePerson">
+</div>
+<div class="title">Figure 17. Class Diagram for the CustomDate and Person classes</div>
+</div>
+<div class="paragraph">
+<p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/addPerson.png" alt="addPerson">
 </div>
-<div class="title">Figure 15. Sequence Diagram of the addPerson Command</div>
+<div class="title">Figure 18. Sequence Diagram of the addPerson Command</div>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note that DATE_FORMAT is hard-coded by us (similar to Competition features), this ensures our programme
+maintains a consistent date format for all people.</p>
+</li>
+<li>
+<p>By storing a Date object in the CustomDate class, we enable ParserUtil to call the before() method of the Date
+class to check for valid dates.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Con:
+Similar to the Competition section.</p>
+</div>
+<div class="paragraph">
+<p>Alternative:
+Alternative consideration is similar to the Competition section.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="participation-features"><a class="link" href="#participation-features">4.3.3. Participation features</a></h4>
+<h4 id="participation-features"><a class="link" href="#participation-features">4.3.4. Participation features</a></h4>
 <div class="paragraph">
 <p>A Participation is an association class we have created for every Person who has participation in a particular
 Competition. A person can take part in many competitions, and for each competition he/she takes part in, there will be a
@@ -1033,7 +1113,7 @@ or different name and same competition.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="overall-rank-feature"><a class="link" href="#overall-rank-feature">4.3.4. Overall Rank feature</a></h4>
+<h4 id="overall-rank-feature"><a class="link" href="#overall-rank-feature">4.3.5. Overall Rank feature</a></h4>
 
 </div>
 </div>
@@ -2113,7 +2193,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person-2"><a class="link" href="#deleting-a-person-2">F.2. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2159,4 +2239,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:40:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 14:54:52 UTC</div></div></div></body></html>
