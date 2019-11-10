@@ -240,12 +240,12 @@ In addition to INDEX, you must supply a value for at least one of the following 
 <div class="sect2">
 <h3 id="commands-related-to-person-athlete"><a class="link" href="#commands-related-to-person-athlete">5.2. Commands related to person (athlete)</a></h3>
 <div class="paragraph">
-<p>Commands related to managing persons (athletes) outside of a competition setting shall be introduced now.</p>
+<p>Commands related to managing persons (athletes) outside of a competition session shall are described below.</p>
 </div>
 <div class="sect3">
 <h4 id="adding-a-new-person-code-addperson-code"><a class="link" href="#adding-a-new-person-code-addperson-code">5.2.1. Adding a new person: <code>addPerson</code></a></h4>
 <div class="paragraph">
-<p>Format: <code>addPerson n/NAME dob/DATE OF BIRTH g/GENDER</code></p>
+<p>Format: <code>addPerson n/NAME dob/BIRTH DATE g/GENDER</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -280,9 +280,9 @@ In addition to INDEX, you must supply a value for at least one of the following 
 <div class="sect3">
 <h4 id="editing-information-of-an-existing-person-code-editperson-code"><a class="link" href="#editing-information-of-an-existing-person-code-editperson-code">5.2.3. Editing information of an existing person: <code>editPerson</code></a></h4>
 <div class="paragraph">
-<p>Edits the details of the person identified by the index number, used in the Person list (shown in the GUI).
-Existing values will be overwritten by the input values.
-In addition to INDEX, you must supply a value for at least one of the following fields:</p>
+<p>Edits the details of the person identified by the index number, used in the Person list. Existing
+values will be overwritten by the input values. In addition to INDEX, you must supply a value for
+at least one of the following fields:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -303,19 +303,20 @@ In addition to INDEX, you must supply a value for at least one of the following 
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-<div class="paragraph">
-<p>1.When all fields are supplied:</p>
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When all fields are supplied:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>editPerson 1 n/John Doe dob/12/02/1995 g/MALE</code></p>
+<p><code>editPerson 1 n/John Doe dob/12/02/1995 g/male</code></p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>2.When only 1 field is supplied:</p>
-</div>
+</li>
+<li>
+<p>When only 1 field is supplied:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -325,6 +326,9 @@ In addition to INDEX, you must supply a value for at least one of the following 
 <p><code>editPerson 1 dob/12/02/1995</code></p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -362,7 +366,13 @@ In addition to INDEX, you must supply a value for at least one of the following 
 <div class="sect3">
 <h4 id="listing-all-existing-persons-code-listperson-code"><a class="link" href="#listing-all-existing-persons-code-listperson-code">5.2.5. Listing all existing persons: <code>listPerson</code></a></h4>
 <div class="paragraph">
+<p>Lists all persons recorded in the system and displays them as a numerically ordered list.</p>
+</div>
+<div class="paragraph">
 <p>Format: <code>listPerson</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>listPerson</code></p>
 </div>
 </div>
 </div>
@@ -496,10 +506,12 @@ To display all persons for all competitions:</p>
 <div class="sect3">
 <h4 id="starting-a-competition-event-along-with-its-competing-athletes-person-code-startsession-code"><a class="link" href="#starting-a-competition-event-along-with-its-competing-athletes-person-code-startsession-code">5.4.5. Starting a competition event along with its competing athletes (person): <code>startSession</code></a></h4>
 <div class="paragraph">
-<p>Only display athletes who are participating for a specified competition.</p>
+<p>Enters into a competition session. Switches the context to being in a competition session.
+Only In-session commands can be used after this command is executed until the user
+terminates the competition session with the <code>endSession</code> command (See below).</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>startSession COMPETITION NAME</code></p>
+<p>Format: <code>startSession c/COMPETITION NAME</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -507,7 +519,7 @@ To display all persons for all competitions:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>startSession NUS 2022</code></p>
+<p><code>startSession c/NUS 2022</code></p>
 </li>
 </ul>
 </div>
@@ -586,8 +598,10 @@ The lift updated will be the one that was just called up.</p>
 <div class="sect3">
 <h4 id="getting-the-rank-of-a-person-athlete-for-a-given-competition-using-a-specific-criterion-code-ranklist-code"><a class="link" href="#getting-the-rank-of-a-person-athlete-for-a-given-competition-using-a-specific-criterion-code-ranklist-code">6.1.4. Getting the rank of a person (athlete) for a given competition, using a specific criterion: <code>ranklist</code></a></h4>
 <div class="paragraph">
-<p>Retrieves the rank of a person relative other competitors in the competition using a condition.
-Available conditions are:</p>
+<p>Retrieves a sorted order of all the participants of a the competition in-session based on the ranking method
+stipulated in the command. This ranking methods can be broadly categorized as being either the overall score or
+the maximum weight lifted for a particular exercise.
+Available ranking methods are by:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -606,7 +620,7 @@ Available conditions are:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Format: <code>ranklist by/CRITERION</code></p>
+<p>Format: <code>ranklist by/RANKING METHOD</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -619,20 +633,28 @@ Available conditions are:</p>
 <li>
 <p><code>ranklist by/squat</code></p>
 </li>
+<li>
+<p><code>ranklist by/deadlift</code></p>
+</li>
+<li>
+<p><code>ranklist by/bench</code></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ending-and-exiting-the-session-code-endsession-code"><a class="link" href="#ending-and-exiting-the-session-code-endsession-code">6.1.5. Ending and exiting the session <code>endSession</code></a></h4>
 <div class="paragraph">
-<p>Ends the session, and shifts the user back to the out-of-session state.
-This command is also automatically triggered when a competition has ended,
-which means there are no more attempts for any lifters.</p>
+<p>Ends the session, and shifts the user back to the out-of-session state. The user now has access
+to the out-of-session commands once again.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>endSession</code></p>
 </div>
+<div class="paragraph">
+<p>Example: <code>endSession</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 05:25:47 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:40:04 UTC</div></div></div></body></html>

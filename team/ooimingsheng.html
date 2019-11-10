@@ -145,7 +145,10 @@ for additional entities to be added should a developer require</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the User Guide: <a href="https://github.com">#14</a></p>
+<p>Updated the User Guide: (Pull request <a href="https://github.com">#129</a>)</p>
+</li>
+<li>
+<p>Updated the Developer Guide: (Pull request <a href="https://github.com">#3</a>, <a href="https://github.com">#129</a>)</p>
 </li>
 </ul>
 </div>
@@ -156,10 +159,10 @@ for additional entities to be added should a developer require</p>
 <ul>
 <li>
 <p>PRs reviewed (with non-trivial review comments):
-<a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<a href="https://github.com">#43</a>, <a href="https://github.com">#49</a> <a href="https://github.com">#113</a>, <a href="https://github.com">#114</a></p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (example: <a href="https://github.com/ooimingsheng/ped/issues" class="bare">https://github.com/ooimingsheng/ped/issues</a>)</p>
 </li>
 </ul>
 </div>
@@ -190,7 +193,65 @@ for additional entities to be added should a developer require</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p>
+<p class="tableblock"><a id="Features"></a>
+== Features</p>
+<p class="tableblock">=== Commands related to person (athlete)
+Commands related to managing persons (athletes) outside of a competition session shall are described below.</p>
+<p class="tableblock">==== Adding a new person: <code>addPerson</code>
+Format: <code>addPerson n/NAME dob/BIRTH DATE g/GENDER</code></p>
+<p class="tableblock">Example:</p>
+<p class="tableblock">* <code>addPerson n/John Doe dob/12/02/1995 g/male</code></p>
+<p class="tableblock">==== Deleting an existing person: <code>deletePerson</code>
+Deletes the person identified by the index number, used in Person list (shown in the GUI).</p>
+<p class="tableblock">Format: <code>deletePerson INDEX</code></p>
+<p class="tableblock">Examples:</p>
+<p class="tableblock">* <code>deletePerson 1</code></p>
+<p class="tableblock">==== Editing information of an existing person: <code>editPerson</code>
+Edits the details of the person identified by the index number, used in the Person list. Existing
+values will be overwritten by the input values. In addition to INDEX, you must supply a value for
+at least one of the following fields:</p>
+<p class="tableblock">1. NAME
+2. DATEOFBIRTH
+3. GENDER</p>
+<p class="tableblock">Format: <code>editPerson INDEX (must be a positive integer) [n/NAME] [dob/DATEOFBIRTH] [g/GENDER]</code></p>
+<p class="tableblock">Examples:</p>
+<p class="tableblock">1. When all fields are supplied:</p>
+<p class="tableblock">* <code>editPerson 1 n/John Doe dob/12/02/1995 g/male</code></p>
+<p class="tableblock">2. When only 1 field is supplied:</p>
+<p class="tableblock">* <code>editPerson 1 n/John Doe</code></p>
+<p class="tableblock">* <code>editPerson 1 dob/12/02/1995</code></p>
+<p class="tableblock">==== Finding person(s): <code>findPerson</code>
+Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a numerically ordered list.</p>
+<p class="tableblock">Format: <code>findPerson [KEYWORD 1] [KEYWORD 2] &#8230;&#8203; [KEYWORD N]</code></p>
+<p class="tableblock">Examples:</p>
+<p class="tableblock">* Find Alex Yeoh only:
+  <code>findPerson Alex</code></p>
+<p class="tableblock">* Find Alex Yeoh only:
+  <code>findPerson alex</code></p>
+<p class="tableblock">* Find Alex Yeoh only:
+  <code>findPerson yeoh</code></p>
+<p class="tableblock">* Find Alex Yeoh and Bernice Yu:
+  <code>findPerson yeoh yu</code></p>
+<p class="tableblock">==== Listing all existing persons: <code>listPerson</code>
+Lists all persons recorded in the system and displays them as a numerically ordered list.</p>
+<p class="tableblock">Format: <code>listPerson</code></p>
+<p class="tableblock">Example: <code>listPerson</code></p>
+<p class="tableblock">==== Getting the rank of a person (athlete) for a given competition, using a specific criterion: <code>ranklist</code>
+Retrieves a sorted order of all the participants of a the competition in-session based on the ranking method
+stipulated in the command. This ranking methods can be broadly categorized as being either the overall score or
+the maximum weight lifted for a particular exercise.
+Available ranking methods are by:</p>
+<p class="tableblock">1. Squat
+2. Deadlift
+3. Bench Press
+4. Overall (overall score)</p>
+<p class="tableblock">Format: <code>ranklist by/RANKING METHOD</code></p>
+<p class="tableblock">Example:</p>
+<p class="tableblock">* <code>ranklist by/overall</code></p>
+<p class="tableblock">* <code>ranklist by/squat</code></p>
+<p class="tableblock">* <code>ranklist by/deadlift</code></p>
+<p class="tableblock">* <code>ranklist by/bench</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -212,6 +273,723 @@ for additional entities to be added should a developer require</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="what-is-powerlifting-competition-coordinator"><a class="link" href="#what-is-powerlifting-competition-coordinator">What is Powerlifting Competition Coordinator?</a></h3>
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator is a free application for powerlifting competition event organizers
+that is simple, fast, and easy to use. It is targeted at organizers of small to medium sized powerlifting
+competitions who require a hassle-free way of managing and tracking the lifts of participants in and out
+of the powerlifting competitions. During competition mode, the system has real time maintenance of athlete
+rankings within their respective weight classes allowing the organizer track the participants'
+standings at all times throughout the duration of the competition.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="core-team"><a class="link" href="#core-team">Core team</a></h3>
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator  was developed and is maintained by
+<a href="https://github.com/AY1920S1-CS2103-T11-3">Team T11-3</a>.
+Feel free to <a href="https://github.com/AY1920S1-CS2103-T11-3/main/issues">contact us</a> for any enquries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributing"><a class="link" href="#contributing">Contributing</a></h3>
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator is an open source project and we would love to involve any contributor
+who has a passion for powerlifting. To get involved, start by reading <a href="SettingUp.html">Section 2, “Setting up”</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">Setting up</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section includes the instructions to set up your development environment.</p>
+</div>
+<div class="sect2">
+<h3 id="prerequisites"><a class="link" href="#prerequisites">Prerequisites</a></h3>
+<div class="paragraph">
+<p>Prior to setting up the project proper, make sure you have the following.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having any Java 11 version is not enough.<br>
+This app will not work with earlier versions of Java 11.<br>
+You can get the latest Java 1 JDK at <a href="http://www.oracle.com/technetwork/java/javase/downloads">this link</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">Setting up the project in your computer</a></h3>
+<div class="paragraph">
+<p>To setup the project in IntelliJ, follow the steps below.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer.</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code>.</p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
+</li>
+<li>
+<p>Click <code>Open as Project</code>.</p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings.</p>
+</li>
+<li>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>).
+It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This will generate all resources required by the application and tests.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">Verifying the setup</a></h3>
+<div class="paragraph">
+<p>To verify that the setup is completed successfully, you should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>seedu.system.MainApp</code> and try a few commands.</p>
+</li>
+<li>
+<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">Configurations to do before writing code</a></h3>
+<div class="paragraph">
+<p>This subsection includes configurations that you may find necessary or useful as you work on this project.
+We recommend that you make these configuration changes and additions before you start writing code.</p>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. Follow the instructions below to rectify this.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">Updating documentation to match your fork</a></h4>
+<div class="paragraph">
+<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level3</code> repo.
+If you plan to develop this as a separate product (i.e. instead of contributing to the
+<code>se-edu/addressbook-level3</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">Getting started with coding</a></h4>
+<div class="paragraph">
+<p>When you are ready to start coding:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get some sense of the overall design by reading <a href="#Design-Architecture">[Design-Architecture]</a>.</p>
+</li>
+<li>
+<p>Take a look at <a href="#GetStartedProgramming">[GetStartedProgramming]</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix A: Use Cases</a></h2>
+<div class="sectionbody">
+<h4 id="use-case-uc7-view-list-of-people" class="discrete">Use case: UC7 - View list of people</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all people in the system.</p>
+</li>
+<li>
+<p>Powerlifting Competition Coordinator shows a list of all people in the system.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc8-find-people" class="discrete">Use case: UC8 - Find people</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User performs a search with some keywords.</p>
+</li>
+<li>
+<p>System lists people that have fields containing those keywords.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any people containing fields with those keywords.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an empty list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc9-add-a-person-to-the-system" class="discrete">Use case: UC9 - Add a person to the system</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for a person to be added to the system.</p>
+</li>
+<li>
+<p>User inputs person data.</p>
+</li>
+<li>
+<p>System adds the new person to the system&#8217;s list of people.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Person data is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The person is already in the system&#8217;s list of people.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System tells user that the person is already in the system&#8217;s list of people.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc10-edit-a-specific-person" class="discrete">Use case: UC10 - Edit a specific person</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of competitions by listing (<a href="#use-case-uc7-view-list-of-people"><strong>UC7</strong></a>)
+or by (<a href="#use-case-uc8-find-people"><strong>UC8</strong></a>)</p>
+</li>
+<li>
+<p>User requests certain data about the athlete to be updated.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User gives invalid data.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc11-delete-a-specific-person" class="discrete">Use case: UC11 - Delete a specific person</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a list of people (<a href="#use-case-uc7-view-list-of-people"><strong>UC7</strong></a>) or
+(<a href="#use-case-uc8-find-people"><strong>UC8</strong></a>)</p>
+</li>
+<li>
+<p>User requests for a person to be deleted from the list of people.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc12-view-my-participation-list" class="discrete">Use case: UC12 - View my participation list</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list all participants.</p>
+</li>
+<li>
+<p>System shows a list of all participants.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc12-find-participations" class="discrete">Use case: UC12 - Find participations</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User performs a search with some keywords.</p>
+</li>
+<li>
+<p>System lists participations that have with certain fields containing those keywords.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any participations containing fields with those keywords.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an empty list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc13-edit-a-specific-participation-available-in-v2-0" class="discrete">Use case: UC13 - Edit a specific participation (Available in v2.0)</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a list of participations (<a href="#use-case-uc12-view-my-participation-list"><strong>UC12</strong></a>) or
+(<a href="#Use case: UC13 - Find participations"><strong>UC13</strong></a>)</p>
+</li>
+<li>
+<p>User requests certain data about the participation to be updated.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User gives invalid data.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc14-add-a-new-participation" class="discrete">Use case: UC14 - Add a new participation</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for a new participation to be added.</p>
+</li>
+<li>
+<p>User inputs the initial participation data (e.g. person and competition name) to be inputted.</p>
+</li>
+<li>
+<p>System adds the new participation to the user&#8217;s participation list.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Participation data is invalid (e.g. Competition or person with inputted name does not exist in system).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. A participation with the same person and competition has already been used in user&#8217;s participation list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System tells user that the participation is already in his participation list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc15-delete-a-specific-participation" class="discrete">Use case: UC15 - Delete a specific participation</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a list of participation (<a href="#use-case-uc12-view-my-participation-list"><strong>UC12</strong></a>) or
+(<a href="#Use case: UC13 - Find participations"><strong>UC13</strong></a>)</p>
+</li>
+<li>
+<p>User requests for a participation to be deleted from the list of participations.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc18-get-a-list-of-participations-based-on-their-score-by-some-ranking-method" class="discrete">Use case: UC18 - Get a list of participations based on their score by some ranking method</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for participations in the current competition in-session to be ranked based on
+their score given by some ranking method.</p>
+</li>
+<li>
+<p>System shows the participations sorted by the ranking method with their scores.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix B: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
+</li>
+<li>
+<p>Should work on both 32-bit and 64-bit environments.</p>
+</li>
+<li>
+<p>Should come with automated unit tests and open source code.</p>
+</li>
+<li>
+<p>Should come with a user guide and a developer guide.</p>
+</li>
+<li>
+<p>Should favor <a href="#dos-style-commands">DOS style commands</a> over Unix-style commands.</p>
+</li>
+<li>
+<p>Should be intuitive such that a new user can learn to search and organize a powerlifting competition within 10 minutes.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+<em>{More to be added}</em></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix C: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="project-nusanswers"><a class="link" href="#project-nusanswers">PROJECT: NUSanswers</a></h2>
 <div class="sectionbody">
 <hr>
@@ -222,4 +1000,4 @@ there and allow for a crowd sourcing of answers to NUS exam questions which are 
 the student body. Please refer to <a href="https://github.com/cs3216/a3-mobile-cloud-group-08" class="bare">https://github.com/cs3216/a3-mobile-cloud-group-08</a> for more information.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 05:25:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:40:04 UTC</div></div></div></body></html>

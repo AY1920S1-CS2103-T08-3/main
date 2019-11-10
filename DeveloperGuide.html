@@ -16,7 +16,14 @@
 <li><a href="#contributing">1.3. Contributing</a></li>
 </ul>
 </li>
-<li><a href="#setting-up">2. Setting up</a></li>
+<li><a href="#setting-up">2. Setting up</a>
+<ul class="sectlevel2">
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></li>
+<li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></li>
+</ul>
+</li>
 <li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
 <li><a href="#Design-Architecture">3.1. Architecture</a></li>
@@ -38,7 +45,7 @@
 <li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases-to-do">Appendix C: Use Cases (To Do)</a>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
 <li><a href="#out-of-competition-mode">C.1. Out of competition mode</a></li>
 <li><a href="#in-competition-mode">C.2. In competition mode</a></li>
@@ -46,12 +53,11 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing-to-do">Appendix G: Instructions for Manual Testing (To Do)</a>
+<li><a href="#instructions-for-manual-testing-to-do">Appendix F: Instructions for Manual Testing (To Do)</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
+<li><a href="#saving-data">F.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -93,7 +99,211 @@ To get involved, start by reading <a href="SettingUp.html">Section 2, “Setting
 <h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>This section includes the instructions to set up your development environment.</p>
+</div>
+<div class="sect2">
+<h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
+<div class="paragraph">
+<p>Prior to setting up the project proper, make sure you have the following.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>1.8.0_60</code></strong> or later</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having any Java 11 version is not enough.<br>
+This app will not work with earlier versions of Java 11.<br>
+You can get the latest Java 1 JDK at <a href="http://www.oracle.com/technetwork/java/javase/downloads">this link</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<div class="paragraph">
+<p>To setup the project in IntelliJ, follow the steps below.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer.</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code>.</p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
+</li>
+<li>
+<p>Click <code>Open as Project</code>.</p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings.</p>
+</li>
+<li>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>).
+It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This will generate all resources required by the application and tests.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<div class="paragraph">
+<p>To verify that the setup is completed successfully, you should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>seedu.system.MainApp</code> and try a few commands.</p>
+</li>
+<li>
+<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
+<div class="paragraph">
+<p>This subsection includes configurations that you may find necessary or useful as you work on this project.
+We recommend that you make these configuration changes and additions before you start writing code.</p>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. Follow the instructions below to rectify this.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.2. Updating documentation to match your fork</a></h4>
+<div class="paragraph">
+<p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level3</code> repo.
+If you plan to develop this as a separate product (i.e. instead of contributing to the
+<code>se-edu/addressbook-level3</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">2.4.3. Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.4. Getting started with coding</a></h4>
+<div class="paragraph">
+<p>When you are ready to start coding:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 3.1, &#8220;Architecture&#8221;</a>.</p>
+</li>
+<li>
+<p>Take a look at <a href="#GetStartedProgramming">[GetStartedProgramming]</a>.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -130,7 +340,8 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -254,7 +465,7 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>SystemParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -870,7 +1081,7 @@ or different name and same competition.</p>
 <p>has a need to see the ranking of the participants of each competition</p>
 </li>
 <li>
-<p>prefer desktop applicationss over other types</p>
+<p>prefer desktop applications over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -980,19 +1191,16 @@ score was derived</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons/competitions/participations by some field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate an entity easily</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="use-cases-to-do"><a class="link" href="#use-cases-to-do">Appendix C: Use Cases (To Do)</a></h2>
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>Powerlifting Competition Competitor</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
@@ -1036,10 +1244,10 @@ score was derived</p></td>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests for a new powerlifting competition to be started.</p>
+<p>User requests for a new powerlifting competition to be added.</p>
 </li>
 <li>
-<p>User inputs the initial competition data (e.g. name, particpants) to be inputted.</p>
+<p>User inputs the initial competition data (e.g. name, start and end dates) to be inputted.</p>
 </li>
 <li>
 <p>System adds the new competition to the user&#8217;s competition list.</p>
@@ -1095,10 +1303,10 @@ score was derived</p></td>
 <p>User obtains a list of competitions by listing (<a href="#use-case-uc1-view-my-competition-list"><strong>UC1</strong></a>)</p>
 </li>
 <li>
-<p>User requests for a new powerlifting competition to be deleted.</p>
+<p>User requests for a powerlifting competition to be deleted.</p>
 </li>
 <li>
-<p>System adds the new competition to the user&#8217;s competition list.</p>
+<p>System deletes the competition from the user&#8217;s competition list.</p>
 </li>
 <li>
 <p>System shows a success message.</p>
@@ -1128,17 +1336,89 @@ score was derived</p></td>
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc4-enter-competition-mode-for-a-particular-competition" class="discrete">Use case: UC4 - Enter competition mode for a particular competition</h4>
+<h4 id="use-case-uc4-find-competitions" class="discrete">Use case: UC4 - Find competitions</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User obtains a list of competitions by listing (<a href="#use-case-uc1-view-my-competition-list"><strong>UC1</strong></a>)</p>
+<p>User performs a search with some keywords.</p>
 </li>
 <li>
-<p>User requests to enter competition mode for a particular competition.</p>
+<p>System lists competitions that have fields containing those keywords.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any competitions containing fields with those keywords.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an empty list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc5-edit-a-specific-competition" class="discrete">Use case: UC5 - Edit a specific competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User obtains a list of competitions by listing (<a href="#use-case-uc1-view-my-competition-list"><strong>UC1</strong></a>)
+or by (<a href="#use-case-uc4-find-competitions"><strong>UC4</strong></a>)</p>
+</li>
+<li>
+<p>User requests certain data about a competition to be updated.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. User gives invalid data.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc6-enter-competition-mode-for-a-particular-competition" class="discrete">Use case: UC6 - Enter competition mode for a particular competition</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to enter competition mode for a particular competition by entering the competition name.</p>
 </li>
 <li>
 <p>System enters competition mode for a particular competition.</p>
@@ -1154,7 +1434,7 @@ score was derived</p></td>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. User gives an invalid index.</p>
+<p>2a. User gives an invalid name or the competition name does not exist in the system.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1168,17 +1448,17 @@ score was derived</p></td>
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc5-view-my-athlete-list" class="discrete">Use case: UC5 - View my athlete list</h4>
+<h4 id="use-case-uc7-view-list-of-people" class="discrete">Use case: UC7 - View list of people</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list all athletes in the system.</p>
+<p>User requests to list all people in the system.</p>
 </li>
 <li>
-<p>Powerlifting Competition Coordinator shows a list of all athletes in the system.</p>
+<p>Powerlifting Competition Coordinator shows a list of all people in the system.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1198,17 +1478,17 @@ score was derived</p></td>
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc6-search-for-athletes" class="discrete">Use case: UC6 - Search for athletes</h4>
+<h4 id="use-case-uc8-find-people" class="discrete">Use case: UC8 - Find people</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User performs a search with some constraints (e.g. id, country, age, etc.).</p>
+<p>User performs a search with some keywords.</p>
 </li>
 <li>
-<p>System lists athletes satisfying all the constraints.</p>
+<p>System lists people that have fields containing those keywords.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1221,7 +1501,7 @@ score was derived</p></td>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. System does not find any athletes satisfying all the constraints.</p>
+<p>2a. System does not find any people containing fields with those keywords.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1232,73 +1512,20 @@ score was derived</p></td>
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc7-view-a-specific-athlete" class="discrete">Use case: UC7 - View a specific athlete</h4>
+<h4 id="use-case-uc9-add-a-person-to-the-system" class="discrete">Use case: UC9 - Add a person to the system</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User obtains a list of athletes by listing (<a href="#use-case-uc5-view-my-athlete-list"><strong>UC5</strong></a>).
-or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></a>).</p>
+<p>User requests for a person to be added to the system.</p>
 </li>
 <li>
-<p>User requests to view more information on a specific athlete in the list.</p>
+<p>User inputs person data.</p>
 </li>
 <li>
-<p>System shows detailed information of the book.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. System does not find the athlete in the list.</p>
-<div class="paragraph">
-<p>Use case restarts from step 1.</p>
-</div>
-</li>
-<li>
-<p>2b. User gives an invalid index.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b1. System shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-<h4 id="use-case-uc8-add-an-athlete" class="discrete">Use case: UC8 - Add an athlete</h4>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests for an athlete to be added.</p>
-</li>
-<li>
-<p>User inputs athlete data.</p>
-</li>
-<li>
-<p>User confirms that the addition of the athlete cannot be reversed.</p>
-</li>
-<li>
-<p>System adds the new athlete to the user&#8217;s athlete list.</p>
+<p>System adds the new person to the system&#8217;s list of people.</p>
 </li>
 <li>
 <p>System shows a success message.</p>
@@ -1314,7 +1541,7 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. Athlete data is invalid.</p>
+<p>2a. Person data is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1327,11 +1554,11 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 </div>
 </li>
 <li>
-<p>2b. The athlete is already in user&#8217;s athlete list.</p>
+<p>2b. The person is already in the system&#8217;s list of people.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2b1. System tells user that the athlete is already in his athlete list.</p>
+<p>2b1. System tells user that the person is already in the system&#8217;s list of people.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1341,14 +1568,15 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc9-edit-a-specific-athlete" class="discrete">Use case: UC9 - Edit a specific athlete</h4>
+<h4 id="use-case-uc10-edit-a-specific-person" class="discrete">Use case: UC10 - Edit a specific person</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User views a specific athlete (<a href="#use-case-uc7-view-a-specific-athlete"><strong>UC7</strong></a>)</p>
+<p>User obtains a list of competitions by listing (<a href="#use-case-uc7-view-list-of-people"><strong>UC7</strong></a>)
+or by (<a href="#use-case-uc8-find-people"><strong>UC8</strong></a>)</p>
 </li>
 <li>
 <p>User requests certain data about the athlete to be updated.</p>
@@ -1381,17 +1609,18 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc10-delete-a-specific-athlete" class="discrete">Use case: UC10 - Delete a specific athlete</h4>
+<h4 id="use-case-uc11-delete-a-specific-person" class="discrete">Use case: UC11 - Delete a specific person</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User views a specific athlete (<a href="#use-case-uc7-view-a-specific-athlete"><strong>UC7</strong></a>)</p>
+<p>User views a list of people (<a href="#use-case-uc7-view-list-of-people"><strong>UC7</strong></a>) or
+(<a href="#use-case-uc8-find-people"><strong>UC8</strong></a>)</p>
 </li>
 <li>
-<p>User requests for an athlete to be deleted from the athlete list.</p>
+<p>User requests for a person to be deleted from the list of people.</p>
 </li>
 <li>
 <p>System shows success message.</p>
@@ -1401,20 +1630,37 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
 </div>
-<div class="sect2">
-<h3 id="in-competition-mode"><a class="link" href="#in-competition-mode">C.2. In competition mode</a></h3>
-<h4 id="use-case-uc11-view-my-participant-list" class="discrete">Use case: UC11 - View my participant list</h4>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc12-view-my-participation-list" class="discrete">Use case: UC12 - View my participation list</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list all participants in the competition.</p>
+<p>User requests to list all participants.</p>
 </li>
 <li>
-<p>System shows a list of all participants in the competition.</p>
+<p>System shows a list of all participants.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1434,48 +1680,17 @@ or searching (<a href="#use-case-uc6-search-for-athletes"><strong>UC6</strong></
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc12-search-rank-for-participants" class="discrete">Use case: UC12 - Search/rank for participants</h4>
-<div class="paragraph">
-<p><strong>MSS</strong>
-1.  User performs a search with some constraints (e.g. id, country, age, ranking criteria etc.).
-2.  System lists participants satisfying all the constraints.</p>
-</div>
-<div class="paragraph">
-<p>+
-Use case ends.</p>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a. System does not find any athletes satisfying all the constraints.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. System shows an empty list.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h4 id="use-case-uc13-view-a-specific-participant" class="discrete">Use case: UC13 - View a specific participant</h4>
+<h4 id="use-case-uc12-find-participations" class="discrete">Use case: UC12 - Find participations</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User obtains a list of athletes by listing (<a href="#use-case-uc11-view-my-participant-list"><strong>UC11</strong></a>).
-or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</strong></a>).</p>
+<p>User performs a search with some keywords.</p>
 </li>
 <li>
-<p>User requests to view more information on a specific athlete in the list.</p>
-</li>
-<li>
-<p>System shows detailed information of the book.</p>
+<p>System lists participations that have with certain fields containing those keywords.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -1488,40 +1703,29 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. System does not find the athlete in the list.</p>
-<div class="paragraph">
-<p>Use case restarts from step 1.</p>
-</div>
-</li>
-<li>
-<p>2b. User gives an invalid index.</p>
+<p>2a. System does not find any participations containing fields with those keywords.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2b1. System shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at step 2.</p>
-</div>
+<p>2a1. System shows an empty list.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-<h4 id="use-case-uc14-edit-a-specific-participant" class="discrete">Use case: UC14 - Edit a specific participant</h4>
+<h4 id="use-case-uc13-edit-a-specific-participation-available-in-v2-0" class="discrete">Use case: UC13 - Edit a specific participation (Available in v2.0)</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User views a specific athlete (<a href="#use-case-uc13-view-a-specific-participant"><strong>UC13</strong></a>)</p>
+<p>User views a list of participations (<a href="#use-case-uc12-view-my-participation-list"><strong>UC12</strong></a>) or
+(<a href="#Use case: UC13 - Find participations"><strong>UC13</strong></a>)</p>
 </li>
 <li>
-<p>User requests certain data about the athlete to be updated.</p>
+<p>User requests certain data about the participation to be updated.</p>
 </li>
 <li>
 <p>System shows success message.</p>
@@ -1551,17 +1755,74 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc15-disqualify-a-specific-participant" class="discrete">Use case: UC15 - Disqualify a specific participant</h4>
+<h4 id="use-case-uc14-add-a-new-participation" class="discrete">Use case: UC14 - Add a new participation</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User views a specific participant (<a href="#use-case-uc13-view-a-specific-participant"><strong>UC13</strong></a>)</p>
+<p>User requests for a new participation to be added.</p>
 </li>
 <li>
-<p>User requests for a particular athlete to be disqualified from the competition.</p>
+<p>User inputs the initial participation data (e.g. person and competition name) to be inputted.</p>
+</li>
+<li>
+<p>System adds the new participation to the user&#8217;s participation list.</p>
+</li>
+<li>
+<p>System shows a success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Participation data is invalid (e.g. Competition or person with inputted name does not exist in system).</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. A participation with the same person and competition has already been used in user&#8217;s participation list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. System tells user that the participation is already in his participation list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc15-delete-a-specific-participation" class="discrete">Use case: UC15 - Delete a specific participation</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User views a list of participation (<a href="#use-case-uc12-view-my-participation-list"><strong>UC12</strong></a>) or
+(<a href="#Use case: UC13 - Find participations"><strong>UC13</strong></a>)</p>
+</li>
+<li>
+<p>User requests for a participation to be deleted from the list of participations.</p>
 </li>
 <li>
 <p>System shows success message.</p>
@@ -1571,7 +1832,99 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 </li>
 </ol>
 </div>
-<h4 id="use-case-uc16-call-for-next-participant-in-lifting-order" class="discrete">Use case: UC16 - Call for next participant in lifting order</h4>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User gives an invalid index.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error message.</p>
+<div class="paragraph">
+<p>Use case resume at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-uc16-overall-ranking" class="discrete">Use case: UC16 - Overall ranking</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for people to be ranked based on the number of wins (first place finishes)
+they have across the competitions in the system.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="in-competition-mode"><a class="link" href="#in-competition-mode">C.2. In competition mode</a></h3>
+<h4 id="use-case-uc17-get-a-rank-of-a-participation" class="discrete">Use case: UC17 - Get a rank of a participation</h4>
+<div class="paragraph">
+<p><strong>MSS</strong>
+1.  User requests for the ranking of a participation in the competition that is currently being run in the session.
+2.  System gives ranking of the participation as well as additional performance related details.</p>
+</div>
+<div class="paragraph">
+<p>+
+Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. System does not find any participations any person with the inputted name.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. System shows an error.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h4 id="use-case-uc18-get-a-list-of-participations-based-on-their-score-by-some-ranking-method" class="discrete">Use case: UC18 - Get a list of participations based on their score by some ranking method</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for participations in the current competition in-session to be ranked based on
+their score given by some ranking method.</p>
+</li>
+<li>
+<p>System shows the participations sorted by the ranking method with their scores.</p>
+</li>
+<li>
+<p>System shows success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h4 id="use-case-uc19-call-for-next-participant-in-lifting-order" class="discrete">Use case: UC19 - Call for next participant in lifting order</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1607,7 +1960,7 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 </li>
 </ul>
 </div>
-<h4 id="use-case-uc16-exit-competition" class="discrete">Use case: UC16 - Exit competition</h4>
+<h4 id="use-case-uc20-exit-competition" class="discrete">Use case: UC20 - Exit competition</h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1625,7 +1978,7 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 </ol>
 </div>
 <div class="sect3">
-<h4 id="use-case-uc16-finalize-competition"><a class="link" href="#use-case-uc16-finalize-competition">C.2.1. Use case: UC16 - Finalize competition</a></h4>
+<h4 id="use-case-uc21-finalize-competition"><a class="link" href="#use-case-uc21-finalize-competition">C.2.1. Use case: UC21 - Finalize competition</a></h4>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1656,7 +2009,7 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 </ul>
 </div>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><em>{More to be added in v2.0}</em></p>
 </div>
 </div>
 </div>
@@ -1702,53 +2055,12 @@ or searching (<a href="#Use case: UC12 - Search for participants"><strong>UC12</
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing-to-do"><a class="link" href="#instructions-for-manual-testing-to-do">Appendix G: Instructions for Manual Testing (To Do)</a></h2>
+<h2 id="instructions-for-manual-testing-to-do"><a class="link" href="#instructions-for-manual-testing-to-do">Appendix F: Instructions for Manual Testing (To Do)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -1766,7 +2078,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1799,12 +2111,9 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1831,12 +2140,9 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">F.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1851,9 +2157,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 05:25:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 06:40:04 UTC</div></div></div></body></html>
