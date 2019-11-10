@@ -44,9 +44,10 @@ public class ModelManager implements Model {
                         ReadOnlyData<Participation> participations,
                         ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(persons, userPrefs);
+        requireAllNonNull(persons, participations, competitions, userPrefs);
 
-        logger.fine("Initializing system with user prefs " + userPrefs);
+        logger.fine("Initializing system with: " + persons + ", " + competitions + ", "
+            + participations + " and user prefs " + userPrefs);
 
         this.userPrefs = new UserPrefs(userPrefs);
         this.persons = new Data<>(persons);

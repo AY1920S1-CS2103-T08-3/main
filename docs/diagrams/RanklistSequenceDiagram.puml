@@ -1,0 +1,130 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":SystemParser" as SystemParser LOGIC_COLOR
+participant ":RanklistCommandParser" as RanklistCommandParser LOGIC_COLOR
+participant "ranklistCommand:RanklistCommand" as RanklistCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "filterByCompetition:Predicate" as Predicate LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "model:Model" as Model MODEL_COLOR
+end box
+
+box Predicate LOGIC_COLOR_T1
+participant "filterByCompetition:Predicate" as Predicate LOGIC_COLOR
+end box
+
+box ArrayList LOGIC_COLOR_T1
+participant "copiedArray:ArrayList" as ArrayList LOGIC_COLOR
+end box
+
+box Comparator LOGIC_COLOR_T1
+participant "comparator: Comparator" as Comparator LOGIC_COLOR
+end box
+
+[-> LogicManager : execute("ranklist by/overall")
+activate LogicManager
+
+LogicManager -> SystemParser : parseCommand("ranklist by/overall")
+activate SystemParser
+
+create RanklistCommandParser
+SystemParser -> RanklistCommandParser
+activate RanklistCommandParser
+
+RanklistCommandParser --> SystemParser
+deactivate RanklistCommandParser
+
+SystemParser -> RanklistCommandParser : parse("by/overall")
+activate RanklistCommandParser
+
+create RanklistCommand
+RanklistCommandParser -> RanklistCommand: RanklistCommand(RankMethod.Overall)
+activate RanklistCommand
+
+RanklistCommand --> RanklistCommandParser : ranklistCommand
+deactivate RanklistCommand
+
+RanklistCommandParser --> SystemParser : ranklistCommand
+deactivate RanklistCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+RanklistCommandParser -[hidden]-> SystemParser
+destroy RanklistCommandParser
+
+SystemParser --> LogicManager : ranklistCommand
+deactivate SystemParser
+
+LogicManager -> RanklistCommand : execute()
+activate RanklistCommand
+
+RanklistCommand -> Model : hasOngoingSession()
+activate Model
+
+Model --> RanklistCommand
+deactivate Model
+
+RanklistCommand -> Model : updateFilteredParticipationList(PREDICATE_SHOW_ALL_PARTICIPATIONS)
+activate Model
+
+Model --> RanklistCommand
+deactivate Model
+
+create Predicate
+RanklistCommand -> Predicate:  p -> p.getCompetition().equals(onGoingCompetition)
+activate Predicate
+
+Model --> RanklistCommand: filterByCompetition
+deactivate Predicate
+
+RanklistCommand -> Model : updateFilteredParticipationList(filterByCompetition)
+activate Model
+
+Model --> RanklistCommand
+deactivate Model
+
+RanklistCommand -> Model : getFilteredParticipationList()
+activate Model
+
+Model --> RanklistCommand: filteredParticipationList
+deactivate Model
+
+create ArrayList
+RanklistCommand -> ArrayList : ArrayList(filteredParticipationList)
+activate ArrayList
+
+ArrayList --> RanklistCommand: copiedArray
+deactivate ArrayList
+
+create Comparator
+RanklistCommand -> Comparator : ParticipationRankMethodComparator(rankMethod)
+activate Comparator
+
+Comparator --> RanklistCommand: comparator
+deactivate Comparator
+
+RanklistCommand -> ArrayList : sort(comparator)
+activate ArrayList
+
+ArrayList --> RanklistCommand:
+deactivate ArrayList
+
+RanklistCommand --> RanklistCommand: createSuccessMessage(copiedArray)
+
+create CommandResult
+RanklistCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> RanklistCommand
+deactivate CommandResult
+
+
+RanklistCommand --> LogicManager : result
+deactivate RanklistCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

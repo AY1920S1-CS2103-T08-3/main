@@ -6,6 +6,7 @@ import static seedu.system.model.Model.PREDICATE_SHOW_ALL_PARTICIPATIONS;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.system.logic.commands.Command;
@@ -63,13 +64,21 @@ public class RanklistCommand extends Command {
         Predicate<Participation> filterByCompetition = p -> p.getCompetition().equals(onGoingCompetition);
         model.updateFilteredParticipationList(filterByCompetition);
 
-        ArrayList<Participation> participationList = new ArrayList<>();
-        for (Participation participation : model.getFilteredParticipationList()) {
-            participationList.add(participation);
-        }
+        ArrayList<Participation> participationList = new ArrayList<>(model.getFilteredParticipationList());
+
         Comparator<Participation> comparator = new ParticipationRankMethodComparator(rankMethod);
         participationList.sort(comparator);
 
+        String message = createSuccessMessage(participationList);
+        return new CommandResult(String.format(message, rankMethod, onGoingCompetition), COMMAND_TYPE);
+    }
+
+    /**
+     * Returns the success message for the ranklist command.
+     * @param participationList sorted participation list orderd according to the rankMethod.
+     * @return the success message of the Ranklist Command.
+     */
+    private String createSuccessMessage(List<Participation> participationList) {
         String message = MESSAGE_SUCCESS + "\n";
         for (int i = 0; i < participationList.size(); i++) {
             Participation participation = participationList.get(i);
@@ -77,7 +86,7 @@ public class RanklistCommand extends Command {
             Person personParticipating = participation.getPerson();
             message += (i + 1) + ". " + personParticipating.getName() + " (Score: " + score + ")\n";
         }
-        return new CommandResult(String.format(message, rankMethod, onGoingCompetition), COMMAND_TYPE);
+        return message;
     }
 
     @Override

@@ -128,7 +128,7 @@ Format: `listCompetition`
 Commands related to managing persons (athletes) outside of a competition session shall are described below.
 
 ==== Adding a new person: `addPerson`
-Format: `addPerson n/NAME dob/BIRTH DATE g/GENDER`
+Format: `addPerson n/NAME dob/DATE OF BIRTH g/GENDER`
 
 Example:
 
