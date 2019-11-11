@@ -74,62 +74,23 @@ by supplying an athlete&#8217;s name as a keyword.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Helped to manage releases <code>v1.2</code> - <code>v1.4</code> (3 releases) on GitHub</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
+<p>Updated User Guide: <a href="https://github.com">#137</a></p>
 </li>
 <li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Updated Developer Guide: <a href="https://github.com">#137</a></p>
 </li>
 </ul>
 </div>
@@ -158,19 +119,10 @@ by supplying an athlete&#8217;s name as a keyword.</p>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="showing-overall-ranking-code-overallrank-code"><a class="link" href="#showing-overall-ranking-code-overallrank-code">Showing overall ranking: <code>overallRank</code></a></h4>
+<h4 id="finding-participations-code-findparticipation-code"><a class="link" href="#finding-participations-code-findparticipation-code">Finding participations: <code>findParticipation</code></a></h4>
 <div class="paragraph">
-<p>Sorts and displays ranking of athletes according to the amount of times they are the overall champions for any
-competition.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>overallRank</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="finding-participations-in-a-competition-code-findparticipation-code"><a class="link" href="#finding-participations-in-a-competition-code-findparticipation-code">Finding participations in a competition: <code>findParticipation</code></a></h4>
-<div class="paragraph">
-<p>Finds and lists all athletes in the participation list, who participate in a competition(s) with some keyword(s).</p>
+<p>Finds and lists all participations in the participation list,
+whose competition name or person name contain any of the inputted keyword(s).</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>findParticipation [KEYWORD 1] &#8230;&#8203; [KEYWORD N]</code></p>
@@ -181,7 +133,7 @@ competition.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findParticipation NUS Open 2019</code></p>
+<p><code>findParticipation NUS Open 2019 Bob</code></p>
 </li>
 <li>
 <p><code>findParticipation Alex</code></p>
@@ -191,6 +143,53 @@ competition.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-an-existing-competition-findcompetition"><a class="link" href="#finding-an-existing-competition-findcompetition">Finding an existing competition: findCompetition</a></h4>
+<div class="paragraph">
+<p>Finds and lists all competitions in the system whose name or dates contains any of the argument keywords.
+Keyword matching is case insensitive.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findCompetition [KEYWORD 1] &#8230;&#8203; [KEYWORD N]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>findCompetition NUS Open 2019</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="showing-overall-ranking-code-overallrank-code"><a class="link" href="#showing-overall-ranking-code-overallrank-code">Showing overall ranking: <code>overallRank</code></a></h4>
+<div class="paragraph">
+<p>Sorts and displays ranking of athletes according to the amount of times they are the overall champions for any
+competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>overallRank</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-participations-code-findparticipation-code-2"><a class="link" href="#finding-participations-code-findparticipation-code-2">Finding participations: <code>findParticipation</code></a></h4>
+<div class="paragraph">
+<p>Finds and lists all participations in the participation list,
+whose competition name or person name contain any of the inputted keyword(s).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findParticipation [KEYWORD 1] &#8230;&#8203; [KEYWORD N]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findParticipation NUS Open 2019 Bob</code></p>
+</li>
+<li>
+<p><code>findParticipation Alex</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-an-existing-competition-findcompetition-2"><a class="link" href="#finding-an-existing-competition-findcompetition-2">Finding an existing competition: findCompetition</a></h4>
 <div class="paragraph">
 <p>Finds and lists all competitions in the system whose name or dates contains any of the argument keywords.
 Keyword matching is case insensitive.</p>
@@ -218,6 +217,11 @@ Keyword matching is case insensitive.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">Implementation</a></h2>
+<div class="sectionbody">
 <div class="sect3">
 <h4 id="overall-rank-feature"><a class="link" href="#overall-rank-feature">Overall Rank feature</a></h4>
 <div class="paragraph">
@@ -260,5 +264,125 @@ image::overallRank_activity.png[]</p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="finding-competition-feature"><a class="link" href="#finding-competition-feature">Finding competition feature</a></h4>
+<div class="paragraph">
+<p>The user can filter the competitions in the system by keywords contained in the fields
+of the competitions.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:28:58 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>Format: <code>findCompetition [KEYWORD 1] &#8230;&#8203; [KEYWORD N]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>findCompetition NUS Open 2019</code></p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows for user the flexibility of specifying multiple keywords allowing them to change
+the search scope easily.</p>
+</li>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User will have to scroll through the filtered competition list if the keywords are contained by
+many competitions in the system.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-participation-feature"><a class="link" href="#finding-participation-feature">Finding participation feature</a></h4>
+<div class="paragraph">
+<p>The user can filter the participations in the system by keywords contained in the competition
+name or the person name of the participation.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findParticipation [KEYWORD 1] &#8230;&#8203; [KEYWORD N]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+<code>findParticipation NUS Axel</code></p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows for user the flexibility of specifying multiple keywords allowing them to change
+the search scope easily.</p>
+</li>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User will have to scroll through the filtered participation list if the keywords are contained by
+many participations in the system.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="overall-rank-feature-2"><a class="link" href="#overall-rank-feature-2">Overall Rank feature</a></h4>
+<div class="paragraph">
+<p>The user can list the persons in the system by the number of times they won a competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>overallRank</code></p>
+</div>
+<div class="paragraph">
+<p>Due to time limitations we have not allowed the user to specify any other ranking method but given
+the design of our system which is highly extensible, it would not be hard to do so in future
+versions.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Takes in no parameters so user will make minimal mistakes.</p>
+</li>
+<li>
+<p>Avoid complications between unmatched name and person.</p>
+</li>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User will have to scroll through the person list if it is very long to find a specific name.
+.Activity Diagram of the overallRank Command
+image::overallRank_activity.png[]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:43:19 UTC</div></div></div></body></html>
