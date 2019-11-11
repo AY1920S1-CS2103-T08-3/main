@@ -1,0 +1,848 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Christabel Teo - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Powerlifting Competition Coordinator</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103-T11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Christabel Teo - Project Portfolio</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-powerlifting-competition-coordinator"><a class="link" href="#project-powerlifting-competition-coordinator">PROJECT: Powerlifting Competition Coordinator</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Powerlifting Competition Coordinator (PCC) is a desktop application for powerlifting event organizers. It maintains
+Athletes, Competitions, and Participations, as well as a live competition session handling for the main event.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement 1</strong>: Added ability to handle competition sessions</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does</strong>: Allows the user to start or resume a competition session, generate the next and following
+lifters/attempts in a pre-determined order, and update the success of the attempt accordingly.</p>
+</li>
+<li>
+<p><strong>Justification</strong>: This is one of the main features of PCC, to allow event organisers have a smooth flow of their
+competition event, and perform minimal functionality (under what it does) during the event.</p>
+</li>
+<li>
+<p><strong>Highlights</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This enhancement comes in many small parts: designing the <code>Session</code> component as a singleton class;
+creating appropriate dependencies to reduce coupling to main components such as <code>Partipation</code> or <code>Attempt</code>;
+adding the relevant commands for this session handling to work on the user-end.</p>
+</li>
+<li>
+<p>It was challenging to implement as there are many different types of scenarios that can happen during a session,
+and i needed to handle it well with proper exception handling to ensure a smooth flow of the competition event.
+A deep understanding of the general flow of powerlifting competitions is necessary.
+Furthermore, since the main components need to be updated along with the session,
+it required an in-depth analysis of how the logic works with the model components.</p>
+</li>
+<li>
+<p>Some concepts that i have learnt from CS2103 and have applied in this enhancement are:
+Single Responsibility Principle and Singleton Class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement 2</strong>: Added ability to CRUD Participation, the association class between Person and Competition.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does</strong>: Allows the user to create, read, update, and delete Participation-related information and objects.
+It includes some user-end commands such as creation of participations with a list of 9 attempts,
+list participation according to an existing competition, as well as deletion. Some other functions of this enhancement
+include the adding and updating of attempts, and also the tabulation of scores which is used in other contexts.</p>
+</li>
+<li>
+<p><strong>Justification</strong>: These commands allow the user to CRUD the association between a Person and Competition into a
+Participation. This is also an important feature so that the Participation can be properly prepared and updated before,
+during and after a competition session.</p>
+</li>
+<li>
+<p><strong>Highlights</strong>: For these features and commands on the user-end to work, the Participation association class and
+its dependencies need to be well set up, such that there is not too much coupling in the model.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added Participation List and Participation Cards to the GUI.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>:
+<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=T11-3&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=true&amp;until=2019-11-10&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=belbel98&amp;tabRepo=AY1920S1-CS2103-T11-3%2Fmain%5Bmaster%5D">All code contributed</a></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project/Team management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed project milestones <a href="https://github.com/AY1920S1-CS2103-T11-3/main/milestone/1">v1.2</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/milestone/2">v1.3</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/milestone/5">mid-v1.4</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/milestone/3">v1.4</a> on github</p>
+</li>
+<li>
+<p>Keeping the team on task for the weekly milestones' deliverable</p>
+</li>
+<li>
+<p>PR reviews on project repo using branching workflow:
+(<a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/3">#3</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/4">#4</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/34">#34</a>,
+<a href="https://github.com/AY1920S1-CS2103-T11-3/main/pull/35">#35</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Done up <a href="#about-us">About Us Page</a></p>
+</li>
+<li>
+<p><a href="#user-guide">Contributions to the User Guide</a></p>
+</li>
+<li>
+<p><a href="#developer-guide">Contributions to the Developer Guide</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed: (<a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/124">#124</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (example: <a href="https://github.com/belbel98/ped/issues">1</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-guide"><a class="link" href="#user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="commands-related-to-participation-linking-persons-and-competitions-together"><a class="link" href="#commands-related-to-participation-linking-persons-and-competitions-together">Commands related to participation (linking persons and competitions together)</a></h3>
+<div class="paragraph">
+<p>Commands related to managing persons participating in competitions will be introduced now.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-new-participation-code-addparticipation-code"><a class="link" href="#adding-a-new-participation-code-addparticipation-code">Adding a new participation: <code>addParticipation</code></a></h4>
+<div class="paragraph">
+<p>Adds an existing person displayed in the Person list on the user interface into an
+existing competition displayed in the Competition list on the user interface.
+User also needs to supply 3 weight attempts for each of the following events:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Squat</p>
+</li>
+<li>
+<p>Bench</p>
+</li>
+<li>
+<p>Deadlift</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: <code>addParticipation n/Athlete Name c/Competition Name s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addParticipation n/Ho c/NUS 2022 s/100/101/102 b/300/400/500 d/1000/2000/3000</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note: S1 means the 1st attempted weight for the Squat and so on.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-persons-who-are-participating-in-all-competitions-or-for-one-competition-code-listparticipation-code"><a class="link" href="#listing-all-persons-who-are-participating-in-all-competitions-or-for-one-competition-code-listparticipation-code">Listing all persons who are participating in all competitions or for one competition: <code>listParticipation</code></a></h4>
+<div class="paragraph">
+<p>Note that the user can choose to provide a competition name or not.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listParticipation c/COMPETITION_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:
+To display all persons for all competitions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listParticipation</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To display all persons for NUS 2022 competition only:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listParticipation c/NUS 2022</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-existing-participation-code-deleteparticipation-code"><a class="link" href="#deleting-an-existing-participation-code-deleteparticipation-code">Deleting an existing participation: <code>deleteParticipation</code></a></h4>
+<div class="paragraph">
+<p>Deletes the participation identified by the index number, used in Participation list (shown in the GUI).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteParticipation INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteParticipation 2</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="handling-competition-during-a-competition-event"><a class="link" href="#handling-competition-during-a-competition-event">Handling Competition During a Competition event</a></h3>
+<div class="paragraph">
+<p>This feature handles the entire flow of each session during Meet Day. It allows event
+organisers to submit a person(athlete)’s Squat, Bench, Deadlift attempts, as well as the
+success of their lifts. It will show the relevant information to prepare for the
+athletes lift (displaying name, weight, etc). The flow of events, and the commands to
+facilitate the competition session will be presented in order below:</p>
+</div>
+<div class="paragraph">
+<p>This feature handles the entire flow of each session during Meet Day. It allows event organisers to submit a person’s
+Squat, Bench, Deadlift attempts, as well as the success of their lifts. It will show the relevant information to prepare
+for the athletes lift (displaying name, weight, etc).
+The flow of events, and the commands to facilitate the competition session will be presented in order below:</p>
+</div>
+<div class="sect3">
+<h4 id="get-the-next-lifter-in-line-code-next-code"><a class="link" href="#get-the-next-lifter-in-line-code-next-code">Get the next lifter in line: <code>next</code></a></h4>
+<div class="paragraph">
+<p>Retrieves the next lifter according to weight lifted for that attempt, the weights he/she is going for that particular
+lift and attempt.
+If there are no more attempts to be made by any lifter, this command will trigger the end of the competition.</p>
+</div>
+<div class="paragraph">
+<p>Format/Example: <code>next</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-success-or-failure-of-a-lift-code-lift-code"><a class="link" href="#updating-success-or-failure-of-a-lift-code-lift-code">Updating success or failure of a lift: <code>lift</code></a></h4>
+<div class="paragraph">
+<p>Updates whether the person (athlete) succeeds in his/her attempt, or fails it.
+The lift updated will be the one that was just called up.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>lift Y/N</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lift N</code></p>
+</li>
+<li>
+<p><code>lift Y</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developer-guide"><a class="link" href="#developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections (some but not all) I contributed to the Developer Guide.
+They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="context-switching-feature-between-sessions"><a class="link" href="#context-switching-feature-between-sessions">Context-Switching feature between sessions</a></h3>
+<div class="paragraph">
+<p>Our features are mainly split into 2 contexts. An in-competition, and an out-of-competition session mode.
+A session is started when the user wants to start an existing competition to call lifters to perform their attempt,
+record them, and finally to view the ranking leader board for the competition, all within in-session mode.
+On the other hand, an out-session mode, when the user exits the competition session mode,
+is where all create, read, update delete of the Person, Competition, and Participation is done.</p>
+</div>
+<div class="paragraph">
+<p>The reason for this context-switching feature is to prevent users from using out-session commands that are strictly for
+in-session mode and vice versa.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ActivityDiagram.png" alt="ActivityDiagram">
+</div>
+<div class="title">Figure 1. Activity Diagram for average user flow from out to in-session.</div>
+</div>
+<div class="paragraph">
+<p>The activity diagram above shows the average user flow of how the user can go in-session,
+and also distinctly shows the commands that can be done in each state.
+However, the end of every competition session does not signify the end of a user&#8217;s activity.
+The user can still go in and out of the competition session (start and end), to perform the different commands
+from the different states.</p>
+</div>
+<div class="sect3">
+<h4 id="how-it-is-being-implemented"><a class="link" href="#how-it-is-being-implemented">How it is being implemented</a></h4>
+<div class="paragraph">
+<p>This is done using an instance of the Session class, which is exposed from the model manager.
+The session has a competition field to indicate the current competition that is ongoing during the session.
+If there is no competition set in the session, then there is no ongoing session. Using this simple
+but highly effective method, we are able to use very simple logic to achieve the necessary context-switching behaviour
+described in the above diagram.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="in-session"><a class="link" href="#in-session">In-Session</a></h3>
+<div class="paragraph">
+<p>In-Session is the state where the user enters competition mode, where users can command the app to generate
+the next lifter, as well as record any attempt. At the end of the competition, the rank of the participants
+and competition can be viewed too, as long as a competition session has yet to end.</p>
+</div>
+<div class="paragraph">
+<p>To handle the state of the competition, we have created a new <code>Session</code> class that is packaged into model and
+managed by the ModelManager. The <code>Session</code> class is a singleton class, and only has one instance in the ModelManager.
+The reason behind the use of a singleton class to handle sessions, is that we only want one ongoing session at any
+point in time. The singleton class will also only temporarily store its participation list, and participationAttempt
+list in relation to the ongoing session. Once the session ends, all data is reset.
+Any update in any objects such as the attempts or participation details will be handled by the ModelManager,
+which will be explained in more details in the respective features below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SessionClassDiagram.png" alt="SessionClassDiagram">
+</div>
+<div class="title">Figure 2. Class Diagram of the Session package in the Model</div>
+</div>
+<div class="sect3">
+<h4 id="next-feature"><a class="link" href="#next-feature">Next feature</a></h4>
+<div class="paragraph">
+<p>One of the main purpose of the in-session function is to generate the next lifter and his attempt details accordingly.
+In the <code>Session</code> class, the list of <code>ParticipationAttempt</code> is maintained so that athletes can make their attempt
+in order of the type of lift, attempt number, and in increasing weight to be attempted. Upon calling the <code>next</code> command,
+the next lifter is called up, and the following lifter should be asked to prepare for his lift, after the next lifter.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>next</code></p>
+</div>
+<div class="paragraph">
+<p>Given below is the example flow of what the model does when the <code>NextLifterCommand</code> is executed after being parsed
+through the LogicManager.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1:</strong> A new <code>NextLifterCommand</code> is constructed when the user inputs <code>next</code> in the command box.
+When <code>NextLifterCommand#execute()</code> is called, the model will get the following lifter, and store the
+ParticipationAttempt retrieved from <code>Session#getFollowingLifter()</code> in a local variable,
+to be returned together with the CommandResult later on.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong> The <code>ModelManager</code> will call <code>Session#NextLifter()</code> to generate the next lifter and attempt in the form of a
+<code>ParticipationAttempt</code> object. If the <code>Session</code> is not prepared, which means that the imported <code>ParticipationAttempts</code>
+are not sorted, <code>prepare()</code> will be called internally. When this method is called, the ParticipationAttempt list in the
+Session will be sorted according to the new <code>ParticipationAttemptComparator</code>. When this is done, the session is now
+prepared, and next or following lifters can be generated based on this sorted list.
+(This method is usually called once just after starting the session.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> The <code>Session#NextLifter()</code> method will then return the first <code>ParticipationAttempt</code> in the list.
+This is equivalent to the next lifter to make his attempt, since he is the top most in the sorted list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 4:</strong> A new <code>CommandResult</code> will be returned. Details of the next and following ParticipationAttempt will be
+included and displayed in the Dialogue Box to the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NextSequenceDiagram.png" alt="NextSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence Diagram for the NextLifterCommand</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="end-session-feature"><a class="link" href="#end-session-feature">End session feature</a></h4>
+<div class="paragraph">
+<p>This feature ends the session, and shifts the user back to the out-session state.
+All data stored in the session will be reset to default.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>endSession</code></p>
+</div>
+<div class="paragraph">
+<p>When we first implemented the session feature, the session can only be ended when a competition has ended,
+which means there are no more attempts to be made. However, we have now made it such that the user can switch
+between sessions as and when, even in the middle of the competition. This gives users more flexibility to switch between
+session states, without worrying about the state of the competition.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="out-session"><a class="link" href="#out-session">Out-Session</a></h3>
+<div class="sect3">
+<h4 id="start-session-feature"><a class="link" href="#start-session-feature">Start Session feature</a></h4>
+<div class="paragraph">
+<p>The start session feature is a command to start a new competition session, when a user is not in competition state.
+As mentioned in Section 4.2. above, <code>Session</code> allows the user to start any competition session as and when, even when a
+competition has not ended (there are still attempts left to be made). To start a session, the user can enter
+the command with the specified competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>startSession c/COMPETITION_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Given below is the flow of execution in the model after a <code>StartSessionCommand#execute()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 1:</strong> <code>Model#startSession(comp, partList)</code> is called, where <code>comp</code> is the <code>Competition</code> object to start the session
+with, and <code>partList</code> is the list of <code>Participation</code> who will be participating in this competition session.
+The method then calls <code>Session#start(comp, partList)</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong> An internal call in the <code>start()</code> method, <code>loadAttempts(p, p.getAttempts())</code>, is made for every
+<code>Participation</code> object, <code>p</code>, by looping through the <code>partList</code>, loading all unattempted attempts into the
+participationAttemptList temporarily stored in the Session instance.
+(<code>p.getAttempts()</code> retrieves the list of all 9 <code>Attempt</code> instance that the participation has submitted at the start.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> The <code>loadAttempts()</code> method will loop through all the 9 <code>Attempt</code> objects taken in as parameter, and checks if
+each has been attempted. If an <code>Attempt</code> by that <code>Participation</code> has not been attempted, a new <code>ParticipationAttempt</code>
+object will be created and added to the list.</p>
+</div>
+<div class="paragraph">
+<p>Because of the way <code>Session</code> handles the initialising of every new session, be it starting a new competition, resuming a
+competition, or even starting a session with a competition that has already ended (all attempts have been made by the
+athletes) is made possible.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StartSequenceDiagram.png" alt="StartSequenceDiagram">
+</div>
+<div class="title">Figure 4. Sequence Diagram for the StartSessionCommand</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="competition-features"><a class="link" href="#competition-features">Competition features</a></h4>
+<div class="paragraph">
+<p>There are 4 competition/person features: adding, deleting, editing and listing competitions.
+The features are briefly described below. The crux of adding and editing a competition commands is the CustomDate class
+, the CustomDate class is important for validating the starting and ending dates for a competition event. The date
+validation process will be discussed in detail in words and with the aid of class and sequence diagrams.</p>
+</div>
+<div class="sect4">
+<h5 id="adding-a-competition"><a class="link" href="#adding-a-competition">Adding a competition</a></h5>
+<div class="paragraph">
+<p>To add a competition, a user supplies the name of a competition and its start and end dates. But, the start date must
+be equal or before end date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-competition"><a class="link" href="#deleting-a-competition">Deleting a competition</a></h5>
+<div class="paragraph">
+<p>To delete a competition, a user supplies the index of that competition. The index of a competition will be displayed
+in the user interface of that programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-competition"><a class="link" href="#editing-a-competition">Editing a competition</a></h5>
+<div class="paragraph">
+<p>A user has the choice of editing one or more of the following competition fields:the competition name, start and end dates
+of a competition. But, similar to adding a competition, the edited start date must be equal or before the edited end date.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-a-competition"><a class="link" href="#listing-a-competition">Listing a competition</a></h5>
+<div class="paragraph">
+<p>To list all competitions stored in the programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern"><a class="link" href="#choice-of-design-pattern">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Similar to the Rank feature.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>As mentioned earlier, editing or adding competitions require start date to be equal or before the end date.
+To ensure the dates given for a competition are valid, we created a CustomDate class.
+Please see the following class diagram for more information on the association between CustomDate and Competition
+classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CustomDate.png" alt="CustomDate">
+</div>
+<div class="title">Figure 5. Class Diagram for the CustomDate and Competition classes</div>
+</div>
+<div class="paragraph">
+<p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addComp.png" alt="addComp">
+</div>
+<div class="title">Figure 6. Sequence Diagram of the addCompetition Command</div>
+</div>
+<div class="paragraph">
+<p>Pros of CustomDate:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note that DATE_FORMAT is hard-coded by us (class diagram cannot explicitly show this), this ensures our programme
+maintains a consistent date format for all competitions.</p>
+</li>
+<li>
+<p>By storing a Date object in the CustomDate class, we enable ParserUtil to call the before() method of the Date
+class to check for valid dates. Please the sequence diagram for the addCompetitionCommand, which provides illustration
+on how this is achieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cons of CustomDate:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We need to ensure functions/classes which rely on CustomDate can catch and handle errors due to inappropriate
+date properly. This means that any changes to CustomDate in the future requires some work to propagate the changes to
+the rest of the code base.</p>
+</li>
+<li>
+<p>Users may wish to have their own date format.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Alternative:</p>
+</div>
+<div class="paragraph">
+<p>We have considered using only the Java Date object, but we think it will be neater to have a CustomDate class to
+package a date object and its associated date format string in a CustomDate object. Furthermore, we can recycle the
+functions available in the CustomDate class for person features too (read the next section).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="person-features"><a class="link" href="#person-features">Person Features</a></h4>
+<div class="paragraph">
+<p>There are 4 person features: adding, deleting, editing and listing persons. Similar to competition features, the
+programme needs to validate date of birth when a user adds a person or edit a existing person&#8217;s date of birth. In
+particular, the programme needs to ensure a person added or edited will not have a date of birth which occurs in the
+future. In other words, the person added or edited must have a date of birth equal to or before today&#8217;s date.
+For example, if today is the 11/10/2019, a person&#8217;s date of birth must be prior to 11/10/2019 or it must be exactly
+11/10/2019.</p>
+</div>
+<div class="paragraph">
+<p>The features are briefly described below. Similar to the competition features, we will describe the association
+between CustomDate and Person classes. Subsequently, we will describe the validation process for person features.</p>
+</div>
+<div class="sect4">
+<h5 id="adding-a-person"><a class="link" href="#adding-a-person">Adding a person</a></h5>
+<div class="paragraph">
+<p>To add a person, supply a person&#8217;s name, a date of birth and a gender (male or female only). A person must have
+already been born. Example, if today os 11/09/2019, a user cannot add a person who is borned in 15/09/2019 (in the
+future).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h5>
+<div class="paragraph">
+<p>To delete a person, supply the index of that person.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="editing-a-person"><a class="link" href="#editing-a-person">Editing a person</a></h5>
+<div class="paragraph">
+<p>For person, a user has the choice of editing either the person name, date of birth or a gender.
+But,  person must have already been born.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="listing-people"><a class="link" href="#listing-people">Listing people</a></h5>
+<div class="paragraph">
+<p>To list all people stored in the programme.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h5>
+<div class="paragraph">
+<p>Similar to competition, the crux of editing or adding persons rely on the CustomDate class for date validation.</p>
+</div>
+<div class="paragraph">
+<p>Please see the following class diagram for more information on the association between CustomDate and Person
+classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CustomDatePerson.png" alt="CustomDatePerson">
+</div>
+<div class="title">Figure 7. Class Diagram for the CustomDate and Person classes</div>
+</div>
+<div class="paragraph">
+<p>To see the mechanism of the date validation process, please see the following sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/addPerson.png" alt="addPerson">
+</div>
+<div class="title">Figure 8. Sequence Diagram of the addPerson Command</div>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note that DATE_FORMAT is hard-coded by us (similar to Competition features), this ensures our programme
+maintains a consistent date format for all people.</p>
+</li>
+<li>
+<p>By storing a Date object in the CustomDate class, we enable ParserUtil to call the before() method of the Date
+class to check for valid dates.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Con:
+Similar to the Competition section.</p>
+</div>
+<div class="paragraph">
+<p>Alternative:
+Alternative consideration is similar to the Competition section.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="participation-features"><a class="link" href="#participation-features">Participation features</a></h4>
+<div class="paragraph">
+<p>A Participation is an association class we have created for every Person who has participation in a particular
+Competition. A person can take part in many competitions, and for each competition he/she takes part in, there will be a
+corresponding Participation class associated to that Person and Competition instance.</p>
+</div>
+<div class="sect4">
+<h5 id="supporting-the-create-read-update-and-delete-of-the-instances-of-the-participation-association-class"><a class="link" href="#supporting-the-create-read-update-and-delete-of-the-instances-of-the-participation-association-class">Supporting the create, read, update and delete of the instances of the Participation association class</a></h5>
+<div class="paragraph">
+<p>To support the add, delete, and reading of the participation instances using the commands below,
+the JSON storage system was modified (please refer to the Storage section above) in order to support
+the many-to-many relationship between competition and person. This allows the association class to
+be saved which the original Address Book architecture did not allow.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="choice-of-design-pattern-2"><a class="link" href="#choice-of-design-pattern-2">Choice of Design Pattern</a></h5>
+<div class="paragraph">
+<p>Optimally, such many-to-many relationships should be handled by some form of join table on a database. Due to
+the project restrictions, we mapped a similar structure the the JSON storage system treating each file as a table,
+attempting to parallel the way real databases worked while still using JSON storage.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h5>
+<div class="paragraph">
+<p>To achieve this we treated each file saved as a table. Hence, there is a save file for each of the participation,
+competition and person models. When reading from the JSON storage, the competition and person data are read first,
+before the participation data is read. This is because the Competition and Person objects need to be created first
+in order to be associated with the Participation class. Since the names of competitions and persons are unique,
+we used that to identify the competition and person instances the participation instance that was originally
+saved was associated with.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>By using a Json Storage, the amount of changes to the Storage system was substantial but minimized, while
+still being able to support the Participation association class which helped decouple the Person and Competition
+classes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Con:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The uploading of the participation class from JSON relies on the property that there is some unique data
+signature of a person and the competitions, which can be determined from the data stored as JSON. Since
+both Person and Competition extend UniqueELementList, they will certainly be have some unique data
+signature (i.e. in this case each person and competition have unique names), which can be used to determine the instances the
+Participation object was originally associated with before it was saved. Hence, the current JSON storage
+system is not designed extensibly for the developer to move away from using the UniqueElement class for its instances
+or store data in a way that is not unique to the instances as instances with the same data signature cannot be
+distinguished from each other using the current JSON storage system.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Alternative:</p>
+</div>
+<div class="paragraph">
+<p>We have considered using XML storage and/or creating foreign keys using the JSON storage. However, due to the
+limitations of time and the complexity of achieving such a feature, we settled with modifying the JSON storage.</p>
+</div>
+<div class="paragraph">
+<p>Please see the following Structure of the Storage Component diagram and check the repository to understand the utility
+of the Storage system to support the many-to-many relationship.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram">
+</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/system/storage/Storage.java"><code>Storage.java</code></a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="create-a-new-participation"><a class="link" href="#create-a-new-participation">Create a new Participation</a></h5>
+<div class="paragraph">
+<p>To create a new Participation, the associated Person and Competition must exist. If either doesnt,
+an exception will be thrown to the user through the result box to prompt the user to input an existing one.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>addParticipation n/PERSON_NAME c/COMPETITION_NAME s/S1/S2/S3 b/B1/B2/B3 d/D1/D2/D3</code></p>
+</div>
+<div class="paragraph">
+<p>Note: S1 means the 1st attempted weight for the Squat and so on.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="list-participation"><a class="link" href="#list-participation">List Participation</a></h5>
+<div class="paragraph">
+<p>The list participation feature allows the user to filter the participation list on the PCC app based on a particular
+competition. If no parameters (competition name) are taken in,
+the command will list out all of the participations stored in the system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listParticipation</code> or <code>listParticipation c/COMPETITION_NAME</code></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="delete-existing-participation"><a class="link" href="#delete-existing-participation">Delete Existing Participation</a></h5>
+<div class="paragraph">
+<p>The user can delete an existing participation, maybe in the case he/she has withdrawn or is disqualified
+from that competition.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteParticipation INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>We have decided to use the index of the participation in the list to delete a participation instead of
+other parameter types, like the name or competition of the participation. The main reason is because,
+there may exist more than one participation with the same name and different competition,
+or different name and same competition.</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Takes in less parameters, user can type less.</p>
+</li>
+<li>
+<p>Avoid complications between unmatched name and competition.</p>
+</li>
+<li>
+<p>Easy to implement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User will have to scroll through the participation list on the app to type in the index.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 04:28:58 UTC</div></div></div></body></html>
