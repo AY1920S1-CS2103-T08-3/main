@@ -2,8 +2,8 @@ package seedu.system.logic.commands.outofsession;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.system.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_COMP;
+import static seedu.system.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.system.logic.commands.Command;
