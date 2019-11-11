@@ -3,7 +3,7 @@ package seedu.system.logic.commands.outofsession;
 import static java.util.Objects.requireNonNull;
 
 import static seedu.system.logic.parser.CliSyntax.PREFIX_END_DATE;
-import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.system.logic.parser.CliSyntax.PREFIX_COMP;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.system.logic.commands.Command;
@@ -25,11 +25,11 @@ public class AddCompetitionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a competition to the address book. "
             + "Parameters: "
-            + PREFIX_NAME + "COMPETITION NAME "
+            + PREFIX_COMP + "COMPETITION NAME "
             + PREFIX_START_DATE + "START DATE OF COMPETITION "
             + PREFIX_END_DATE + "END DATE OF COMPETITION "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "IPF World's "
+            + PREFIX_COMP + "IPF World's "
             + PREFIX_START_DATE + "12/02/1995 "
             + PREFIX_END_DATE + "15/02/1995 ";
 

@@ -3,7 +3,7 @@ package seedu.system.logic.parser.outofsession;
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.system.commons.core.Messages.MESSAGE_INVALID_START_END_DATES;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_END_DATE;
-import static seedu.system.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.system.logic.parser.CliSyntax.PREFIX_COMP;
 import static seedu.system.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.system.logic.commands.outofsession.AddCompetitionCommand;
@@ -29,15 +29,15 @@ public class AddCompetitionCommandParser implements Parser<AddCompetitionCommand
      */
     public AddCompetitionCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_DATE, PREFIX_END_DATE);
+                ArgumentTokenizer.tokenize(args, PREFIX_COMP, PREFIX_START_DATE, PREFIX_END_DATE);
 
-        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_START_DATE, PREFIX_END_DATE)
+        if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_COMP, PREFIX_START_DATE, PREFIX_END_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddCompetitionCommand.MESSAGE_USAGE));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_COMP).get());
         CustomDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
         CustomDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
